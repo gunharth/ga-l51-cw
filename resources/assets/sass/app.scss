@@ -1,2 +1,12 @@
-// @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+// first import bootstrap variable
+@import "bootstrap/stylesheets/bootstrap/variables";
+// second import the YETI theme variables
+@import "bootswatch/yeti/variables";
+// third import bootstrap
+@import "bootstrap/stylesheets/bootstrap";
+// forth import cosmo bootswatch
+@import "bootswatch/yeti/bootswatch";
 
+body {
+    padding-top: 50px;
+}
