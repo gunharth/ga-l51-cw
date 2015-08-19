@@ -7,7 +7,7 @@
     <div class="row">
       @foreach($mediums as $medium)
         <div class="col-md-3 col-sm-6 col-xs-12">
-          <a href="{{ route('medium.show', $medium->id) }}" class="thumbnail">
+          <a href="{{ route('medium.show', $medium->slug) }}" class="thumbnail">
             <img src="img/RUNN_COVER_2015_02-723x1024.jpg">
             <div class="caption">
               <h3>{{ $medium->title }}</h3>
