@@ -31,7 +31,8 @@ elixir(function(mix) {
      //
      mix.scripts([
              'js/jquery.js',
-             'js/bootstrap.js'
+             'js/bootstrap.js',
+             'js/app.js'
          ],
          'public/js/app.js',
          'resources/assets'

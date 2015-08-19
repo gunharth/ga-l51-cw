@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Medium;
 
 class MediumController extends Controller
 {
@@ -17,6 +18,10 @@ class MediumController extends Controller
     public function index()
     {
         //
+        //$mediums = Medium::all();
+        $mediums = Medium::orderBy('title', 'ASC')->get();
+        //return $mediums; JSON return
+        return view('medium.index', compact('mediums'));
     }
 
     /**
@@ -27,6 +32,7 @@ class MediumController extends Controller
     public function create()
     {
         //
+        return view('medium.create');
     }
 
     /**
@@ -37,7 +43,16 @@ class MediumController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required'
+        ]);
+        $input = $request->all();
+
+        Medium::create($input);
+
+        \Session::flash('flash_message', trans('messages.create_success'));
+
+        return redirect()->back();
     }
 
     /**
@@ -48,7 +63,8 @@ class MediumController extends Controller
      */
     public function show($id)
     {
-        //
+        $medium = Medium::findOrFail($id);
+        return view('medium.show',compact('medium'));
     }
 
     /**
