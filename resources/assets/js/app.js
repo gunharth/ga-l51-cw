@@ -6,7 +6,7 @@ $(document).on('change', '.btn-file :file', function() {
   input.trigger('fileselect', [numFiles, label]);
 });
 
-$(document).ready( function() {
+ $(function(){
     $('.btn-file :file').on('fileselect', function(event, numFiles, label) {
         
         var input = $(this).parents('.input-group').find(':text'),
@@ -19,4 +19,8 @@ $(document).ready( function() {
         }
         
     });
+
+    $('div.alert').not('.alert-important').delay(3000).slideUp(300);
 });
+
+
