@@ -1,6 +1,6 @@
 @extends('app')
 
-@section('title','Medium')
+@section('title', $medium->title)
 
 @section('content')
     <div class="row vertical-align">
@@ -10,8 +10,8 @@
               <a href="#" class="btn btn-default">Aktionen</a>
               <a aria-expanded="false" href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="medium_edit.html">Bearbeiten</a></li>
-                <li><a href="#">Duplizieren</a></li>
+                <li><a href="{{ route('medium.edit', $medium->id) }}">Bearbeiten</a></li>
+                <li><a href="#">Duplizieren</a></li>  
                 <li class="divider"></li>
                 <li><a href="#">Archivieren</a></li>
                 <li><a href="#">Löschen</a></li>

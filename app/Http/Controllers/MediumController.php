@@ -75,7 +75,8 @@ class MediumController extends Controller
      */
     public function edit($id)
     {
-        //
+        $medium = Medium::findOrFail($id);
+        return view('medium.edit',compact('medium'));
     }
 
     /**
@@ -87,7 +88,18 @@ class MediumController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $medium = Medium::findOrFail($id);
+
+        $this->validate($request, [
+            'title' => 'required'
+        ]);
+        $input = $request->all();
+
+        $medium->fill($input)->save();
+
+        \Session::flash('flash_message', trans('messages.create_success'));
+
+        return redirect()->back();
     }
 
     /**
