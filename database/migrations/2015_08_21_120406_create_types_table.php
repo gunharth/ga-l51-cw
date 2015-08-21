@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMediumTable extends Migration
+class CreateTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +12,9 @@ class CreateMediumTable extends Migration
      */
     public function up()
     {
-        Schema::create('medium', function (Blueprint $table) {
+        Schema::create('types', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('type_id');
             $table->string('title');
-            $table->string('slug')->unique();
-            $table->string('cover');
             $table->timestamps();
         });
     }
@@ -29,6 +26,6 @@ class CreateMediumTable extends Migration
      */
     public function down()
     {
-        Schema::drop('medium');
+        Schema::drop('types');
     }
 }

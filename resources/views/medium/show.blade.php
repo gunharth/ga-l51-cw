@@ -1,11 +1,17 @@
 @extends('app')
 
-@section('title', $medium->title)
+@section('pagetitle', $medium->title)
 
 @section('content')
     <div class="row vertical-align">
-      <div class="col-md-6"><h1>{{ $medium->title }}</h1></div>
-        <div class="col-md-6 text-right">
+      <div class="col-md-1">
+            <img src="{{ empty($medium->cover) ? '/img/placeholder.jpg' : '/uploads/'.$medium->cover }}">
+        </div>
+        <div class="col-md-9">
+          <h1>{{ $medium->title }}</h1>
+          <p><strong>{{ $medium->type->title }}</strong></p>
+        </div>
+        <div class="col-md-2 text-right">
           <div class="btn-group">
               <a href="#" class="btn btn-default">Aktionen</a>
               <a aria-expanded="false" href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
@@ -20,23 +26,7 @@
         </div>
     </div>
     <hr />
-    <div class="row">
-        <div class="col-md-2 col--6">
-            <span class="thumbnail">
-            <img src="{{ empty($medium->cover) ? '/img/placeholder.jpg' : '/uploads/'.$medium->cover }}">
-            </span>
-        </div>
-        <div class="col-md-10">
-            <p><strong>Kategorie:</strong> Zielgruppen</p>
-            <p><strong>Auflage:</strong> 10.000</p>
-            <p><strong>Verkaufspreis:</strong> € 7.50</p>
-            <p><strong>Vertrieb:</strong> Trafik, etc</p>
-            <p><strong>Umfang:</strong> 100 Seiten</p>
-            <p><strong>Anmerkungen:</strong> Interne Anmerkungen</p>
-            
-        </div>
-    </div>
-    
+
     <div class="row vertical-align">
       <div class="col-md-12"><h2>Formate</h2></div>
     </div>
@@ -169,6 +159,6 @@
     
     
 <div class="well">
-  <p>Dev notes </p>
+  <p>Dev notes: Medium anlegen - atomatisch Sonderformat anlegen</p>
 </div>
   @stop

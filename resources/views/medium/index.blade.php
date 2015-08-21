@@ -16,14 +16,10 @@
           <a href="{{ route('medium.show', $medium->slug) }}" class="thumbnail">
             <img src="{{ empty($medium->cover) ? 'img/placeholder.jpg' : 'uploads/'.$medium->cover }}">
             <div class="caption">
-              <h4>{{ $medium->title }}</h4>
+              <h5>{{ $medium->title }}</h5>
             </div>
           </a>
         </div>
       @endforeach
-    </div>
-    <div class="well">
-        <p>Dev notes:</p>
-        <p>&nbsp;</p>
     </div>
   @stop

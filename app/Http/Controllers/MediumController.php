@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Medium;
+use App\MediumType;
 use Storage;
 use File;
 use Image;
@@ -34,8 +35,8 @@ class MediumController extends Controller
      */
     public function create()
     {
-        //
-        return view('medium.create');
+        $types = MediumType::lists('title','id');
+        return view('medium.create')->with('types',$types);
     }
 
     /**
@@ -69,6 +70,7 @@ class MediumController extends Controller
     {
         //$medium = Medium::findOrFail($id);
         $medium = Medium::findBySlug($slug);
+        $medium->type = MediumType::find($medium->type_id);
         return view('medium.show',compact('medium'));
 
     }
@@ -82,7 +84,8 @@ class MediumController extends Controller
     public function edit($id)
     {
         $medium = Medium::findOrFail($id);
-        return view('medium.edit',compact('medium'));
+        $types = MediumType::lists('title','id');
+        return view('medium.edit',compact('medium','types'));
     }
 
     /**

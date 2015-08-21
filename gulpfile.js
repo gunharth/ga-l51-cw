@@ -37,5 +37,9 @@ elixir(function(mix) {
          'public/js/app.js',
          'resources/assets'
      );
+     mix.version([
+            'css/app.css',
+            'js/app.js'
+        ])
 
  });
