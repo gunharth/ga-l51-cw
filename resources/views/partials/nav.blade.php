@@ -13,6 +13,8 @@
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">Medium <span class="caret"></span></a>
               <ul class="dropdown-menu" aria-labelledby="themes">
+                
+                <li><a href="{{ route('medium.index') }}">Alle</a></li>
                 <li><a href="{{ route('medium.index') }}">Running & Fitness</a></li>
                 <li><a href="#">Medium X</a></li>
                 <li><a href="#">Medium Y</a></li>

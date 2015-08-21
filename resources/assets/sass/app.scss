@@ -30,3 +30,8 @@ body {
         cursor: inherit;
         display: block;
  }
+
+ .vertical-align {
+    display: flex;
+    align-items: center;
+}

@@ -1,16 +1,22 @@
 @extends('app')
 
-@section('title','Medium')
+@section('pagetitle','Medium')
 
 @section('content')
-    <h1>Medium</h1>
+    <div class="row vertical-align">
+      <div class="col-md-6"><h1>Medium</h1></div>
+        <div class="col-md-6 text-right">
+          <a href="{{ route('medium.create') }}" class="btn btn-primary">Neu</a>
+        </div>
+    </div>
+    <hr  />
     <div class="row">
       @foreach($mediums as $medium)
         <div class="col-md-3 col-sm-6 col-xs-12">
           <a href="{{ route('medium.show', $medium->slug) }}" class="thumbnail">
-            <img src="img/RUNN_COVER_2015_02-723x1024.jpg">
+            <img src="{{ empty($medium->cover) ? 'img/placeholder.jpg' : 'uploads/'.$medium->cover }}">
             <div class="caption">
-              <h3>{{ $medium->title }}</h3>
+              <h4>{{ $medium->title }}</h4>
             </div>
           </a>
         </div>

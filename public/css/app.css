@@ -6279,4 +6279,12 @@ body {
   cursor: inherit;
   display: block; }
 
+.vertical-align {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center; }
+
 /*# sourceMappingURL=app.css.map */

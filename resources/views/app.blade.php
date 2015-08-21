@@ -18,9 +18,6 @@
     @include('partials/nav')
 
     <div class="container">
-
-      <h1>@yield('title')</h1>
-      <hr />
       @include('partials.errors')
       @if(Session::has('flash_message'))
           <div class="alert alert-success">

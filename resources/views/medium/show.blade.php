@@ -23,7 +23,7 @@
     <div class="row">
         <div class="col-md-2 col--6">
             <span class="thumbnail">
-            <img src="img/RUNN_COVER_2015_02-723x1024.jpg">
+            <img src="{{ empty($medium->cover) ? '/img/placeholder.jpg' : '/uploads/'.$medium->cover }}">
             </span>
         </div>
         <div class="col-md-10">

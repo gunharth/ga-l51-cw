@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Medium;
+use Storage;
+use File;
+use Image;
 
 class MediumController extends Controller
 {
@@ -43,6 +46,7 @@ class MediumController extends Controller
      */
     public function store(Request $request)
     {
+        
         $this->validate($request, [
             'title' => 'required'
         ]);
@@ -90,12 +94,44 @@ class MediumController extends Controller
      */
     public function update(Request $request, $id)
     {
+        
         $medium = Medium::findOrFail($id);
 
         $this->validate($request, [
             'title' => 'required'
         ]);
-        $input = $request->all();
+
+        $filename = "";
+        if($request->file('file')) {
+            $file = $request->file('file');
+            $extension = $file->getClientOriginalExtension();
+            $filename = $file->getFilename().'.'.$extension;
+            //$fileresized = Image::make($request->file('file'))->resize(300, 200);
+            //$fileresized->save();
+           //Storage::disk('local')->put($filename ,  File::get($fileresized));
+            Image::make($request->file('file'))->fit(300, 401)->save(
+                base_path() . '/public/uploads/'.$filename
+            );
+            /* $request->file('file')->move(
+                base_path() . '/public/uploads/', $filename
+            );*/
+/*$fileresized->move(
+                base_path() . '/public/uploads/', $filename
+            );*/
+            $request->merge(array('cover' => $filename));
+         }
+        /*$entry = new Fileentry();
+        $entry->mime = $file->getClientMimeType();
+        $entry->original_filename = $file->getClientOriginalName();
+        $entry->filename = $file->getFilename().'.'.$extension;
+ */
+       // $entry->save();
+        //$request->input('yodel', $filename);
+        
+        $input = $request->all(); 
+        //$input->cover = $filename;
+        //dd($input);
+        //$input->cover = $cover;
 
         $medium->fill($input)->save();
 

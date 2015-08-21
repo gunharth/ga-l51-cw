@@ -7,12 +7,23 @@
 
 {!! Form::model($medium,[
     'method' => 'PATCH',
-    'route' => ['medium.update', $medium->id]
+    'route' => ['medium.update', $medium->id],
+    'files' => true
 ]) !!}
     <div class="form-group">
         {!! Form::label('title','Titel',['class' => 'col-xs-2']) !!}
         {!! Form::text('title',null,['class' => 'form-control', 'placeholder' => 'Medium Titel']) !!}
     </div>
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-btn">
+                <div class="btn btn-primary btn-file">
+                    Cover <input type="file" name="file" multiple>
+                </div>
+            </div>
+            <input type="text" class="form-control" readonly>
+        </div>
+    </div>  
     <div class="form-group">
         {!! Form::submit('Speichern',['class' => 'btn btn-primary']) !!}
     </div>
@@ -20,20 +31,7 @@
 
 
 <form class="form">
-    <div class="form-group">
-        {!! Form::label('title','Titel',['class' => 'col-xs-2']) !!}
-        {!! Form::text('title',null,['class' => 'form-control', 'placeholder' => 'Medium Titel']) !!}
-    </div>
-    <div class="form-group">
-      <label for="kategorie" class="col-lg-2 control-label">Kategorie</label>
-        <select class="form-control" id="kategorie">
-          <option>Zielgruppen</option>
-          <option>Kundenmagazin</option>
-          <option>Kat 3</option>
-          <option>Kat 4</option>
-          <option>Kat 5</option>
-        </select>
-    </div>
+
     <div class="form-group">
     <div class="input-group">
                 <div class="input-group-btn">
