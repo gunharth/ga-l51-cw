@@ -10,13 +10,9 @@
         <p>Are you sure about this ?</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-danger" id="confirm">Delete</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Abbrechen</button>
+        <button type="button" class="btn btn-danger modal-action" id="confirm">Löschen</button>
       </div>
     </div>
   </div>
 </div>
-<script>
-
- 
-  </script>

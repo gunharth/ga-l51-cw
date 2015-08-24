@@ -18,3 +18,5 @@ Route::get('/', function () {
 //Route::get('medium/{slug}', 'MediumController@show');
 
 Route::resource('medium', 'MediumController');
+Route::resource('formats', 'FormatsController');
+Route::resource('issues', 'IssuesController');

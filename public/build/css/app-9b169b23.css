@@ -8317,4 +8317,9 @@ hr {
   -ms-flex-align: center;
   align-items: center; }
 
+[rel="popover"] {
+  cursor: pointer;
+  display: inline-block;
+  /* chrome-fix */ }
+
 /*# sourceMappingURL=app.css.map */

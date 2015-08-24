@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Medium;
 use App\MediumType;
+//use App\Format;
 use Storage;
 use File;
 use Image;
@@ -76,6 +77,8 @@ class MediumController extends Controller
         //$medium = Medium::findOrFail($id);
         $medium = Medium::findBySlug($slug);
         $medium->type = MediumType::find($medium->type_id);
+        $medium->formats = $medium->formats;
+        $medium->issues = $medium->issues;
         return view('medium.show',compact('medium'));
 
     }

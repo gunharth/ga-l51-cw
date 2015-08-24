@@ -28,6 +28,7 @@
       @endif
       @yield('content')
     </div>
+    @include('partials/modal')
     <script src="{{ elixir('js/app.js') }}"></script>
   </body>
 </html>

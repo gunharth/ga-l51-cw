@@ -3,6 +3,7 @@
 // second import the YETI theme variables
 @import "bootswatch/yeti/variables";
 $zindex-modal:             1050;
+//$margin-top: ($line-height-computed / 2);
 // third import bootstrap
 @import "bootstrap/stylesheets/bootstrap";
 // forth import cosmo bootswatch
@@ -45,3 +46,8 @@ hr { margin-top: 0; }
     display: flex;
     align-items: center;
 }
+
+[rel="popover"]{
+            cursor: pointer;
+            display:inline-block; /* chrome-fix */
+        }

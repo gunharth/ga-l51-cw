@@ -12,154 +12,102 @@
           <p><strong>{{ $medium->type->title }}</strong></p>
         </div>
         <div class="col-md-4 text-right">
-          <a href="{{ route('medium.edit', $medium->id) }}" alt="Bearbeiten" tile="bearbeiten"><i class="fa fa-lg fa-edit"></i> Bearbeiten</a> &nbsp; 
+          <a href="{{ route('medium.edit', $medium->id) }}" alt="Bearbeiten" tile="bearbeiten"><i class="fa fa-lg fa-edit"></i></a> &nbsp; 
           {!! Form::open([
             'method' => 'DELETE',
             'route' => ['medium.destroy', $medium->id],
             'style' => 'display: inline;'
         ]) !!}
-             <a href="#" class="" data-toggle="modal" data-target="#confirmDelete" data-title="Medium löschen" data-message="Wollen Sie {{ $medium->title }} wirklich löschen?"><i class="fa fa-lg fa-trash-o"></i> Löschen</a>
+             <a href="#" class="" data-toggle="modal" data-target="#confirmDelete" data-title="Medium löschen" data-message="Wollen Sie {{ $medium->title }} wirklich löschen?"><i class="fa fa-lg fa-trash-o"></i></a>
         {!! Form::close() !!}
-
-        
-            
         </div>
     </div>
     <hr />
 
     <div class="row vertical-align">
-      <div class="col-md-12"><h2>Formate</h2></div>
+        <div class="col-md-8">
+          <h2>Formate</h2>
+        </div>
+        <div class="col-md-4 text-right">
+           <a href="{{ route('formats.create') }}" alt="Neu" tile="Neu"><i class="fa fa-lg fa-edit"></i> Neu</a>
+        </div>
     </div>
-    <hr />
-    
-    
     <table class="table table-striped table-hover ">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Format</th>
-      <th class="text-right"><div class="btn btn-primary">Neues Format</div></th>
-      </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>1</td>
-      <td>2/1 Abfallend</td>
-      <td class="text-right"><div class="btn-group">
-          <a href="#" class="btn btn-default">Aktionen</a>
-          <a aria-expanded="false" href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
-          <ul class="dropdown-menu">
-              <li><a href="format_edit.html">Bearbeiten</a></li>
-              <li><a href="#">Duplizieren</a></li>
-              <li class="divider"></li>
-              <li><a href="#">Archivieren</a></li>
-              <li><a href="#">Löschen</a></li>
-              </ul>
-      </div></td>
-      </tr>
-    <tr>
-      <td>2</td>
-      <td>1/1 Satzspiegel</td>
-      <td>&nbsp;</td>
-      </tr>
-    <tr class="info">
-      <td>3</td>
-      <td>1/1 Abfallend</td>
-      <td>&nbsp;</td>
-      </tr>
-  </tbody>
-</table> 
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th class="text-right">&nbsp;</th>
+        </tr>
+      </thead>
+      @foreach($medium->formats as $format)
+        <tr>
+          <td>{{ $format->name }}</td>
+          <td class="text-right">
+            <a href="{{ route('formats.edit', $format->id) }}" alt="Bearbeiten" tile="bearbeiten"><i class="fa fa-lg fa-edit"></i></a> &nbsp;
+              {!! Form::open([
+                'method' => 'DELETE',
+                'route' => ['formats.destroy', $format->id],
+                'style' => 'display: inline;'
+            ]) !!}
+                 <a href="#" class="" data-toggle="modal" data-target="#confirmDelete" data-title="Format löschen" data-message="Wollen Sie {{ $format->name }} wirklich löschen?"><i class="fa fa-lg fa-trash-o"></i></a>
+            {!! Form::close() !!}
+          </td>
+          </tr>
+        @endforeach
+      </tbody>
+    </table> 
 
-    
-    
     <div class="row vertical-align">
-      <div class="col-md-6"><h2>Ausgaben</h2></div>
-        <!--<div class="col-md-6 text-right">
-          <div class="btn-group">
-              <a href="#" class="btn btn-default">Aktionen</a>
-              <a aria-expanded="false" href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="medium_edit.html">Bearbeiten</a></li>
-                <li><a href="#">Duplizieren</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Archivieren</a></li>
-                <li><a href="#">Löschen</a></li>
-              </ul>
-            </div>
-        </div>-->
+      <div class="col-md-8">
+        <h2>Ausgaben</h2>
+      </div>
+      <div class="col-md-4 text-right">
+          <a href="{{ route('formats.create') }}" alt="Neu" tile="Neu"><i class="fa fa-lg fa-edit"></i> Neu</a>
+      </div>
     </div>
-    <hr />
-    
-    
     <table class="table table-striped table-hover ">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Ausgabe</th>
-      <th>Erscheinungstermin</th>
-      <th class="text-right"><div class="btn btn-primary">Neue Ausgabe</div></th>
-      </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>1</td>
-      <td>4/2015</td>
-      <td>28.11.2015</td>
-      <td class="text-right"><div class="btn-group">
-              <a href="#" class="btn btn-default">Aktionen</a>
-              <a aria-expanded="false" href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="ausgabe_edit.html">Bearbeiten</a></li>
-                <li><a href="#">Duplizieren</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Archivieren</a></li>
-                <li><a href="#">Löschen</a></li>
-              </ul>
-            </div></td>
-      </tr>
-    <tr>
-      <td>2</td>
-      <td>3/2015</td>
-      <td>05.09.2015</td>
-      <td>&nbsp;</td>
-      </tr>
-    <tr class="info">
-      <td>3</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>&nbsp;</td>
-      </tr>
-    <tr class="success">
-      <td>4</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>&nbsp;</td>
-      </tr>
-    <tr class="danger">
-      <td>5</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>&nbsp;</td>
-      </tr>
-    <tr class="warning">
-      <td>6</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>&nbsp;</td>
-      </tr>
-    <tr class="active">
-      <td>7</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>&nbsp;</td>
-      </tr>
-  </tbody>
-</table> 
-
+      <thead>
+        <tr>
+          <th>Ausgabe</th>
+          <th>Erscheinungstermin</th>
+          <th class="text-right">&nbsp;</th>
+        </tr>
+      </thead>
+      @foreach($medium->issues as $issue)
+        <tr>
+          <td>{{ $issue->name }}</td>
+          <td>dd.mm.YYY</td>
+          <td class="text-right">
+            <a href="{{ route('issues.edit', $issue->id) }}" alt="Bearbeiten" tile="bearbeiten"><i class="fa fa-lg fa-edit" data-toggle="tooltip" data-original-title="bearbeiten"></i></a> 
+            &nbsp;
+            {!! Form::open(
+                ['method' => 'PATCH',
+                'route' => ['issues.update', $issue->id],
+                'style' => 'display: inline;'
+            ]) !!}
+                {!! Form::hidden('archive','1') !!}
+                 <a href="#" class="" data-toggle="modal" data-target="#confirmDelete" data-title="Ausgabe archivieren" data-message="Wollen Sie {{ $issue->name }} wirklich archivieren?" data-action="Archivieren"><i class="fa fa-lg fa-archive" data-toggle="tooltip" data-original-title="archivieren"></i></a>
+            {!! Form::close() !!}
+            &nbsp;
+              {!! Form::open([
+                'method' => 'DELETE',
+                'route' => ['issues.destroy', $format->id],
+                'style' => 'display: inline;'
+            ]) !!}
+                 <a href="#" data-toggle="modal" data-target="#confirmDelete" data-title="Ausgabe löschen" data-message="Wollen Sie {{ $issue->name }} wirklich löschen?" data-action="Löschen"><i class="fa fa-lg fa-trash-o" data-toggle="tooltip" data-original-title="löschen"></i></a>
+            {!! Form::close() !!}
+          </td>
+          </tr>
+        @endforeach
+      </tbody>
+    </table> 
+    <a href="#" data-toggle="tooltip" title="" data-original-title="Default tooltip" data-placement="bottom">you probably</a>
+  
+    
     
     
 <div class="well">
   <p>Dev notes: Medium anlegen - atomatisch Sonderformat anlegen</p>
 </div>
-@include('partials/delete_confirm')
+
   @stop
