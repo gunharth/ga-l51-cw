@@ -20,7 +20,24 @@ $(document).on('change', '.btn-file :file', function() {
         
     });
 
-    $('div.alert').not('.alert-important').delay(3000).slideUp(300);
+    $('#flashMessage').not('.alert-important').delay(2000).slideUp(300);
+
+     $('#confirmDelete').on('show.bs.modal', function (e) {
+      $(e.relatedTarget).hide();
+      $message = $(e.relatedTarget).attr('data-message');
+      $(this).find('.modal-body p').text($message);
+      $title = $(e.relatedTarget).attr('data-title');
+      $(this).find('.modal-title').text($title);
+
+      // Pass form reference to modal for submission on yes/ok
+      var form = $(e.relatedTarget).closest('form');
+      $(this).find('.modal-footer #confirm').data('form', form);
+  });
+
+
+  $('#confirmDelete').find('.modal-footer #confirm').on('click', function(){
+      $(this).data('form').submit();
+  });
 });
 
 

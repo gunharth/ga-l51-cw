@@ -5,20 +5,23 @@
 @section('content')
     <div class="row vertical-align">
       <div class="col-md-1">
-      <img src="{{ !empty($medium->cover) && file_exists(public_path('uploads/'.$medium->cover) ) ? asset('uploads/'.$medium->cover) : asset('img/placeholder.jpg')  }}">
-      @if(!empty($medium->cover) && file_exists(public_path('uploads/'.$medium->cover))) 
-  File exists
-@else
-  Could not find file
-@endif
+        <img src="{{ !empty($medium->cover) && file_exists(public_path('uploads/'.$medium->cover) ) ? asset('uploads/'.$medium->cover) : asset('img/placeholder.jpg')  }}">
         </div>
-        <div class="col-md-9">
+        <div class="col-md-7">
           <h1>{{ $medium->title }}</h1>
           <p><strong>{{ $medium->type->title }}</strong></p>
         </div>
-        <div class="col-md-2 text-right">
-          <a href="{{ route('medium.edit', $medium->id) }}" alt="Bearbeiten" tile="bearbeiten"><i class="fa fa-lg fa-edit"></i> Bearbeiten</a>
-              
+        <div class="col-md-4 text-right">
+          <a href="{{ route('medium.edit', $medium->id) }}" alt="Bearbeiten" tile="bearbeiten"><i class="fa fa-lg fa-edit"></i> Bearbeiten</a> &nbsp; 
+          {!! Form::open([
+            'method' => 'DELETE',
+            'route' => ['medium.destroy', $medium->id],
+            'style' => 'display: inline;'
+        ]) !!}
+             <a href="#" class="" data-toggle="modal" data-target="#confirmDelete" data-title="Medium löschen" data-message="Wollen Sie {{ $medium->title }} wirklich löschen?"><i class="fa fa-lg fa-trash-o"></i> Löschen</a>
+        {!! Form::close() !!}
+
+        
             
         </div>
     </div>
@@ -158,4 +161,5 @@
 <div class="well">
   <p>Dev notes: Medium anlegen - atomatisch Sonderformat anlegen</p>
 </div>
+@include('partials/delete_confirm')
   @stop

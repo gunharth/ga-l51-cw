@@ -52,12 +52,17 @@ class MediumController extends Controller
             'title' => 'required'
         ]);
         $input = $request->all();
+       //$input->type_id = 1;
 
-        Medium::create($input);
+        $medium = Medium::create($input);
 
         \Session::flash('flash_message', trans('messages.create_success'));
 
-        return redirect()->back();
+        //return redirect()->back();
+        //$medium = $input;
+        //dd($medium);
+        return redirect()->route('medium.edit', [$medium->id]);
+       // return view('medium.show/$medium->slug',compact('medium'));
     }
 
     /**
@@ -151,6 +156,15 @@ class MediumController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $medium = Medium::findOrFail($id);
+        $image = $medium->cover;
+        if(File::isFile(public_path().'/uploads/'.$image)) {
+            File::delete(public_path().'/uploads/'.$image);
+        }
+        
+
+        $medium->delete();
+        \Session::flash('flash_message', 'Task successfully deleted!');
+        return redirect()->route('medium.index');
     }
 }

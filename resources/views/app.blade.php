@@ -20,8 +20,10 @@
     <div class="container">
       @include('partials.errors')
       @if(Session::has('flash_message'))
+          <div id="flashMessage">
           <div class="alert alert-success">
               {{ Session::get('flash_message') }}
+          </div>
           </div>
       @endif
       @yield('content')

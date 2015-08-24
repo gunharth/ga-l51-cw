@@ -11,23 +11,18 @@
         </div>
     </div>
     <hr  />
-<div class="well">
-{!! Form::open([
-    'route' => 'medium.store'
-]) !!}
-    <div class="form-group">
-        {!! Form::label('title','Titel',['class' => 'col-xs-2']) !!}
-        {!! Form::text('title',null,['class' => 'form-control', 'placeholder' => 'Medium Titel']) !!}
-    </div>
-    <div class="form-group">
-        {!! Form::submit('Speichern',['class' => 'btn btn-primary']) !!}
-    </div>
-{!! Form::close() !!}
+    <div class="well">
+        {!! Form::open([
+            'route' => 'medium.store'
+        ]) !!}
+        {!! Form::hidden('type_id','1') !!}
+        <div class="form-group">
+            {!! Form::label('title','Titel',['class' => 'col-xs-2']) !!}
+            {!! Form::text('title',null,['class' => 'form-control', 'placeholder' => 'Medium Titel']) !!}
+        </div>
+        <div class="form-group">
+            {!! Form::submit('Speichern',['class' => 'btn btn-primary']) !!}
+        </div>
+        {!! Form::close() !!}
    </div>
-
-<div class="well">
-        <p>Dev notes:</p>
-        <p>&nbsp;</p>
-    </div>
-    
   @stop

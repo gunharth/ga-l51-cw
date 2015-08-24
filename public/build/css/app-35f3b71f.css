@@ -5264,7 +5264,7 @@ button.close {
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 1040;
+  z-index: 1050;
   -webkit-overflow-scrolling: touch;
   outline: 0; }
   .modal.fade .modal-dialog {
@@ -8282,6 +8282,13 @@ img {
 
 hr {
   margin-top: 0; }
+
+#flashMessage {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1031; }
 
 .btn-file {
   position: relative;
