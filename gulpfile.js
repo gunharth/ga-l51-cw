@@ -22,6 +22,7 @@ elixir(function(mix) {
      mix.sass('app.scss')
          // copy relevant files to the resources folder.  This is the css
          .copy(bowerDirBootstrap, 'resources/assets/sass/bootstrap')
+         .copy(bowerDirBootstrap + 'fonts/bootstrap', 'public/fonts')
          .copy(bowerDirBootswatch, 'resources/assets/sass/bootswatch')
          .copy(bowerDirFontawesome + 'scss', 'resources/assets/sass/fontawesome')
          .copy(bowerDirFontawesome + 'fonts', 'public/fonts')

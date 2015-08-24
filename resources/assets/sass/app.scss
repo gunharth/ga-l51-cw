@@ -3,13 +3,13 @@
 // second import the YETI theme variables
 @import "bootswatch/yeti/variables";
 $zindex-modal:             1050;
-//$margin-top: ($line-height-computed / 2);
+$icon-font-path: "../../fonts/";
+$fa-font-path: "../../fonts/";
 // third import bootstrap
 @import "bootstrap/stylesheets/bootstrap";
 // forth import cosmo bootswatch
 @import "bootswatch/yeti/bootswatch";
 // import fontawesome
-$fa-font-path:  "/fonts" !default;
 @import "fontawesome/font-awesome";
 
 body {

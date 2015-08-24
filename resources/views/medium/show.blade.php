@@ -4,14 +4,14 @@
 
 @section('content')
     <div class="row vertical-align">
-      <div class="col-md-1">
+      <div class="col-sm-1 col-md-1">
         <img src="{{ !empty($medium->cover) && file_exists(public_path('uploads/'.$medium->cover) ) ? asset('uploads/'.$medium->cover) : asset('img/placeholder.jpg')  }}">
         </div>
-        <div class="col-md-7">
+        <div class="col-sm-7 col-md-7">
           <h1>{{ $medium->title }}</h1>
           <p><strong>{{ $medium->type->title }}</strong></p>
         </div>
-        <div class="col-md-4 text-right">
+        <div class="col-sm-4 col-md-4 text-right">
           <a href="{{ route('medium.edit', $medium->id) }}" alt="Bearbeiten" tile="bearbeiten"><i class="fa fa-lg fa-edit"></i></a> &nbsp; 
           {!! Form::open([
             'method' => 'DELETE',
@@ -100,12 +100,8 @@
           </tr>
         @endforeach
       </tbody>
-    </table> 
-    <a href="#" data-toggle="tooltip" title="" data-original-title="Default tooltip" data-placement="bottom">you probably</a>
-  
-    
-    
-    
+    </table>
+
 <div class="well">
   <p>Dev notes: Medium anlegen - atomatisch Sonderformat anlegen</p>
 </div>
