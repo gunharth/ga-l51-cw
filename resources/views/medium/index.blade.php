@@ -6,7 +6,7 @@
     <div class="row vertical-align">
       <div class="col-md-6"><h1>Medium</h1></div>
         <div class="col-md-6 text-right">
-          <a href="{{ route('medium.create') }}" class="btn btn-primary">Neu</a>
+        <a href="{{ route('medium.create') }}" alt="Neu" tile="Neu"><i class="fa fa-lg fa-edit"></i> Neu</a>
         </div>
     </div>
     <hr  />
@@ -14,7 +14,7 @@
       @foreach($mediums as $medium)
         <div class="col-md-3 col-sm-6 col-xs-12">
           <a href="{{ route('medium.show', $medium->slug) }}" class="thumbnail">
-            <img src="{{ empty($medium->cover) ? 'img/placeholder.jpg' : 'uploads/'.$medium->cover }}">
+            <img src="{{ !empty($medium->cover) && file_exists(public_path('uploads/'.$medium->cover) ) ? asset('uploads/'.$medium->cover) : asset('img/placeholder.jpg')  }}">
             <div class="caption">
               <h5>{{ $medium->title }}</h5>
             </div>

@@ -5,24 +5,21 @@
 @section('content')
     <div class="row vertical-align">
       <div class="col-md-1">
-            <img src="{{ empty($medium->cover) ? '/img/placeholder.jpg' : '/uploads/'.$medium->cover }}">
+      <img src="{{ !empty($medium->cover) && file_exists(public_path('uploads/'.$medium->cover) ) ? asset('uploads/'.$medium->cover) : asset('img/placeholder.jpg')  }}">
+      @if(!empty($medium->cover) && file_exists(public_path('uploads/'.$medium->cover))) 
+  File exists
+@else
+  Could not find file
+@endif
         </div>
         <div class="col-md-9">
           <h1>{{ $medium->title }}</h1>
           <p><strong>{{ $medium->type->title }}</strong></p>
         </div>
         <div class="col-md-2 text-right">
-          <div class="btn-group">
-              <a href="#" class="btn btn-default">Aktionen</a>
-              <a aria-expanded="false" href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="{{ route('medium.edit', $medium->id) }}">Bearbeiten</a></li>
-                <li><a href="#">Duplizieren</a></li>  
-                <li class="divider"></li>
-                <li><a href="#">Archivieren</a></li>
-                <li><a href="#">Löschen</a></li>
-              </ul>
-            </div>
+          <a href="{{ route('medium.edit', $medium->id) }}" alt="Bearbeiten" tile="bearbeiten"><i class="fa fa-lg fa-edit"></i> Bearbeiten</a>
+              
+            
         </div>
     </div>
     <hr />

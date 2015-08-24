@@ -14,6 +14,7 @@ var elixir = require('laravel-elixir');
 // create variables for paths for bootstrap and bootswatch
  var bowerDirBootstrap = "vendor/bower_components/bootstrap-sass-official/assets/";
  var bowerDirBootswatch = "vendor/bower_components/bootswatch-sass";
+ var bowerDirFontawesome = "vendor/bower_components/fontawesome/";
  // javascript paths
  var bowerDirJquery = "vendor/bower_components/jquery/dist/";
 
@@ -22,6 +23,8 @@ elixir(function(mix) {
          // copy relevant files to the resources folder.  This is the css
          .copy(bowerDirBootstrap, 'resources/assets/sass/bootstrap')
          .copy(bowerDirBootswatch, 'resources/assets/sass/bootswatch')
+         .copy(bowerDirFontawesome + 'scss', 'resources/assets/sass/fontawesome')
+         .copy(bowerDirFontawesome + 'fonts', 'public/fonts')
          // this is the javascript
          .copy(bowerDirJquery + 'jquery.js', 'resources/assets/js/jquery.js')
          .copy(bowerDirBootstrap + 'javascripts/bootstrap.js',
