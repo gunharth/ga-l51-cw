@@ -77,7 +77,7 @@ class MediumController extends Controller
         //$medium = Medium::findOrFail($id);
         $medium = Medium::findBySlug($slug);
         $medium->type = MediumType::find($medium->type_id);
-        $medium->formats = $medium->formats;
+        //$medium->formats = $medium->formats;
         $medium->issues = $medium->issues;
         return view('medium.show',compact('medium'));
 

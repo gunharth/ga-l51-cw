@@ -14,13 +14,13 @@ class CreateFormatsTable extends Migration
     {
         Schema::create('formats', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('medium_id')->unsigned();
+            $table->integer('issue_id')->unsigned();
             $table->string('name');
             $table->timestamps();
 
-            $table->foreign('medium_id')
+            $table->foreign('issue_id')
                   ->references('id')
-                  ->on('medium')
+                  ->on('issues')
                   ->onDelete('cascade');
         });
     }

@@ -9,9 +9,14 @@ class Issue extends Model
     
 	protected $fillable = [
     	'name',
+        'medium_id',
     	'archive'
     ];
 
+
+    public function formats() {
+    	return $this->hasMany('App\Format');
+    }
 
     public function medium() {
     	return $this->belongsTo('App\Medium');

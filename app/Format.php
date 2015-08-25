@@ -8,8 +8,8 @@ class Format extends Model
 {
     //
 
-    public function medium() {
-    	return $this->belongsTo('App\Medium');
+    public function issue() {
+    	return $this->belongsTo('App\Issue');
     }
 
 }

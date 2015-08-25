@@ -24,9 +24,9 @@ class Medium extends Model implements SluggableInterface
         'type_id'
     ];
 
-    public function formats() {
+    /*public function formats() {
         return $this->hasMany('App\Format');
-    }
+    }*/
 
     public function issues() {
         return $this->hasMany('App\Issue');

@@ -10,6 +10,9 @@
         </div>
         <div class="navbar-collapse collapse" id="navbar-main">
           <ul class="nav navbar-nav">
+            <li>
+              <a href="{{ route('medium.index') }}">Medium</a>
+            </li>
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">Medium <span class="caret"></span></a>
               <ul class="dropdown-menu" aria-labelledby="themes">
