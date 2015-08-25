@@ -2,18 +2,21 @@
       <div class="container">
         <div class="navbar-header">
           <a href="/" class="navbar-brand">Goldader</a>
+          @if(Auth::check())
           <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
+          @endif
         </div>
+        @if(Auth::check())
         <div class="navbar-collapse collapse" id="navbar-main">
           <ul class="nav navbar-nav">
             <li>
               <a href="{{ route('medium.index') }}">Medium</a>
             </li>
-            <li class="dropdown">
+            <!--<li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">Medium <span class="caret"></span></a>
               <ul class="dropdown-menu" aria-labelledby="themes">
                 
@@ -24,7 +27,7 @@
                 <li><a href="#">Medium Z</a></li>
                 <li><a href="#">...</a></li>
               </ul>
-            </li>
+            </li>-->
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">Aufträge <span class="caret"></span></a>
               <ul class="dropdown-menu" aria-labelledby="themes">
@@ -70,10 +73,11 @@
           </ul>
 
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Konto</a></li>
-            <li><a href="#" target="_blank">Abmelden</a></li>
+            <!--<li><a href="#">Konto</a></li>-->
+            <li><a href="/auth/logout">Abmelden</a></li>
           </ul>
 
         </div>
+        @endif
       </div>
     </div>
