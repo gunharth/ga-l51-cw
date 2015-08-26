@@ -7,7 +7,7 @@
     <div class="row vertical-align">
       <div class="col-md-6"><h1>Neues Medium anlegen</h1></div>
         <div class="col-md-6 text-right">
-          <a href="{{ route('medium.show',$medium->id) }}" class="btn btn-primary">Abbrechen</a>
+          <a href="{{ route('medium.show',$medium->slug) }}" class="btn btn-primary">Abbrechen</a>
         </div>
     </div>
     <hr  />
@@ -16,7 +16,7 @@
             'route' => ['medium.issues.store',$medium->id]
         ]) !!}
         <div class="form-group">
-            {!! Form::label('name','Ausgabe',['class' => 'col-xs-2']) !!}
+            {!! Form::label('name','Ausgabe') !!}
             {!! Form::text('name',null,['class' => 'form-control', 'placeholder' => 'Ausgabe']) !!}
         </div>
         <div class="form-group">

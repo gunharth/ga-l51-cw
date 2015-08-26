@@ -17,14 +17,18 @@
     {!! Form::model($issue,[
         'method' => 'PATCH',
         'route' => ['medium.issues.update', $issue->medium->slug,$issue->id],
-        'files' => true
+        'class' => 'form-horizontal'
     ]) !!}
         <div class="form-group">
-            {!! Form::label('name','Ausgabe',['class' => 'col-xs-2']) !!}
+            {!! Form::label('name','Ausgabe',['class' => 'col-sm-2']) !!}
+            <div class="col-sm-10">
             {!! Form::text('name',null,['class' => 'form-control', 'placeholder' => 'Ausgabe']) !!}
+            </div>
         </div>
         <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
             {!! Form::submit('Speichern',['class' => 'btn btn-primary']) !!}
+            </div>
         </div>
     {!! Form::close() !!}
    </div>

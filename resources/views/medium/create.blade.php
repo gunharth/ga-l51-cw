@@ -17,8 +17,8 @@
         ]) !!}
         {!! Form::hidden('type_id','1') !!}
         <div class="form-group">
-            {!! Form::label('title','Titel',['class' => 'col-xs-2']) !!}
-            {!! Form::text('title',null,['class' => 'form-control', 'placeholder' => 'Medium Titel']) !!}
+            {!! Form::label('title','Titel') !!}
+            {!! Form::text('title',null,['class' => 'form-control', 'placeholder' => 'Medium Titel', 'required' => 'required']) !!}
         </div>
         <div class="form-group">
             {!! Form::submit('Speichern',['class' => 'btn btn-primary']) !!}

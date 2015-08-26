@@ -74,6 +74,7 @@
 
           <ul class="nav navbar-nav navbar-right">
             <!--<li><a href="#">Konto</a></li>-->
+            <li><a href="#">{{ Auth::user()->name }}</a></li>
             <li><a href="/auth/logout">Abmelden</a></li>
           </ul>
 
