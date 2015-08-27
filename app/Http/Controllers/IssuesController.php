@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Medium;
 use App\Issue;
+use App\Format;
 
 class IssuesController extends Controller
 {
@@ -53,11 +54,10 @@ class IssuesController extends Controller
             'name' => 'required'
         ]);
         $request->merge(array('medium_id' => $medium_id));
-
         $input = $request->all();
         //$input['medium_id'] = $medium_id;
-
         $issue = Issue::create($input);
+        Format::create(['issue_id' => $issue->id, 'name' => 'Sonderformat']);
 
         \Session::flash('flash_message', trans('messages.create_success'));
 
@@ -95,9 +95,10 @@ class IssuesController extends Controller
     public function edit($medium_slug,$id)
     {
         $issue = Issue::findOrFail($id);
-        $issue->medium = $issue->medium;
+        //$issue->medium = $issue->medium;
+        $medium = $issue->medium;
         $issue->formats = $issue->formats;
-        return view('issues.edit',compact('issue'));
+        return view('issues.edit',compact('issue','medium'));
     }
 
     /**
@@ -131,8 +132,11 @@ class IssuesController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function destroy($id)
+    public function destroy($medium_slug, $id)
     {
-        //
+        $issue = Issue::findOrFail($id);
+        $issue->delete();
+        \Session::flash('flash_message', 'Ausgabe wurde erfolgreich gelöscht');
+        return redirect()->route('medium.show', $medium_slug);
     }
 }

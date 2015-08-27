@@ -168,8 +168,6 @@ class MediumController extends Controller
         if(File::isFile(public_path().'/uploads/'.$image)) {
             File::delete(public_path().'/uploads/'.$image);
         }
-        
-
         $medium->delete();
         \Session::flash('flash_message', 'Task successfully deleted!');
         return redirect()->route('medium.index');

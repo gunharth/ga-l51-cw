@@ -4,19 +4,21 @@
 
 @section('content')
 
+@include('partials/mediumheader', ['showactions' => false])
+
 <div class="row vertical-align">
         <div class="col-md-10">
-          <h1>{{ $issue->medium->title }} - {{ $issue->name }}</h1>
+          <h1><small>Ausgabe</small> {{ $issue->name }}</h1>
         </div>
         <div class="col-md-2 text-right">
-          <a href="{{ route('medium.show',$issue->medium->slug) }}" class="btn btn-primary">Abbrechen</a>
+          <a href="{{ route('medium.show',$medium->slug) }}" class="btn btn-primary">Abbrechen</a>
         </div>
     </div>
     <hr />
 <div class="well">
     {!! Form::model($issue,[
         'method' => 'PATCH',
-        'route' => ['medium.issues.update', $issue->medium->slug,$issue->id],
+        'route' => ['medium.issues.update', $medium->slug,$issue->id],
         'class' => 'form-horizontal'
     ]) !!}
         <div class="form-group">
@@ -39,6 +41,7 @@
         <h2>Formate</h2>
       </div>
       <div class="col-md-4 text-right">
+          <a href="{{ route('medium.issues.formats.create', [$medium->slug, $issue->id]) }}" alt="Neu" tile="Neu"><i class="fa fa-lg fa-edit"></i> Neu</a>
       </div>
     </div>
     <table class="table table-striped table-hover ">
@@ -54,11 +57,11 @@
           <td>{{ $format->name }}</td>
           <td>dd.mm.YYY</td>
           <td class="text-right">
-            <a href="{{ route('formats.edit', $format->id) }}" alt="Bearbeiten" tile="bearbeiten"><i class="fa fa-lg fa-edit" data-toggle="tooltip" data-original-title="bearbeiten"></i></a> 
+            <a href="{{ route('medium.issues.formats.edit', $format->id) }}" alt="Bearbeiten" tile="bearbeiten"><i class="fa fa-lg fa-edit" data-toggle="tooltip" data-original-title="bearbeiten"></i></a> 
             &nbsp;
             {!! Form::open(
                 ['method' => 'PATCH',
-                'route' => ['formats.update', $format->id],
+                'route' => ['medium.issues.formats.update', $format->id],
                 'style' => 'display: inline;'
             ]) !!}
                 {!! Form::hidden('archive','1') !!}
@@ -67,7 +70,7 @@
             &nbsp;
               {!! Form::open([
                 'method' => 'DELETE',
-                'route' => ['formats.destroy', $issue->id],
+                'route' => ['medium.issues.formats.destroy', $issue->id],
                 'style' => 'display: inline;'
             ]) !!}
                  <a href="#" data-toggle="modal" data-target="#confirmDelete" data-title="Ausgabe löschen" data-message="Wollen Sie {{ $format->name }} wirklich löschen?" data-action="Löschen"><i class="fa fa-lg fa-trash-o" data-toggle="tooltip" data-original-title="löschen"></i></a>
