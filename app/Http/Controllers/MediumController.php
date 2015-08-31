@@ -96,7 +96,9 @@ class MediumController extends Controller
     public function edit($id)
     {
         $medium = Medium::findOrFail($id);
-        $types = MediumType::lists('title','id');
+        $types = [0=>'Kategorie'] + MediumType::lists('title','id')->toArray();
+        //$country_options = [” => ‘Please Select Your Country’] + Country::lists(‘short_name’, ‘id’);
+        //$types = [0=>'Select a client from the list'] + $types;
         return view('medium.edit',compact('medium','types'));
     }
 

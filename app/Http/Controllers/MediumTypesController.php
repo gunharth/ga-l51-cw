@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\MediumType;
 
 class MediumTypesController extends Controller
 {
@@ -16,7 +17,9 @@ class MediumTypesController extends Controller
      */
     public function index()
     {
-        //
+        $types = MediumType::orderBy('title', 'ASC')->get();
+        //return $mediums; JSON return
+        return view('types.index', compact('types'));
     }
 
     /**
@@ -26,7 +29,7 @@ class MediumTypesController extends Controller
      */
     public function create()
     {
-        //
+        return view('types.create');
     }
 
     /**
@@ -37,7 +40,13 @@ class MediumTypesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required'
+        ]);
+        $input = $request->all();
+        $type = MediumType::create($input);
+        \Session::flash('flash_message', trans('messages.create_success'));
+        return redirect()->route('types.index');
     }
 
     /**
@@ -46,10 +55,10 @@ class MediumTypesController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function show($id)
+    /*public function show($id)
     {
         //
-    }
+    }*/
 
     /**
      * Show the form for editing the specified resource.
@@ -59,7 +68,8 @@ class MediumTypesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $type = MediumType::findOrFail($id);
+        return view('types.edit',compact('type'));
     }
 
     /**
@@ -71,7 +81,19 @@ class MediumTypesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $type = MediumType::findOrFail($id);
+
+        $this->validate($request, [
+            'title' => 'required'
+        ]);
+        
+        $input = $request->all(); 
+
+        $type->fill($input)->save();
+
+        \Session::flash('flash_message', trans('messages.create_success'));
+
+        return redirect()->route('types.index');
     }
 
     /**
@@ -82,6 +104,9 @@ class MediumTypesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $type = MediumType::findOrFail($id);
+        $type->delete();
+        \Session::flash('flash_message', 'Task successfully deleted!');
+        return redirect()->route('types.index');
     }
 }

@@ -4,23 +4,29 @@
 @section('title','Neue Ausgabe anlegen')
 
 @section('content')
-    <div class="row vertical-align">
-      <div class="col-md-6"><h1>Neues Medium anlegen</h1></div>
-        <div class="col-md-6 text-right">
-          <a href="{{ route('medium.show',$medium->slug) }}" class="btn btn-primary">Abbrechen</a>
-        </div>
-    </div>
-    <hr  />
+
+    @include('partials/mediumheader', [
+        'subtitle' => '- neue Ausgabe anlegen', 
+        'showactions' => false, 
+        'backbutton' => true, 
+        'backroute' => 'medium.show', 
+        'backrouteid' => $medium->slug
+        ])
     <div class="well">
         {!! Form::open([
-            'route' => ['medium.issues.store',$medium->id]
+            'route' => ['medium.issues.store',$medium->id],
+            'class' => 'form-horizontal'
         ]) !!}
         <div class="form-group">
-            {!! Form::label('name','Ausgabe') !!}
-            {!! Form::text('name',null,['class' => 'form-control', 'placeholder' => 'Ausgabe']) !!}
+            {!! Form::label('name','Name',['class' => 'col-sm-2']) !!}
+            <div class="col-sm-10">
+            {!! Form::text('name',null,['class' => 'form-control', 'placeholder' => 'Name']) !!}
+            </div>
         </div>
         <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
             {!! Form::submit('Speichern',['class' => 'btn btn-primary']) !!}
+            </div>
         </div>
         {!! Form::close() !!}
    </div>

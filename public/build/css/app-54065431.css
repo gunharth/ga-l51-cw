@@ -8322,4 +8322,7 @@ hr {
   display: inline-block;
   /* chrome-fix */ }
 
+.fa-2x {
+  font-size: 1.7em; }
+
 /*# sourceMappingURL=app.css.map */

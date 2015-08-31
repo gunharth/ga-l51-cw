@@ -39,7 +39,7 @@
                 <li><a href="#">...</a></li>
               </ul>
             </li>
-            <li class="dropdown">
+            <!--<li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">Kategorie <span class="caret"></span></a>
               <ul class="dropdown-menu" aria-labelledby="themes">
                 <li><a href="#">Zielgruppen</a></li>
@@ -48,6 +48,9 @@
                 <li><a href="#">Kategorie Z</a></li>
                 <li><a href="#">...</a></li>
               </ul>
+            </li>-->
+            <li>
+              <a href="{{ route('types.index') }}">Kategorie</a>
             </li>
             <!--<li>
               <a href="../help/">Help</a>

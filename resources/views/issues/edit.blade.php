@@ -4,17 +4,14 @@
 
 @section('content')
 
-@include('partials/mediumheader', ['showactions' => false])
+    @include('partials/mediumheader', [
+        'subtitle' => '- Ausgabe ' . $issue->name,
+        'showactions' => false, 
+        'backbutton' => true, 
+        'backroute' => 'medium.show', 
+        'backrouteid' => $medium->slug
+        ])
 
-<div class="row vertical-align">
-        <div class="col-md-10">
-          <h1><small>Ausgabe</small> {{ $issue->name }}</h1>
-        </div>
-        <div class="col-md-2 text-right">
-          <a href="{{ route('medium.show',$medium->slug) }}" class="btn btn-primary">Abbrechen</a>
-        </div>
-    </div>
-    <hr />
 <div class="well">
     {!! Form::model($issue,[
         'method' => 'PATCH',
@@ -22,7 +19,43 @@
         'class' => 'form-horizontal'
     ]) !!}
         <div class="form-group">
-            {!! Form::label('name','Ausgabe',['class' => 'col-sm-2']) !!}
+            {!! Form::label('name','Titel',['class' => 'col-sm-2']) !!}
+            <div class="col-sm-10">
+            {!! Form::text('name',null,['class' => 'form-control', 'placeholder' => 'Titel']) !!}
+            </div>
+        </div>
+        <div class="form-group">
+            {!! Form::label('name','Redaktionsschluss',['class' => 'col-sm-2']) !!}
+            <div class="col-sm-10">
+            {!! Form::text('name',null,['class' => 'form-control', 'placeholder' => 'Ausgabe']) !!}
+            </div>
+        </div>
+        <div class="form-group">
+            {!! Form::label('name','Drucktermin',['class' => 'col-sm-2']) !!}
+            <div class="col-sm-10">
+            {!! Form::text('name',null,['class' => 'form-control', 'placeholder' => 'Ausgabe']) !!}
+            </div>
+        </div>
+        <div class="form-group">
+            {!! Form::label('name','Erscheinungstermin',['class' => 'col-sm-2']) !!}
+            <div class="col-sm-10">
+            {!! Form::text('name',null,['class' => 'form-control', 'placeholder' => 'Ausgabe']) !!}
+            </div>
+        </div>
+        <div class="form-group">
+            {!! Form::label('name','Druckerei',['class' => 'col-sm-2']) !!}
+            <div class="col-sm-10">
+            {!! Form::text('name',null,['class' => 'form-control', 'placeholder' => 'Ausgabe']) !!}
+            </div>
+        </div>
+        <div class="form-group">
+            {!! Form::label('name','Vertrieb',['class' => 'col-sm-2']) !!}
+            <div class="col-sm-10">
+            {!! Form::text('name',null,['class' => 'form-control', 'placeholder' => 'Ausgabe']) !!}
+            </div>
+        </div>
+        <div class="form-group">
+            {!! Form::label('name','Druckauflage',['class' => 'col-sm-2']) !!}
             <div class="col-sm-10">
             {!! Form::text('name',null,['class' => 'form-control', 'placeholder' => 'Ausgabe']) !!}
             </div>
@@ -38,7 +71,7 @@
 
     <div class="row vertical-align">
       <div class="col-md-8">
-        <h2>Formate</h2>
+        <h3>Formate</h3>
       </div>
       <div class="col-md-4 text-right">
           <a href="{{ route('medium.issues.formats.create', [$medium->slug, $issue->id]) }}" alt="Neu" tile="Neu"><i class="fa fa-lg fa-edit"></i> Neu</a>
@@ -73,16 +106,11 @@
                 'route' => ['medium.issues.formats.destroy', $issue->id],
                 'style' => 'display: inline;'
             ]) !!}
-                 <a href="#" data-toggle="modal" data-target="#confirmDelete" data-title="Ausgabe löschen" data-message="Wollen Sie {{ $format->name }} wirklich löschen?" data-action="Löschen"><i class="fa fa-lg fa-trash-o" data-toggle="tooltip" data-original-title="löschen"></i></a>
+                 <a href="#" data-toggle="modal" data-target="#confirmDelete" data-title="Ausgabe löschen" data-message="Wollen Sie {{ $medium->title }} - {{ $format->name }} wirklich löschen?" data-action="Löschen"><i class="fa fa-lg fa-trash-o" data-toggle="tooltip" data-original-title="löschen"></i></a>
             {!! Form::close() !!}
           </td>
           </tr>
         @endforeach
       </tbody>
     </table>
-
-<div class="well">
-  <p>Dev notes: Medium anlegen - atomatisch Sonderformat anlegen</p>
-</div>
-
   @stop

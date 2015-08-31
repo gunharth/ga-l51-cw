@@ -2,15 +2,15 @@
 @section('pagetitle',$medium->title . ' Bearbeiten')
 
 @section('content')
-    <div class="row vertical-align">
-        <div class="col-md-10">
-          <h1>{{ $medium->title }}</h1>
-        </div>
-        <div class="col-md-2 text-right">
-          <a href="{{ route('medium.show',$medium->slug) }}" class="btn btn-primary">Abbrechen</a>
-        </div>
-    </div>
-    <hr />
+    
+    @include('partials/mediumheader', [
+        'subtitle' => '- Bearbeiten', 
+        'showactions' => false, 
+        'backbutton' => true, 
+        'backroute' => 'medium.show', 
+        'backrouteid' => $medium->slug
+        ])
+
 <div class="well">
     {!! Form::model($medium,[
         'method' => 'PATCH',
@@ -27,7 +27,13 @@
         <div class="form-group">
             {!! Form::label('type_id','Typ',['class' => 'col-sm-2']) !!}
             <div class="col-sm-10">
-            {!! Form::select('type_id',$types,$medium->type_id,['class' => 'form-control']) !!}
+            {!! Form::select(
+                'type_id',
+                //$types,
+                $types,
+                $medium->type_id,
+                ['class' => 'form-control']
+                ) !!}
             </div>
         </div>
         <div class="form-group">

@@ -21,4 +21,9 @@ class Issue extends Model
     public function medium() {
     	return $this->belongsTo('App\Medium');
     }
+
+    /*public function onCreate() {
+        App\Format::create();
+        //return $this->belongsTo('App\Medium');
+    }*/
 }
