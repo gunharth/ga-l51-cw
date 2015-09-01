@@ -87,9 +87,12 @@ class FormatsController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function edit($id)
+    public function edit($medium_slug, $issue_id, $id)
     {
-        //
+        $medium = Medium::findBySlug($medium_slug);
+        $issue = Issue::findOrFail($issue_id);
+        $format = Format::findOrFail($id);
+        return view('formats.edit', compact('format','issue','medium'));
     }
 
     /**
@@ -99,9 +102,22 @@ class FormatsController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $medium_slug, $format_id, $id)
     {
-        //
+        
+        $format = Format::findOrFail($id);
+
+        $this->validate($request, [
+            'name' => 'required'
+        ]);
+        
+        $input = $request->all(); 
+
+        $format->fill($input)->save();
+
+        \Session::flash('flash_message', trans('messages.create_success'));
+
+        return redirect()->route('medium.issues.edit', [$medium_slug,$format_id]);
     }
 
     /**
@@ -110,8 +126,11 @@ class FormatsController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function destroy($id)
+    public function destroy($medium_slug, $issue_id, $id)
     {
-        //
+        $format = Format::findOrFail($id);
+        $format->delete();
+        \Session::flash('flash_message', 'Ausgabe wurde erfolgreich gelöscht');
+        return redirect()->route('medium.issues.edit', [$medium_slug, $issue_id]);
     }
 }

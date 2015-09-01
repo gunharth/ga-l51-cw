@@ -16,6 +16,7 @@ class CreateFormatsTable extends Migration
             $table->increments('id');
             $table->integer('issue_id')->unsigned();
             $table->string('name');
+            $table->decimal('preis', 7, 2);
             $table->timestamps();
 
             $table->foreign('issue_id')

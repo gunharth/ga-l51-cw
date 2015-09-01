@@ -8,6 +8,7 @@ class Format extends Model
 {
     protected $fillable = [
     	'name',
+    	'preis',
     	'issue_id'
     ];
 

@@ -9061,7 +9061,7 @@ hr {
   cursor: inherit;
   display: block; }
 
-.input-group.date {
+.input-group.date, .input-group.addon {
   padding-left: 15px;
   padding-right: 15px; }
 

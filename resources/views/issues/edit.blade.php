@@ -84,32 +84,23 @@
       <thead>
         <tr>
           <th>Formate</th>
-          <th>Erscheinungstermin</th>
+          <th>Preis</th>
           <th class="text-right">&nbsp;</th>
         </tr>
       </thead>
       @foreach($issue->formats as $format)
         <tr>
           <td>{{ $format->name }}</td>
-          <td>dd.mm.YYY</td>
+          <td>{{ $format->preis }}</td>
           <td class="text-right">
-            <a href="{{ route('medium.issues.formats.edit', $format->id) }}" alt="Bearbeiten" tile="bearbeiten"><i class="fa fa-lg fa-edit" data-toggle="tooltip" data-original-title="bearbeiten"></i></a> 
-            &nbsp;
-            {!! Form::open(
-                ['method' => 'PATCH',
-                'route' => ['medium.issues.formats.update', $format->id],
-                'style' => 'display: inline;'
-            ]) !!}
-                {!! Form::hidden('archive','1') !!}
-                 <a href="#" class="" data-toggle="modal" data-target="#confirmDelete" data-title="Ausgabe archivieren" data-message="Wollen Sie {{ $format->name }} wirklich archivieren?" data-action="Archivieren"><i class="fa fa-lg fa-archive" data-toggle="tooltip" data-original-title="archivieren"></i></a>
-            {!! Form::close() !!}
+            <a href="{{ route('medium.issues.formats.edit', [$medium->slug, $issue->id, $format->id]) }}" alt="Bearbeiten" tile="bearbeiten"><i class="fa fa-lg fa-edit" data-toggle="tooltip" data-original-title="bearbeiten"></i></a> 
             &nbsp;
               {!! Form::open([
                 'method' => 'DELETE',
-                'route' => ['medium.issues.formats.destroy', $issue->id],
+                'route' => ['medium.issues.formats.destroy', $medium->slug, $issue->id, $format->id],
                 'style' => 'display: inline;'
             ]) !!}
-                 <a href="#" data-toggle="modal" data-target="#confirmDelete" data-title="Ausgabe löschen" data-message="Wollen Sie {{ $medium->title }} - {{ $format->name }} wirklich löschen?" data-action="Löschen"><i class="fa fa-lg fa-trash-o" data-toggle="tooltip" data-original-title="löschen"></i></a>
+                 <a href="#" data-toggle="modal" data-target="#confirmDelete" data-title="Format löschen" data-message="Wollen Sie '{{ $medium->title }} - {{ $issue->name }} - {{ $format->name }}' wirklich löschen?" data-action="Löschen"><i class="fa fa-lg fa-trash-o" data-toggle="tooltip" data-original-title="löschen"></i></a>
             {!! Form::close() !!}
           </td>
           </tr>

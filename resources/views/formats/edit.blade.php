@@ -8,15 +8,16 @@
 
 
     <div class="row vertical-align">
-      <div class="col-md-6"><h1>Neues Format anlegen</h1></div>
+      <div class="col-md-6"><h1>Bearbeiten</h1></div>
         <div class="col-md-6 text-right">
           <a href="{{ route('medium.show',$medium->slug) }}" class="btn btn-primary">Abbrechen</a>
         </div>
     </div>
     <hr  />
     <div class="well">
-        {!! Form::open([
-            'route' => ['medium.issues.formats.store',$medium->id,$issue->id],
+        {!! Form::model($format,[
+            'method' => 'PATCH',
+            'route' => ['medium.issues.formats.update',$medium->slug,$issue->id,$format->id],
             'class' => 'form-horizontal'
         ]) !!}
         <div class="form-group">

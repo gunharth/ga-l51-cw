@@ -19,28 +19,28 @@
           <a href="{{ route('medium.issues.create',$medium->slug) }}" alt="Neu" tile="Neu"><i class="fa fa-lg fa-edit" data-toggle="tooltip" data-original-title="neu"></i></a>
       </div>
     </div>
-    <table class="table table-striped table-hover ">
+    <table class="table table-striped table-hover table-condensed table-bordered">
       <thead>
         <tr>
-          <th>Ausgabe</th>
+          <th>Titel</th>
           <th>Erscheinungstermin</th>
           <th class="text-right">&nbsp;</th>
         </tr>
       </thead>
       @foreach($medium->issues as $issue)
-        <tr>
+        <tr @if($issue->archive != '1') class="success" @endif>
           <td>{{ $issue->name }}</td>
           <td>{{ $issue->erscheinungstermin }}</td>
           <td class="text-right">
-            <a href="{{ route('medium.issues.edit', [$medium->slug,$issue->id]) }}" alt="Bearbeiten" tile="bearbeiten"><i class="fa fa-lg fa-edit" data-toggle="tooltip" data-original-title="bearbeiten"></i></a> 
+            <a href="{{ route('medium.issues.edit', [$medium->slug,$issue->id]) }}" alt="Bearbeiten" tile="bearbeiten"><i class="fa fa-2x fa-edit" data-toggle="tooltip" data-original-title="bearbeiten"></i></a> 
             &nbsp;
             {!! Form::open(
                 ['method' => 'PATCH',
-                'route' => ['medium.issues.update', $issue->id],
+                'route' => ['medium.issues.update', $medium->slug,$issue->id],
                 'style' => 'display: inline;'
             ]) !!}
                 {!! Form::hidden('archive','1') !!}
-                 <a href="#" class="" data-toggle="modal" data-target="#confirmDelete" data-title="Ausgabe archivieren" data-message="Wollen Sie {{ $medium->title }} - Ausgabe {{ $issue->name }} wirklich archivieren?" data-action="Archivieren"><i class="fa fa-lg fa-archive" data-toggle="tooltip" data-original-title="archivieren"></i></a>
+                 <a href="#" class="" data-toggle="modal" data-target="#confirmDelete" data-title="Ausgabe archivieren" data-message="Wollen Sie {{ $medium->title }} - Ausgabe {{ $issue->name }} wirklich archivieren?" data-action="Archivieren"><i class="fa fa-2x fa-archive" data-toggle="tooltip" data-original-title="archivieren"></i></a>
             {!! Form::close() !!}
             &nbsp;
               {!! Form::open([
@@ -48,7 +48,7 @@
                 'route' => ['medium.issues.destroy', $medium->slug,$issue->id],
                 'style' => 'display: inline;'
             ]) !!}
-                 <a href="#" data-toggle="modal" data-target="#confirmDelete" data-title="Ausgabe löschen" data-message="Wollen Sie {{ $medium->title }} - Ausgabe {{ $issue->name }} wirklich löschen?" data-action="Löschen"><i class="fa fa-lg fa-trash-o" data-toggle="tooltip" data-original-title="löschen"></i></a>
+                 <a href="#" data-toggle="modal" data-target="#confirmDelete" data-title="Ausgabe löschen" data-message="Wollen Sie {{ $medium->title }} - Ausgabe {{ $issue->name }} wirklich löschen?" data-action="Löschen"><i class="fa fa-2x fa-trash-o" data-toggle="tooltip" data-original-title="löschen"></i></a>
             {!! Form::close() !!}
           </td>
           </tr>

@@ -20,12 +20,10 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/', function () {
 	    return view('dashboard');
 	});
-
 	//Route::get('medium/{slug}', 'MediumController@show');
 	
 	Route::resource('medium', 'MediumController');
 	//Route::resource('medium', ['middleware' => 'auth', 'uses' => 'MediumController']);
-
 	Route::resource('medium.issues', 'IssuesController');
 	Route::resource('medium.issues.formats', 'FormatsController');
 	Route::resource('types', 'MediumTypesController');
