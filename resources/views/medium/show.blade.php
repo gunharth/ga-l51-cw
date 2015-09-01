@@ -30,7 +30,7 @@
       @foreach($medium->issues as $issue)
         <tr>
           <td>{{ $issue->name }}</td>
-          <td>dd.mm.YYY</td>
+          <td>{{ $issue->erscheinungstermin }}</td>
           <td class="text-right">
             <a href="{{ route('medium.issues.edit', [$medium->slug,$issue->id]) }}" alt="Bearbeiten" tile="bearbeiten"><i class="fa fa-lg fa-edit" data-toggle="tooltip" data-original-title="bearbeiten"></i></a> 
             &nbsp;

@@ -42,6 +42,8 @@ hr { margin-top: 0; }
         display: block;
  }
 
+ .input-group.date { padding-left: 15px; padding-right: 15px; }
+
  .vertical-align {
     display: flex;
     align-items: center;
@@ -52,3 +54,4 @@ hr { margin-top: 0; }
             display:inline-block; /* chrome-fix */
         }
 .fa-2x { font-size: 1.7em; }
+

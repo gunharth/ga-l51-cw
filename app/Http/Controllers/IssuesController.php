@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Medium;
 use App\Issue;
 use App\Format;
+//use Carbon\Carbon;
 
 class IssuesController extends Controller
 {
@@ -56,6 +57,7 @@ class IssuesController extends Controller
         $request->merge(array('medium_id' => $medium_id));
         $input = $request->all();
         //$input['medium_id'] = $medium_id;
+        //$input->redaktionsschluss = Carbon\Carbon::createFromFormat('Y-m-d', $input->redaktionsschluss);
         $issue = Issue::create($input);
         Format::create(['issue_id' => $issue->id, 'name' => 'Sonderformat']);
 

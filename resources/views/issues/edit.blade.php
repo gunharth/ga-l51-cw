@@ -1,6 +1,6 @@
 @extends('app')
 
-@section('pagetitle', $issue->name)
+@section('pagetitle', $medium->title . ' - ' .  $issue->name)
 
 @section('content')
 
@@ -25,39 +25,42 @@
             </div>
         </div>
         <div class="form-group">
-            {!! Form::label('name','Redaktionsschluss',['class' => 'col-sm-2']) !!}
-            <div class="col-sm-10">
-            {!! Form::text('name',null,['class' => 'form-control', 'placeholder' => 'Ausgabe']) !!}
+            {!! Form::label('redaktionsschluss','Redaktionsschluss',['class' => 'col-sm-2']) !!}
+            <div class="col-sm-10 input-group date">
+              <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+              {!! Form::text('redaktionsschluss',null,['class' => 'form-control']) !!}
             </div>
         </div>
         <div class="form-group">
-            {!! Form::label('name','Drucktermin',['class' => 'col-sm-2']) !!}
-            <div class="col-sm-10">
-            {!! Form::text('name',null,['class' => 'form-control', 'placeholder' => 'Ausgabe']) !!}
+            {!! Form::label('drucktermin','Drucktermin',['class' => 'col-sm-2']) !!}
+            <div class="col-sm-10 input-group date">
+              <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+              {!! Form::text('drucktermin',null,['class' => 'form-control']) !!}
             </div>
         </div>
         <div class="form-group">
-            {!! Form::label('name','Erscheinungstermin',['class' => 'col-sm-2']) !!}
-            <div class="col-sm-10">
-            {!! Form::text('name',null,['class' => 'form-control', 'placeholder' => 'Ausgabe']) !!}
+            {!! Form::label('erscheinungstermin','Erscheinungstermin',['class' => 'col-sm-2']) !!}
+            <div class="col-sm-10 input-group date">
+              <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+              {!! Form::text('erscheinungstermin',null,['class' => 'form-control']) !!}
             </div>
         </div>
         <div class="form-group">
-            {!! Form::label('name','Druckerei',['class' => 'col-sm-2']) !!}
+            {!! Form::label('druckerei','Druckerei',['class' => 'col-sm-2']) !!}
             <div class="col-sm-10">
-            {!! Form::text('name',null,['class' => 'form-control', 'placeholder' => 'Ausgabe']) !!}
+            {!! Form::text('druckerei',null,['class' => 'form-control']) !!}
             </div>
         </div>
         <div class="form-group">
-            {!! Form::label('name','Vertrieb',['class' => 'col-sm-2']) !!}
+            {!! Form::label('vertrieb','Vertrieb',['class' => 'col-sm-2']) !!}
             <div class="col-sm-10">
-            {!! Form::text('name',null,['class' => 'form-control', 'placeholder' => 'Ausgabe']) !!}
+            {!! Form::text('vertrieb',null,['class' => 'form-control']) !!}
             </div>
         </div>
         <div class="form-group">
-            {!! Form::label('name','Druckauflage',['class' => 'col-sm-2']) !!}
+            {!! Form::label('druckauflage','Druckauflage',['class' => 'col-sm-2']) !!}
             <div class="col-sm-10">
-            {!! Form::text('name',null,['class' => 'form-control', 'placeholder' => 'Ausgabe']) !!}
+            {!! Form::text('druckauflage',null,['class' => 'form-control']) !!}
             </div>
         </div>
         <div class="form-group">

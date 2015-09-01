@@ -28,14 +28,24 @@ elixir(function(mix) {
          .copy(bowerDirFontawesome + 'fonts', 'public/fonts')
          // this is the javascript
          .copy(bowerDirJquery + 'jquery.js', 'resources/assets/js/jquery.js')
-         .copy(bowerDirBootstrap + 'javascripts/bootstrap.js',
-         'resources/assets/js/bootstrap.js')
+         .copy(bowerDirBootstrap + 'javascripts/bootstrap.js', 'resources/assets/js/bootstrap.js')
+
+    mix.styles([
+         'resources/assets/css/bootstrap-datepicker.css',
+         'public/css/app.css'
+      ],
+         'public/css/app.css',
+         './'
+        );
      //
      // Combine scripts
      //
+
      mix.scripts([
              'js/jquery.js',
              'js/bootstrap.js',
+             'js/bootstrap-datepicker.js',
+             'js/bootstrap-datepicker.de.js',
              'js/app.js'
          ],
          'public/js/app.js',

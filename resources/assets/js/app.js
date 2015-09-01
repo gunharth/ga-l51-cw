@@ -1,4 +1,3 @@
-
 $(document).on('change', '.btn-file :file', function() {
   var input = $(this),
       numFiles = input.get(0).files ? input.get(0).files.length : 1,
@@ -41,6 +40,20 @@ $(document).on('change', '.btn-file :file', function() {
   });
 
   $('[data-toggle="tooltip"]').tooltip({placement: 'top'})
+
+  $('.input-group.date').datepicker({
+      format: "dd.mm.yyyy",
+      weekStart: 1,
+      todayBtn: true,
+      language: "de",
+      autoclose: true,
+      todayHighlight: true
+  });
+
+
 });
+
+
+
 
 

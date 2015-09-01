@@ -29,7 +29,7 @@ class Medium extends Model implements SluggableInterface
     }*/
 
     public function issues() {
-        return $this->hasMany('App\Issue');
+        return $this->hasMany('App\Issue')->orderBy('erscheinungstermin','desc');
     }
     
 
