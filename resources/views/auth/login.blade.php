@@ -36,7 +36,7 @@
 
 						<div class="form-group">
 							<div class="col-md-6 col-md-offset-4">
-								<button type="submit" class="btn btn-primary">Login</button>
+								<button type="submit" class="btn btn-primary">Anmelden</button>
 
 								<a class="btn btn-link" href="{{ url('/password/email') }}">Passwort vergessen?</a>
 							</div>

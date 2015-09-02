@@ -12,6 +12,14 @@ class Format extends Model
     	'issue_id'
     ];
 
+    public function getPreisAttribute($value) {
+    	if($value == '0.00') {
+    		return '';
+    	} else {
+    		return $value;
+    	}
+    }
+
     public function issue() {
     	return $this->belongsTo('App\Issue');
     }

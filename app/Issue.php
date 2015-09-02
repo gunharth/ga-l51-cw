@@ -23,6 +23,15 @@ class Issue extends Model
         'druckerei',
         'vertrieb',
         'druckauflage',
+        'basisanbot',
+        'redaktion',
+        'fotokosten',
+        'grafik',
+        'lektorat',
+        'mehrseiten',
+        'druck',
+        'vertriebkosten',
+        'sonderkosten',
     	'archive'
     ];
 
@@ -30,6 +39,69 @@ class Issue extends Model
         $query->where('erscheinungstermin')
 
     }*/
+    public function getBasisanbotAttribute($value) {
+        if($value == '0.00') {
+            return '';
+        } else {
+            return $value;
+        }
+    }
+    public function getRedaktionAttribute($value) {
+        if($value == '0.00') {
+            return '';
+        } else {
+            return $value;
+        }
+    }
+    public function getFotokostenAttribute($value) {
+        if($value == '0.00') {
+            return '';
+        } else {
+            return $value;
+        }
+    }
+    public function getGrafikAttribute($value) {
+        if($value == '0.00') {
+            return '';
+        } else {
+            return $value;
+        }
+    }
+    public function getLektoratAttribute($value) {
+        if($value == '0.00') {
+            return '';
+        } else {
+            return $value;
+        }
+    }
+    public function getMehrseitenAttribute($value) {
+        if($value == '0.00') {
+            return '';
+        } else {
+            return $value;
+        }
+    }
+    public function getDruckAttribute($value) {
+        if($value == '0.00') {
+            return '';
+        } else {
+            return $value;
+        }
+    }
+    public function getVertriebkostenAttribute($value) {
+        if($value == '0.00') {
+            return '';
+        } else {
+            return $value;
+        }
+    }
+    public function getSonderkostenAttribute($value) {
+        if($value == '0.00') {
+            return '';
+        } else {
+            return $value;
+        }
+    }
 
     public function setRedaktionsschlussAttribute($date) {
         if($date != '') {
@@ -80,6 +152,17 @@ class Issue extends Model
         }
     }
 
+    public function getIssueProductionCosts() {
+        return  '€ ' . number_format($this->basisanbot+
+                $this->redaktion+
+                $this->fotokosten+
+                $this->grafik+
+                $this->lektorat+
+                $this->mehrseiten+
+                $this->druck+
+                $this->vertriebkosten+
+                $this->sonderkosten,2,",",".");
+    }
 
     public function formats() {
     	return $this->hasMany('App\Format');

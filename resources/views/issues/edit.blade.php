@@ -18,6 +18,8 @@
         'route' => ['medium.issues.update', $medium->slug,$issue->id],
         'class' => 'form-horizontal'
     ]) !!}
+        <h3>Details</h3>
+        <hr />
         <div class="form-group">
             {!! Form::label('name','Titel',['class' => 'col-sm-2']) !!}
             <div class="col-sm-10">
@@ -63,6 +65,72 @@
             {!! Form::text('druckauflage',null,['class' => 'form-control']) !!}
             </div>
         </div>
+        <h3>Produktionskosten</h3>
+        <hr />
+        <div class="form-group">
+            {!! Form::label('basisanbot','Basisanbot für Seiten',['class' => 'col-sm-2']) !!}
+            <div class="col-sm-10 input-group addon">
+                <span class="input-group-addon">€</span>
+                {!! Form::input('number','basisanbot',null,['class' => 'form-control', 'step' => '0.01', 'min' => '0', 'placeholder' => '0000,00']) !!}
+            </div>
+        </div>
+        <div class="form-group">
+            {!! Form::label('redaktion','Redaktion',['class' => 'col-sm-2']) !!}
+            <div class="col-sm-10 input-group addon">
+                <span class="input-group-addon">€</span>
+                {!! Form::input('number','redaktion',null,['class' => 'form-control', 'step' => '0.01', 'min' => '0', 'placeholder' => '0000,00']) !!}
+            </div>
+        </div>
+        <div class="form-group">
+            {!! Form::label('fotokosten','Fotokosten / Covershooting',['class' => 'col-sm-2']) !!}
+            <div class="col-sm-10 input-group addon">
+                <span class="input-group-addon">€</span>
+                {!! Form::input('number','fotokosten',null,['class' => 'form-control', 'step' => '0.01', 'min' => '0', 'placeholder' => '0000,00']) !!}
+            </div>
+        </div>
+        <div class="form-group">
+            {!! Form::label('grafik','Grafik und Repro',['class' => 'col-sm-2']) !!}
+            <div class="col-sm-10 input-group addon">
+                <span class="input-group-addon">€</span>
+                {!! Form::input('number','grafik',null,['class' => 'form-control', 'step' => '0.01', 'min' => '0', 'placeholder' => '0000,00']) !!}
+            </div>
+        </div>
+        <div class="form-group">
+            {!! Form::label('lektorat','Lektorat',['class' => 'col-sm-2']) !!}
+            <div class="col-sm-10 input-group addon">
+                <span class="input-group-addon">€</span>
+                {!! Form::input('number','lektorat',null,['class' => 'form-control', 'step' => '0.01', 'min' => '0', 'placeholder' => '0000,00']) !!}
+            </div>
+        </div>
+        <div class="form-group">
+            {!! Form::label('mehrseiten','Kosten Mehrseiten p.S.',['class' => 'col-sm-2']) !!}
+            <div class="col-sm-10 input-group addon">
+                <span class="input-group-addon">€</span>
+                {!! Form::input('number','mehrseiten',null,['class' => 'form-control', 'step' => '0.01', 'min' => '0', 'placeholder' => '0000,00']) !!}
+            </div>
+        </div>
+        <div class="form-group">
+            {!! Form::label('druck','Druck',['class' => 'col-sm-2']) !!}
+            <div class="col-sm-10 input-group addon">
+                <span class="input-group-addon">€</span>
+                {!! Form::input('number','druck',null,['class' => 'form-control', 'step' => '0.01', 'min' => '0', 'placeholder' => '0000,00']) !!}
+            </div>
+        </div>
+        <div class="form-group">
+            {!! Form::label('vertriebkosten','Vertrieb',['class' => 'col-sm-2']) !!}
+            <div class="col-sm-10 input-group addon">
+                <span class="input-group-addon">€</span>
+                {!! Form::input('number','vertriebkosten',null,['class' => 'form-control', 'step' => '0.01', 'min' => '0', 'placeholder' => '0000,00']) !!}
+            </div>
+        </div>
+        <div class="form-group">
+            {!! Form::label('sonderkosten','Sonderkosten',['class' => 'col-sm-2']) !!}
+            <div class="col-sm-10 input-group addon">
+                <span class="input-group-addon">€</span>
+                {!! Form::input('number','sonderkosten',null,['class' => 'form-control', 'step' => '0.01', 'min' => '0', 'placeholder' => '0000,00']) !!}
+            </div>
+        </div>
+
         <div class="form-group">
           <div class="col-sm-offset-2 col-sm-10">
             {!! Form::submit('Speichern',['class' => 'btn btn-primary']) !!}

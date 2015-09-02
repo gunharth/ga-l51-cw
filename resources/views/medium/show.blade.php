@@ -28,7 +28,7 @@
         </tr>
       </thead>
       @foreach($medium->issues as $issue)
-        <tr @if($issue->archive != '1') class="success" @endif>
+        <tr data-href="{{ route('medium.issues.show', [$medium->slug,$issue->id]) }}" class="clickable @if($issue->archive != '1') success @endif">
           <td>{{ $issue->name }}</td>
           <td>{{ $issue->erscheinungstermin }}</td>
           <td class="text-right">

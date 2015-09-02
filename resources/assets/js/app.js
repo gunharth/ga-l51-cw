@@ -50,6 +50,11 @@ $(document).on('change', '.btn-file :file', function() {
       todayHighlight: true
   });
 
+  // clickable tr
+  $("tr.clickable").click(function(e) {
+        window.document.location = $(this).data("href");
+    });
+
 
 });
 

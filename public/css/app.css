@@ -9081,5 +9081,8 @@ hr {
 .fa-2x {
   font-size: 1.7em; }
 
+tr.clickable {
+  cursor: pointer; }
+
 /*# sourceMappingURL=app.css.map */
 /*# sourceMappingURL=app.css.map */

@@ -78,14 +78,12 @@ class IssuesController extends Controller
      */
     public function show($medium_slug,$id)
     {
-        //return 'yoyo';
-        //$medium = Medium::findOrFail($id);
-        
         $issue = Issue::findOrFail($id);
-        $issue->medium = Medium::findBySlug($medium_slug);
+        //$issue->medium = $issue->medium;
+        $medium = $issue->medium;
         $issue->formats = $issue->formats;
-        return view('medium.issues.show',compact('issue'));
-
+        $issue->productionCosts = $issue->getIssueProductionCosts();
+        return view('issues.show',compact('issue','medium'));
     }
 
     /**
