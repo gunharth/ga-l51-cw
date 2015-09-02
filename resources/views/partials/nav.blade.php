@@ -14,30 +14,13 @@
         <div class="navbar-collapse collapse" id="navbar-main">
           <ul class="nav navbar-nav">
             <li>
+              <a href="{{ route('inserate.index') }}">Inserate</a>
+            </li>
+            <li>
               <a href="{{ route('medium.index') }}">Medium</a>
             </li>
-            <!--<li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">Medium <span class="caret"></span></a>
-              <ul class="dropdown-menu" aria-labelledby="themes">
-                
-                <li><a href="{{ route('medium.index') }}">Alle</a></li>
-                <li><a href="{{ route('medium.index') }}">Running & Fitness</a></li>
-                <li><a href="#">Medium X</a></li>
-                <li><a href="#">Medium Y</a></li>
-                <li><a href="#">Medium Z</a></li>
-                <li><a href="#">...</a></li>
-              </ul>
-            </li>-->
-            <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">Aufträge <span class="caret"></span></a>
-              <ul class="dropdown-menu" aria-labelledby="themes">
-                <li><a href="auftraege.html">Alle</a></li>
-                <li><a href="medium.html">Running & Fitness</a></li>
-                <li><a href="#">Medium X</a></li>
-                <li><a href="#">Medium Y</a></li>
-                <li><a href="#">Medium Z</a></li>
-                <li><a href="#">...</a></li>
-              </ul>
+            <li>
+              <a href="{{ route('types.index') }}">Kategorie</a>
             </li>
             <!--<li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">Kategorie <span class="caret"></span></a>
@@ -49,15 +32,8 @@
                 <li><a href="#">...</a></li>
               </ul>
             </li>-->
-            <li>
-              <a href="{{ route('types.index') }}">Kategorie</a>
-            </li>
-            <!--<li>
-              <a href="../help/">Help</a>
-            </li>
-            <li>
-              <a href="http://news.bootswatch.com">Blog</a>
-            </li>
+            
+            <!--
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="download">Yeti <span class="caret"></span></a>
               <ul class="dropdown-menu" aria-labelledby="download">

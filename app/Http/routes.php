@@ -27,5 +27,6 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('medium.issues', 'IssuesController');
 	Route::resource('medium.issues.formats', 'FormatsController');
 	Route::resource('types', 'MediumTypesController');
+	Route::resource('inserate', 'InserateController');
 	
 });
