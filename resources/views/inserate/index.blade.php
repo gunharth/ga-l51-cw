@@ -9,7 +9,7 @@
         <h3>Formate</h3>
       </div>
       <div class="col-md-4 text-right">
-          <a href="{{ route('inserate.create')}}" alt="Neu" tile="Neu"><i class="fa fa-lg fa-edit"></i> Neu</a>
+          <a href="{{ route('inserate.create') }}" alt="Neu" tile="Neu"><i class="fa fa-lg fa-edit" data-toggle="tooltip" data-original-title="neu"></i></a>
       </div>
     </div>
     <table class="table table-striped table-hover ">

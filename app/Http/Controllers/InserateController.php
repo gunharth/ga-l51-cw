@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Inserat;
+use App\Issue;
 
 class InserateController extends Controller
 {
@@ -29,7 +30,10 @@ class InserateController extends Controller
      */
     public function create()
     {
-        return view('inserate.create');
+        //$issues = Issue::all();
+       // $types = [0=>'Kategorie'] + MediumType::lists('title','id')->toArray();
+        $issues = [0=>'-- Auswahl --'] + Issue::get()->lists('select_box','id')->toArray();
+        return view('inserate.create',compact('issues'));
     }
 
     /**

@@ -164,6 +164,13 @@ class Issue extends Model
                 $this->sonderkosten,2,",",".");
     }
 
+    public function getSelectBoxAttribute()
+    {
+        $medium = $this->medium->title;
+        return "$medium / $this->name";
+    }
+
+
     public function formats() {
     	return $this->hasMany('App\Format');
     }
