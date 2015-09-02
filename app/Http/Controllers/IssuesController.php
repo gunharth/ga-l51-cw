@@ -139,4 +139,10 @@ class IssuesController extends Controller
         \Session::flash('flash_message', 'Ausgabe wurde erfolgreich gelöscht');
         return redirect()->route('medium.show', $medium_slug);
     }
+
+    public function listFormats($id) {
+        $issue = Issue::findOrFail($id);
+        $formats = $issue->formats;
+        return $formats;
+    }
 }

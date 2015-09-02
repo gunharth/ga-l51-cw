@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Inserat;
 use App\Issue;
+use App\Format;
 
 class InserateController extends Controller
 {
@@ -91,4 +92,21 @@ class InserateController extends Controller
     {
         //
     }
+
+    public function calculateTotals(Request $request, $format_id) {
+        //return $request->rabatt;
+        $format = Format::findOrFail($format_id);
+        //$format->brutto = 
+        $format->rabatt = $request->rabatt;
+        $format->provision = $request->provision;
+        /*if($rabatt > 0) {
+            $rabattvalue = round(($format->preis/100)*$format->rabatt,2);
+            $format
+        }*/
+        $format->totals = $format->calculateCosts();
+       // $format->rabatt = $rabatt;
+        //$formats = $issue->formats;
+        return $format;
+    }
+
 }

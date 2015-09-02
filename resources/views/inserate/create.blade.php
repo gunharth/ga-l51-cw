@@ -41,9 +41,14 @@
         
         detaails zu Ausgabe aufscheinen lassen?
         <div class="form-group">
-            {!! Form::label('name','Format Auswahl',['class' => 'col-sm-2']) !!}
+            {!! Form::label('format_id','Format',['class' => 'col-sm-2']) !!}
             <div class="col-sm-10">
-            {!! Form::text('name',null,['class' => 'form-control', 'placeholder' => 'Name']) !!}
+            {!! Form::select(
+                'format_id',
+                $list = array('0' => '-- Auswahl --'),
+                0,
+                ['class' => 'form-control']
+                ) !!}
             </div>
         </div>
         <div class="row">
@@ -66,7 +71,7 @@
         <div class="form-group">
             {!! Form::label('rabatt','Rabatt in %',['class' => 'col-sm-2']) !!}
             <div class="col-sm-10">
-            {!! Form::input('number','rabatt',null,['class' => 'form-control', 'step' => '1']) !!}
+            {!! Form::input('number','rabatt',0,['class' => 'form-control', 'step' => '1']) !!}
             </div>
         </div>
         <div class="form-group">
@@ -78,7 +83,7 @@
         <div class="form-group">
             {!! Form::label('provision','Agenturprovision in %',['class' => 'col-sm-2']) !!}
             <div class="col-sm-10">
-            {!! Form::text('provision',null,['class' => 'form-control']) !!}
+            {!! Form::text('provision',0,['class' => 'form-control']) !!}
             </div>
         </div>
         <div class="form-group">
@@ -91,13 +96,7 @@
         <div class="form-group">
             {!! Form::label('name','Werbeabgabe',['class' => 'col-sm-2']) !!}
             <div class="col-sm-10">
-            {!! Form::text('name',null,['class' => 'form-control']) !!}
-            </div>
-        </div>
-        <div class="form-group">
-            {!! Form::label('preis4','Preis inkl. AP inkl. WA',['class' => 'col-sm-2']) !!}
-            <div class="col-sm-10">
-            {!! Form::text('preis4',null,['class' => 'form-control', 'disabled' => 'disabled']) !!}
+            {!! Form::text('name',5,['class' => 'form-control']) !!}
             </div>
         </div>
         <div class="form-group">
