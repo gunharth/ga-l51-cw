@@ -1,17 +1,20 @@
 @extends('app')
 
-@section('pagetitle','Neue Format anlegen')
+@section('pagetitle','Format bearbeiten')
 
 @section('content')
-
-
-
+    
+    @include('partials/mediumheader', [
+        'subtitle' => '- Ausgabe ' . $issue->name,
+        'showactions' => false, 
+        'backbutton' => false, 
+        'backroute' => 'medium.show', 
+        'backrouteid' => $medium->slug,
+        'prevbutton' => true
+        ])
 
     <div class="row vertical-align">
-      <div class="col-md-6"><h1>Bearbeiten</h1></div>
-        <div class="col-md-6 text-right">
-          <a href="{{ route('medium.show',$medium->slug) }}" class="btn btn-primary">Abbrechen</a>
-        </div>
+      <div class="col-md-12"><h2>Format Bearbeiten</h2></div>
     </div>
     <hr  />
     <div class="well">

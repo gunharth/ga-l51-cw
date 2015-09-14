@@ -1,6 +1,6 @@
 <div class="row vertical-align">
       <div class="col-sm-1 col-md-1">
-        <img src="{{ !empty($medium->cover) && file_exists(public_path('uploads/'.$medium->cover) ) ? asset('uploads/'.$medium->cover) : asset('img/placeholder.jpg')  }}">
+        <a href="{{ route('medium.show', $medium->slug) }}"><img src="{{ !empty($medium->cover) && file_exists(public_path('uploads/'.$medium->cover) ) ? asset('uploads/'.$medium->cover) : asset('img/placeholder.jpg')  }}"></a>
         </div>
         <div class="col-sm-7 col-md-7">
           <h1>{{ $medium->title }} <small>{{ $subtitle }}</small></h1>
@@ -21,7 +21,10 @@
           {!! Form::close() !!}
         @endif
         @if($backbutton)
-          <a href="{{ route($backroute,$backrouteid) }}" class="btn btn-primary">Zurück</a>
+          <a href="{{ route($backroute,$backrouteid) }}" alt="Zurück" tile="zurück"><i class="fa fa-lg fa-arrow-left" data-toggle="tooltip" data-original-title="zurück"></i></a> 
+        @endif
+        @if($prevbutton)
+          <a href="{{ URL::previous() }}" alt="Zurück" tile="zurück"><i class="fa fa-lg fa-arrow-left" data-toggle="tooltip" data-original-title="zurück"></i></a> 
         @endif
         </div>
     </div>

@@ -65,56 +65,56 @@
         <div class="form-group">
             {!! Form::label('preis','Preis',['class' => 'col-sm-2']) !!}
             <div class="col-sm-10">
-            {!! Form::text('preis',null,['class' => 'form-control', 'disabled' => 'disabled']) !!}
+            {!! Form::input('number','preis',0,['class' => 'form-control', 'step' => '0.01', 'min' => '0']) !!}
             </div>
         </div>
         <div class="form-group">
             {!! Form::label('rabatt','Rabatt in %',['class' => 'col-sm-2']) !!}
             <div class="col-sm-10">
-            {!! Form::input('number','rabatt',0,['class' => 'form-control', 'step' => '1']) !!}
+            {!! Form::input('number','rabatt',0,['class' => 'form-control', 'min' => '0', 'step' => '1']) !!}
             </div>
         </div>
         <div class="form-group">
             {!! Form::label('preis2','Preis inkl. Rab.',['class' => 'col-sm-2']) !!}
             <div class="col-sm-10">
-            {!! Form::text('preis2',null,['class' => 'form-control', 'disabled' => 'disabled']) !!}
+            {!! Form::input('number','preis2',0,['class' => 'form-control', 'step' => '0.01', 'min' => '0']) !!}
             </div>
         </div>
         <div class="form-group">
             {!! Form::label('provision','Agenturprovision in %',['class' => 'col-sm-2']) !!}
             <div class="col-sm-10">
-            {!! Form::text('provision',0,['class' => 'form-control']) !!}
+            {!! Form::input('number','provision',0,['class' => 'form-control', 'min' => '0']) !!}
             </div>
         </div>
         <div class="form-group">
             {!! Form::label('preis3','Preis inkl. AP exkl. WA',['class' => 'col-sm-2']) !!}
             <div class="col-sm-10">
-            {!! Form::text('preis3',null,['class' => 'form-control', 'disabled' => 'disabled']) !!}
+            {!! Form::input('number','preis3',0,['class' => 'form-control', 'step' => '0.01', 'min' => '0']) !!}
             </div>
         </div>
         
         <div class="form-group">
-            {!! Form::label('name','Werbeabgabe',['class' => 'col-sm-2']) !!}
+            {!! Form::label('werbeabgabe','Werbeabgabe',['class' => 'col-sm-2']) !!}
             <div class="col-sm-10">
-            {!! Form::text('name',5,['class' => 'form-control']) !!}
+            {!! Form::input('number','werbeabgabe',5,['class' => 'form-control', 'min' => '0', 'readonly' => 'readonly']) !!}
             </div>
         </div>
         <div class="form-group">
             {!! Form::label('preis4','Preis inkl. AP inkl. WA',['class' => 'col-sm-2']) !!}
             <div class="col-sm-10">
-            {!! Form::text('preis4',null,['class' => 'form-control', 'disabled' => 'disabled']) !!}
+            {!! Form::input('number','preis4',0,['class' => 'form-control', 'step' => '0.01', 'min' => '0']) !!}
             </div>
         </div>
         <div class="form-group">
             {!! Form::label('ust','Umsatzsteuer',['class' => 'col-sm-2']) !!}
             <div class="col-sm-10">
-            {!! Form::text('ust',null,['class' => 'form-control', 'disabled' => 'disabled']) !!}
+            {!! Form::input('number','ust',0,['class' => 'form-control', 'step' => '0.01', 'min' => '0']) !!}
             </div>
         </div>
         <div class="form-group">
             {!! Form::label('brutto','Preis Brutto',['class' => 'col-sm-2']) !!}
             <div class="col-sm-10">
-            {!! Form::text('brutto',null,['class' => 'form-control', 'disabled' => 'disabled']) !!}
+            {!! Form::input('number','brutto',0,['class' => 'form-control', 'step' => '0.01', 'min' => '0']) !!}
             </div>
         </div>
        

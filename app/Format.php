@@ -33,14 +33,27 @@ class Format extends Model
             $provision = $rabatt - round(($rabatt/100)*$this->provision,2);
             $brutto = $provision;
         }
-        $werbeabgabe = number_format(round($brutto*1.05,2),2);
+        $werbeabgabe = round($brutto*1.05,2);
+        //$werbeabgabe = number_format($werbeabgabe,2);
+        $ust = round($werbeabgabe*0.2,2);
 
-        $brutto = number_format($werbeabgabe*1.2,2);
-        return array('preis' => $this->preis, 'rabatt' => $rabatt, 'provision' => $provision, 'werbeabgabe' => $werbeabgabe, 'brutto' => $brutto);
+        $brutto = round($werbeabgabe*1.2);
+        return array(
+            'preis' => number_format($this->preis,2,'.',''), 
+            'rabatt' => number_format($rabatt,2,'.',''), 
+            'provision' => number_format($provision,2,'.',''), 
+            'werbeabgabe' => number_format($werbeabgabe,2,'.',''), 
+            'ust' => number_format($ust,2,'.',''), 
+            'brutto' => number_format($brutto,2,'.','')
+        );
     }
 
     public function issue() {
     	return $this->belongsTo('App\Issue');
+    }
+
+    public function inserate() {
+        return $this->hasMany('App\Inserat');
     }
 
 }

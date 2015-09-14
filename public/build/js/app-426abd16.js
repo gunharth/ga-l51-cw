@@ -13477,10 +13477,11 @@ function getInseratTotals() {
         url: '/inserat/'+ele,
         data: 'rabatt='+rabatt+'&provision='+provision
     }).done(function( data ) {
-      $('#preis').val(data.preis);
+      $('#preis').val(data.totals.preis);
       $('#preis2').val(data.totals.rabatt);
       $('#preis3').val(data.totals.provision);
       $('#preis4').val(data.totals.werbeabgabe);
+      $('#ust').val(data.totals.ust);
       $('#brutto').val(data.totals.brutto);
     })
 

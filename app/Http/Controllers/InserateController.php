@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Inserat;
 use App\Issue;
 use App\Format;
+use App\User;
 
 class InserateController extends Controller
 {
@@ -20,7 +21,14 @@ class InserateController extends Controller
     public function index()
     {
         //$inserate = Inserat::orderBy('edited_at', 'ASC')->get();
-        $inserate = Inserat::all();
+        //$inserate = Inserat::all();
+        /*foreach($inserate as $inserat) {
+            $inserate->user = $inserat->user;
+        }*/
+
+        //dd($inserate);
+        //return Inserat::with('User','format.issue.medium')->get();
+        $inserate = Inserat::with('User','format.issue.medium')->get();
         return view('inserate.index', compact('inserate'));
     }
 
@@ -45,7 +53,14 @@ class InserateController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->merge(array('user_id' => '1'));
+        $input = $request->all();
+        //$input->user_id = 1;
+        $inserat = Inserat::create($input);
+
+        \Session::flash('flash_message', trans('messages.create_success'));
+        return redirect()->route('inserate.index');
+       
     }
 
     /**

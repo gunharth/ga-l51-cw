@@ -8,7 +8,8 @@
         'showactions' => false, 
         'backbutton' => true, 
         'backroute' => 'medium.show', 
-        'backrouteid' => $medium->slug
+        'backrouteid' => $medium->slug,
+        'prevbutton' => false
         ])
 
 <div class="well">

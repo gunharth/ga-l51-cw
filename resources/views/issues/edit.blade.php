@@ -9,7 +9,8 @@
         'showactions' => false, 
         'backbutton' => true, 
         'backroute' => 'medium.show', 
-        'backrouteid' => $medium->slug
+        'backrouteid' => $medium->slug,
+        'prevbutton' => false
         ])
 
 <div class="well">
@@ -145,7 +146,7 @@
         <h3>Formate</h3>
       </div>
       <div class="col-md-4 text-right">
-          <a href="{{ route('medium.issues.formats.create', [$medium->slug, $issue->id]) }}" alt="Neu" tile="Neu"><i class="fa fa-lg fa-edit"></i> Neu</a>
+          <a href="{{ route('medium.issues.formats.create', [$medium->slug, $issue->id]) }}" alt="neu" tile="neu"><i class="fa fa-lg fa-edit" data-toggle="tooltip" data-original-title="neu"></i></a>
       </div>
     </div>
     <table class="table table-striped table-hover ">
@@ -161,7 +162,7 @@
           <td>{{ $format->name }}</td>
           <td>{{ $format->preis }}</td>
           <td class="text-right">
-            <a href="{{ route('medium.issues.formats.edit', [$medium->slug, $issue->id, $format->id]) }}" alt="Bearbeiten" tile="bearbeiten"><i class="fa fa-lg fa-edit" data-toggle="tooltip" data-original-title="bearbeiten"></i></a> 
+            <a href="{{ route('medium.issues.formats.edit', [$medium->slug, $issue->id, $format->id]) }}" alt="Bearbeiten" tile="bearbeiten"><i class="fa fa-lg fa-edit" data-toggle="tooltip" data-original-title="neu"></i></a> 
             &nbsp;
               {!! Form::open([
                 'method' => 'DELETE',

@@ -9026,7 +9026,8 @@ input[type="checkbox"] {
   content: ""; }
 
 body {
-  padding-top: 60px; }
+  padding-top: 60px;
+  padding-bottom: 60px; }
 
 img {
   max-width: 100%;

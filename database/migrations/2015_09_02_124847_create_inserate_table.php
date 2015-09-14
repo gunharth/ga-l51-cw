@@ -18,6 +18,14 @@ class CreateInserateTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->integer('issue_id')->unsigned();
             $table->integer('format_id')->unsigned();
+            $table->decimal('preis', 7, 2);
+            $table->integer('rabatt');
+            $table->decimal('preis2', 7, 2);
+            $table->integer('provision');
+            $table->decimal('preis3', 7, 2);
+            $table->integer('werbeabgabe');
+            $table->decimal('preis4', 7, 2);
+            $table->decimal('brutto', 7, 2);
             $table->timestamps();
 
             $table->foreign('user_id')

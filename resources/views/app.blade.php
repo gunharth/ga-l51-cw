@@ -16,7 +16,6 @@
   </head>
   <body class="fuelux">
     @include('partials/nav')
-
     <div class="container">
       @include('partials.errors')
       @if(Session::has('flash_message'))
@@ -28,6 +27,13 @@
       @endif
       @yield('content')
     </div>
+    <!--footer-->
+    <div class="navbar navbar-default navbar-fixed-bottom">
+      <div class="container">
+        <p class="navbar-text">Goldader v 0.1 - © <?php echo date('Y');?> - Gunharth Randolf / communautic Group</p>
+      </div>
+  </div>
+    
     @include('partials/modal')
     <script src="{{ elixir('js/app.js') }}"></script>
   </body>

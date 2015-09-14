@@ -9,7 +9,8 @@
       'showactions' => true, 
       'backbutton' => false, 
       'backroute' => '', 
-      'backrouteid' => ''
+      'backrouteid' => '',
+      'prevbutton' => false
       ])
     <div class="row vertical-align">
       <div class="col-md-8">
