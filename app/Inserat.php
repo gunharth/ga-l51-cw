@@ -10,6 +10,8 @@ class Inserat extends Model
 
     protected $fillable = [
     	'user_id',
+        'client_id',
+        'agent_id',
     	'issue_id',
     	'format_id',
     	'preis',
@@ -25,6 +27,14 @@ class Inserat extends Model
 
     public function user() {
     	return $this->belongsTo('App\User');
+    }
+
+    public function client() {
+        return $this->belongsTo('App\Client','client_id');
+    }
+
+    public function agent() {
+        return $this->belongsTo('App\Client','agent_id');
     }
 
     public function format() {

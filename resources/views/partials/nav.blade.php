@@ -17,6 +17,9 @@
               <a href="{{ route('inserate.index') }}">Inserate</a>
             </li>
             <li>
+              <a href="{{ route('clients.index') }}">Kunden</a>
+            </li>
+            <li>
               <a href="{{ route('medium.index') }}">Medium</a>
             </li>
             <li>

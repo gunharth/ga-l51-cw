@@ -28,7 +28,8 @@ class InserateController extends Controller
 
         //dd($inserate);
         //return Inserat::with('User','format.issue.medium')->get();
-        $inserate = Inserat::with('User','format.issue.medium')->get();
+        $inserate = Inserat::with('user','client','agent','format.issue.medium')->get();
+        //return $inserate;
         return view('inserate.index', compact('inserate'));
     }
 

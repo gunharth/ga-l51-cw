@@ -34,8 +34,8 @@
       @foreach($inserate as $inserat)
         <tr>
           <td>{{ $inserat->id }}</td>
-          <td>{{ $inserat->user->name }}</td>
-          <td>{{ $inserat->user_id }}</td>
+          <td>{{ $inserat->client->name }}</td>
+          <td>{{ $inserat->agent->name }}</td>
           <td>{{ $inserat->format->issue->medium->title }}</td>
           <td>{{ $inserat->format->issue->erscheinungstermin }}</td>
           <td>{{ $inserat->format->issue->name }}</td>
@@ -45,7 +45,7 @@
           <td>{{ $inserat->preis3 }}</td>
           <td>{{ $inserat->preis4 }}</td>
           <td>{{ $inserat->brutto }}</td>
-          <td>{{ $inserat->user_id }} Berater</td>
+          <td>{{ $inserat->user->name }}</td>
           </tr>
         @endforeach
       </tbody>

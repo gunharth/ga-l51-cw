@@ -15,6 +15,9 @@
             'route' => ['inserate.store'],
             'class' => 'form-horizontal'
         ]) !!}
+        <input type="hidden" name="client_id" value="1">
+        <input type="hidden" name="agent_id" value="2">
+
         <div class="form-group">
             {!! Form::label('customer','Kunde',['class' => 'col-sm-2']) !!}
             <div class="col-sm-10">

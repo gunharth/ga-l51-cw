@@ -16,6 +16,8 @@ class CreateInserateTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->integer('user_id')->unsigned();
+            $table->integer('client_id')->unsigned();
+            $table->integer('agent_id')->unsigned();
             $table->integer('issue_id')->unsigned();
             $table->integer('format_id')->unsigned();
             $table->decimal('preis', 7, 2);
@@ -32,6 +34,12 @@ class CreateInserateTable extends Migration
                   ->references('id')
                   ->on('users')
                   ->onDelete('cascade');
+            $table->foreign('client_id')
+                  ->references('id')
+                  ->on('clients');
+            $table->foreign('agent_id')
+                  ->references('id')
+                  ->on('clients');
             $table->foreign('issue_id')
                   ->references('id')
                   ->on('issues')

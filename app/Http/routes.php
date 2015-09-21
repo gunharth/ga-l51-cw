@@ -23,6 +23,7 @@ Route::group(['middleware' => 'auth'], function () {
 	//Route::get('medium/{slug}', 'MediumController@show');
 	
 	Route::resource('medium', 'MediumController');
+	Route::resource('clients', 'ClientsController');
 	//Route::resource('medium', ['middleware' => 'auth', 'uses' => 'MediumController']);
 	Route::resource('medium.issues', 'IssuesController');
 	Route::resource('medium.issues.formats', 'FormatsController');
