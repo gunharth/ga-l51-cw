@@ -17,6 +17,8 @@ var elixir = require('laravel-elixir');
  var bowerDirFontawesome = "vendor/bower_components/fontawesome/";
  // javascript paths
  var bowerDirJquery = "vendor/bower_components/jquery/dist/";
+ var bowerDirJqueryUI = "vendor/bower_components/jquery-ui/";
+
 
 elixir(function(mix) {
      mix.sass('app.scss')
@@ -28,10 +30,12 @@ elixir(function(mix) {
          .copy(bowerDirFontawesome + 'fonts', 'public/fonts')
          // this is the javascript
          .copy(bowerDirJquery + 'jquery.js', 'resources/assets/js/jquery.js')
+         .copy(bowerDirJqueryUI + 'jquery-ui.js', 'resources/assets/js/jquery-ui.js')
          .copy(bowerDirBootstrap + 'javascripts/bootstrap.js', 'resources/assets/js/bootstrap.js')
 
     mix.styles([
          'resources/assets/css/bootstrap-datepicker.css',
+         'resources/assets/css/jquery.ui.theme.css',
          'public/css/app.css'
       ],
          'public/css/app.css',
@@ -43,6 +47,7 @@ elixir(function(mix) {
 
      mix.scripts([
              'js/jquery.js',
+             'js/jquery-ui.js',
              'js/bootstrap.js',
              'js/bootstrap-datepicker.js',
              'js/bootstrap-datepicker.de.js',

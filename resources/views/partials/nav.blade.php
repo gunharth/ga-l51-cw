@@ -25,6 +25,9 @@
             <li>
               <a href="{{ route('types.index') }}">Kategorie</a>
             </li>
+            <li>
+              <a href="{{ route('users.index') }}">Benutzer</a>
+            </li>
             <!--<li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">Kategorie <span class="caret"></span></a>
               <ul class="dropdown-menu" aria-labelledby="themes">

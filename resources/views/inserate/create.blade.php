@@ -21,7 +21,7 @@
         <div class="form-group">
             {!! Form::label('customer','Kunde',['class' => 'col-sm-2']) !!}
             <div class="col-sm-10">
-            {!! Form::text('customer',null,['class' => 'form-control', 'placeholder' => 'Name']) !!}
+            {!! Form::text('customer',null,['class' => 'form-control ui-autocomplete-input', 'placeholder' => 'Name']) !!}
             </div>
         </div>
         <div class="form-group">
