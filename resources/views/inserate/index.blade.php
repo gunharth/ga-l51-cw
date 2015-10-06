@@ -6,12 +6,13 @@
 
     <div class="row vertical-align">
       <div class="col-md-8">
-        <h3>Inserate</h3>
+        <h1>Inserate</h1>
       </div>
       <div class="col-md-4 text-right">
           <a href="{{ route('inserate.create') }}" alt="Neu" tile="Neu"><i class="fa fa-lg fa-edit" data-toggle="tooltip" data-original-title="neu"></i></a>
       </div>
     </div>
+    <hr />
     <table class="table table-striped table-hover ">
       <thead>
         <tr>
@@ -23,12 +24,12 @@
           <th>Ausgabe</th>
           <th>Format</th>
           <th>Preis</th>
-          <th>Preis inkl. Rab.</th>
-          <th>Preis inkl. AP exkl. WA</th>
-          <th>Preis inkl. AP inkl. WA</th>
-          <th>Preis Brutto</th>
+          <th>Rab.</th>
+          <th>AP</th>
+          <th>Netto</th>
+          <th>Brutto</th>
           <th>Berater</th>
-          <th class="text-right">&nbsp;</th>m 
+          <th class="text-right">&nbsp;</th>
         </tr>
       </thead>
       @foreach($inserate as $inserat)

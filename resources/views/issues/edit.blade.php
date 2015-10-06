@@ -66,6 +66,12 @@
             {!! Form::text('druckauflage',null,['class' => 'form-control']) !!}
             </div>
         </div>
+        <div class="form-group">
+            {!! Form::label('seiten','Anzahl/Seiten',['class' => 'col-sm-2']) !!}
+            <div class="col-sm-10">
+            {!! Form::text('seiten',null,['class' => 'form-control']) !!}
+            </div>
+        </div>
         <h3>Produktionskosten</h3>
         <hr />
         <div class="form-group">
@@ -153,6 +159,7 @@
       <thead>
         <tr>
           <th>Formate</th>
+          <th>Fläche</th>
           <th>Preis</th>
           <th class="text-right">&nbsp;</th>
         </tr>
@@ -160,9 +167,10 @@
       @foreach($issue->formats as $format)
         <tr>
           <td>{{ $format->name }}</td>
+          <td>{{ $format->flaeche }}</td>
           <td>{{ $format->preis }}</td>
           <td class="text-right">
-            <a href="{{ route('medium.issues.formats.edit', [$medium->slug, $issue->id, $format->id]) }}" alt="Bearbeiten" tile="bearbeiten"><i class="fa fa-lg fa-edit" data-toggle="tooltip" data-original-title="neu"></i></a> 
+            <a href="{{ route('medium.issues.formats.edit', [$medium->slug, $issue->id, $format->id]) }}" alt="Bearbeiten" tile="bearbeiten"><i class="fa fa-lg fa-edit" data-toggle="tooltip" data-original-title="bearbeiten"></i></a> 
             &nbsp;
               {!! Form::open([
                 'method' => 'DELETE',

@@ -59,7 +59,8 @@ class IssuesController extends Controller
         //$input['medium_id'] = $medium_id;
         //$input->redaktionsschluss = Carbon\Carbon::createFromFormat('Y-m-d', $input->redaktionsschluss);
         $issue = Issue::create($input);
-        Format::create(['issue_id' => $issue->id, 'name' => 'Sonderformat']);
+        Format::create(['issue_id' => $issue->id, 'name' => 'Strecke', 'type' => '0', 'art' => '1']);
+        Format::create(['issue_id' => $issue->id, 'name' => 'Sonderverrechnung', 'type' => '1', 'art' => '0']);
 
         \Session::flash('flash_message', trans('messages.create_success'));
 
@@ -97,7 +98,7 @@ class IssuesController extends Controller
         $issue = Issue::findOrFail($id);
         //$issue->medium = $issue->medium;
         $medium = $issue->medium;
-        $issue->formats = $issue->formats;
+        $issue->formats = $issue->formats->where('type',0)->where('art',0);
         return view('issues.edit',compact('issue','medium'));
     }
 
@@ -143,6 +144,7 @@ class IssuesController extends Controller
     public function listFormats($id) {
         $issue = Issue::findOrFail($id);
         $formats = $issue->formats;
+        //$formats = [0=>'-- Auswahl --'] + $issue->formats->toArray();
         return $formats;
     }
 }

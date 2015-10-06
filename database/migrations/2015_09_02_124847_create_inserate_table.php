@@ -20,6 +20,9 @@ class CreateInserateTable extends Migration
             $table->integer('agent_id')->unsigned();
             $table->integer('issue_id')->unsigned();
             $table->integer('format_id')->unsigned();
+            $table->tinyInteger('type')->unsigned();
+            $table->tinyInteger('art')->unsigned();
+            $table->decimal('strecke', 7, 2);
             $table->decimal('preis', 7, 2);
             $table->integer('rabatt');
             $table->decimal('preis2', 7, 2);
@@ -29,6 +32,9 @@ class CreateInserateTable extends Migration
             $table->decimal('preis4', 7, 2);
             $table->decimal('brutto', 7, 2);
             $table->timestamps();
+            
+            $table->index('type');
+            $table->index('art');
 
             $table->foreign('user_id')
                   ->references('id')

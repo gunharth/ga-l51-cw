@@ -75,6 +75,7 @@
       <thead>
         <tr>
           <th>Formate</th>
+          <th>Fläche</th>
           <th>Preis</th>
           <th class="text-right">&nbsp;</th>
         </tr>
@@ -82,6 +83,7 @@
       @foreach($issue->formats as $format)
         <tr>
           <td>{{ $format->name }}</td>
+          <td>{{ $format->flaeche }}</td>
           <td>{{ $format->preis }}</td>
           <td class="text-right">
             <a href="{{ route('medium.issues.formats.edit', [$medium->slug, $issue->id, $format->id]) }}" alt="Bearbeiten" tile="bearbeiten"><i class="fa fa-2x fa-edit" data-toggle="tooltip" data-original-title="bearbeiten"></i></a> 

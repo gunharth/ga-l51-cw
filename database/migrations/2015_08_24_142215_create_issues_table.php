@@ -22,6 +22,7 @@ class CreateIssuesTable extends Migration
             $table->string('druckerei');
             $table->string('vertrieb');
             $table->string('druckauflage');
+            $table->integer('seiten');
             $table->decimal('basisanbot', 7, 2);
             $table->decimal('redaktion', 7, 2);
             $table->decimal('fotokosten', 7, 2);

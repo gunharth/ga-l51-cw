@@ -23,6 +23,7 @@ class Issue extends Model
         'druckerei',
         'vertrieb',
         'druckauflage',
+        'seiten',
         'basisanbot',
         'redaktion',
         'fotokosten',
@@ -172,8 +173,13 @@ class Issue extends Model
 
 
     public function formats() {
-    	return $this->hasMany('App\Format');
+    	return $this->hasMany('App\Format')->orderBy('type')->orderBy('art');
     }
+
+    /*public function scopeManual($query) {
+        return $query->where('type', 0);
+    }*/
+
 
     public function medium() {
     	return $this->belongsTo('App\Medium');

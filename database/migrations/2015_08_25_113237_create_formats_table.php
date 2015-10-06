@@ -15,8 +15,11 @@ class CreateFormatsTable extends Migration
         Schema::create('formats', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('issue_id')->unsigned();
+            $table->tinyInteger('type')->unsigned()->default(0);
+            $table->tinyInteger('art')->unsigned()->default(0);
             $table->string('name');
             $table->decimal('preis', 7, 2);
+            $table->decimal('flaeche', 7, 2);
             $table->timestamps();
 
             $table->foreign('issue_id')

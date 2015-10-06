@@ -9621,5 +9621,8 @@ hr {
 tr.clickable {
   cursor: pointer; }
 
+.input-group-addon {
+  min-width: 36px; }
+
 /*# sourceMappingURL=app.css.map */
 /*# sourceMappingURL=app.css.map */

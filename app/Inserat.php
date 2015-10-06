@@ -8,12 +8,20 @@ class Inserat extends Model
 {
     protected $table = 'inserate';
 
+    /*
+    type = format oder sonderverrechnung
+    art = format wodei entweder Auftrag, GG oder PR
+    */
+
     protected $fillable = [
     	'user_id',
         'client_id',
         'agent_id',
     	'issue_id',
     	'format_id',
+        'type',
+        'art',
+        'strecke',
     	'preis',
     	'rabatt',
     	'preis2',
