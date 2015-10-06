@@ -82,7 +82,7 @@ class IssuesController extends Controller
         $issue = Issue::findOrFail($id);
         //$issue->medium = $issue->medium;
         $medium = $issue->medium;
-        $issue->formats = $issue->formats;
+        $issue->formats = $issue->formats->where('type',0)->where('art',0);
         $issue->productionCosts = $issue->getIssueProductionCosts();
         return view('issues.show',compact('issue','medium'));
     }
@@ -98,8 +98,7 @@ class IssuesController extends Controller
         $issue = Issue::findOrFail($id);
         //$issue->medium = $issue->medium;
         $medium = $issue->medium;
-        $issue->formats = $issue->formats;
-        //$issue->formats = $issue->formats->where('type',0)->where('art',0);
+        $issue->formats = $issue->formats->where('type',0)->where('art',0);
         return view('issues.edit',compact('issue','medium'));
     }
 

@@ -52,7 +52,7 @@
           <td>Druck</td><td>€ {{ $issue->druck }}</td>
         </tr>
         <tr>
-          <td>-</td><td>&nbsp;</td>
+          <td>Seiten</td><td>{{ $issue->seiten }}</td>
           <td>Vertrieb</td><td>€ {{ $issue->vertriebkosten }}</td>
         </tr>
         <tr>
