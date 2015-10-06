@@ -12,7 +12,8 @@ class Format extends Model
         'flaeche',
     	'issue_id',
         'type',
-        'art'
+        'art',
+        'flaeche'
     ];
 
     public function getPreisAttribute($value) {
