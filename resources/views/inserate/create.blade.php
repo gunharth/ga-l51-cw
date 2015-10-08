@@ -4,77 +4,94 @@
 
 @section('content')
 
-<div class="row vertical-align">
-      <div class="col-md-6"><h1>Neues Inserat anlegen</h1></div>
-        <div class="col-md-6 text-right">
-          <a href="{{ route('inserate.index') }}" alt="Zurück" tile="zurück"><i class="fa fa-lg fa-arrow-left" data-toggle="tooltip" data-original-title="zurück"></i></a> 
-        </div>
+  <div class="row vertical-align">
+    <div class="col-md-6"><h1>Neues Inserat anlegen</h1></div>
+      <div class="col-md-6 text-right">
+        <a href="{{ route('inserate.index') }}" alt="Zurück" tile="zurück"><i class="fa fa-lg fa-arrow-left" data-toggle="tooltip" data-original-title="zurück"></i></a> 
+      </div>
     </div>
     <hr  />
-{!! Form::open([
-            'route' => ['inserate.store'],
-            'class' => 'form-horizontal'
-        ]) !!}
-        <input type="hidden" name="client_id" value="1">
-        <input type="hidden" name="agent_id" value="2">
-        <input id="type" type="hidden" name="type">
+    {!! Form::open([
+      'route' => ['inserate.store'],
+      'class' => 'form-horizontal'
+    ]) !!}
+    <input id="type" type="hidden" name="type">
+    
+    <!-- clients -->
     <div class="row">
-        <div class="col-md-6">
-            <div class="well">
+      <div class="col-md-6">
+        <div class="well">
 
-        <div class="form-group">
-            {!! Form::label('customer','Kunde',['class' => 'col-sm-4']) !!}
-            <div class="col-sm-8">
-            {!! Form::text('customer',null,['class' => 'form-control ui-autocomplete-input', 'placeholder' => 'TODO: suche mit autocomplete']) !!}
-            </div>
-        </div>
-        <div class="form-group">
-            {!! Form::label('agent','Agentur',['class' => 'col-sm-4']) !!}
-            <div class="col-md-8">
-            {!! Form::text('agent',null,['class' => 'form-control', 'placeholder' => 'TODO: suche mit autocomplete']) !!}
-            </div>
-        </div>
-        <div class="form-group">
-            {!! Form::label('issue_id','Medium / Ausgabe',['class' => 'col-sm-4']) !!}
-            <div class="col-sm-8">
-            {!! Form::select(
-                'issue_id',
-                $issues,
-                0,
-                ['class' => 'form-control']
-                ) !!}
-            </div>
-        </div>
-        
-        <div class="form-group">
-            {!! Form::label('format_id','Format',['class' => 'col-sm-4']) !!}
-            <div class="col-md-8">
-            {!! Form::select(
-                'format_id',
-                $list = array('0' => '-- Auswahl --'),
-                0,
-                ['class' => 'form-control', 'disabled' => 'disabled']
+          <div class="form-group">
+              {!! Form::label('client','Kunde',['class' => 'col-sm-4']) !!}
+              <div class="col-sm-8">
+              {!! Form::text('client',null,['class' => 'form-control ui-autocomplete-input clientAutoComplete', 'placeholder' => 'Kunde']) !!}
+              </div>
+              <input type="hidden" name="client_id" id="client_id" value="1">
+          </div>
+          <div class="form-group">
+              {!! Form::label('agent','Agentur',['class' => 'col-sm-4']) !!}
+              <div class="col-md-8">
+              {!! Form::text('agent',null,['class' => 'form-control ui-autocomplete-input clientAutoComplete', 'placeholder' => 'Agentur']) !!}
+              </div>
+              <input type="hidden" name="agent_id" id="agent_id" value="2">
+          </div>
 
-                ) !!}
-            </div>
-        </div>
 
+          
         
-        
-   </div>
+          
+       </div>
+
+
         </div>
          <div class="col-md-6">
-                <div class="well">
-                    <small>Kunden Details - Firma, Name, Adresse, Kontakt</small>
-                </div>
-                 <div class="well">
-                    <small>Agentur Details - Firma, Name, Adresse, Kontakt</small>
-                </div>
-                 <div class="well">
-                    <small>Medium Details - Termine, Auflagen, etc...</small>
-                </div>
+          <div class="well">
+            <div id="clientDetails"></div>
+            <hr>
+            <div id="agentDetails"></div>
+          </div>
         </div>
     </div>
+
+    <!-- inserate -->
+    <div class="row">
+      <div class="col-md-6">
+        <div class="well">
+          <div class="form-group">
+              {!! Form::label('issue_id','Medium / Ausgabe',['class' => 'col-sm-4']) !!}
+              <div class="col-sm-8">
+              {!! Form::select(
+                  'issue_id',
+                  $issues,
+                  0,
+                  ['class' => 'form-control']
+                  ) !!}
+              </div>
+          </div>
+        
+          <div class="form-group">
+              {!! Form::label('format_id','Format',['class' => 'col-sm-4']) !!}
+              <div class="col-md-8">
+              {!! Form::select(
+                  'format_id',
+                  $list = array('0' => '-- Auswahl --'),
+                  0,
+                  ['class' => 'form-control', 'disabled' => 'disabled']
+                  ) !!}
+              </div>
+        </div>
+       </div>
+
+
+        </div>
+         <div class="col-md-6">
+                
+                <div class="well" id="issueDetails"></div>
+        </div>
+    </div>
+
+
     <div class="row">
         <div class="col-md-6">
             <div class="well">

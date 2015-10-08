@@ -35,7 +35,6 @@ elixir(function(mix) {
 
     mix.styles([
          'resources/assets/css/bootstrap-datepicker.css',
-         'resources/assets/css/jquery.ui.theme.css',
          'public/css/app.css'
       ],
          'public/css/app.css',

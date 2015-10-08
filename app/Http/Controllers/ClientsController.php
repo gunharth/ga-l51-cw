@@ -109,4 +109,12 @@ class ClientsController extends Controller
         \Session::flash('flash_message', 'Task successfully deleted!');
         return redirect()->route('clients.index');
     }
+
+    public function showDetails($id)
+    {
+        $client = Client::findOrFail($id);
+        //return $client;
+        return view('clients.partials.details',compact('client'));
+
+    }
 }

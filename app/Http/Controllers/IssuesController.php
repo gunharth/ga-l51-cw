@@ -147,4 +147,13 @@ class IssuesController extends Controller
         //$formats = [0=>'-- Auswahl --'] + $issue->formats->toArray();
         return $formats;
     }
+
+    public function showDetails($id)
+    {
+        $issue = Issue::findOrFail($id);
+        $medium = $issue->medium;
+        //return $client;
+        return view('issues.partials.details',compact('issue','medium'));
+
+    }
 }

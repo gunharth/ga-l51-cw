@@ -85,6 +85,13 @@ $(document).on('change', '.btn-file :file', function() {
       }
       sel.prop('disabled',false);
     })
+    $.ajax({
+          method: 'GET',
+          type: 'json',
+          url: '/issuedetails/'+issue_id
+        }).done(function( html ) {
+          $('#issueDetails').html(html);
+        })
   });
 
 function getInseratTotals() {
@@ -188,33 +195,20 @@ $('#strecke').prop('disabled',true);
         getInseratTotals()
   });
 
-var availableTags = [
-      "ActionScript",
-      "AppleScript",
-      "Asp",
-      "BASIC",
-      "C",
-      "C++",
-      "Clojure",
-      "COBOL",
-      "ColdFusion",
-      "Erlang",
-      "Fortran",
-      "Groovy",
-      "Haskell",
-      "Java",
-      "JavaScript",
-      "Lisp",
-      "Perl",
-      "PHP",
-      "Python",
-      "Ruby",
-      "Scala",
-      "Scheme"
-    ];
-    $( "#customer" ).autocomplete({
-      //appendTo: "#customer",
-      source: '/getdata'
+
+    $( "input.clientAutoComplete" ).autocomplete({
+      source: '/clientAutoComplete',
+      select: function(e,ui) {
+        var field = $(this).attr('name');
+        $('#'+field+'_id').val(ui.item.id);
+        $.ajax({
+          method: 'GET',
+          type: 'json',
+          url: '/client/'+ui.item.id
+        }).done(function( html ) {
+          $('#'+field+'Details').html(html);
+        })
+      }
     });
 
 

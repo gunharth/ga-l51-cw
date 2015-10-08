@@ -33,22 +33,22 @@ Route::group(['middleware' => 'auth'], function () {
 
 	//ajax calls
 	Route::get('issue/{id}', 'IssuesController@listFormats');
+	Route::get('issuedetails/{id}', 'IssuesController@showDetails');
 	Route::get('inserat/{id}', 'InserateController@calculateTotals');
+	Route::get('client/{id}', 'ClientsController@showDetails');
 
 	Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 	
-Route::any('getdata', function(){
- $term = strtolower(Request::get('term'));
- //dd($term);
- 
- // 4: check if any matches found in the database table 
- $data = DB::table("users")->distinct()->select('name')->where('name', 'LIKE', $term.'%')->groupBy('name')->take(10)->get();
- foreach ($data as $v) {
- $return_array[] = array('value' => $v->name);
-  }
-  // if matches found it first create the array of the result and then convert it to json format so that 
-  // it can be processed in the autocomplete script
- return Response::json($return_array);
- });
+	Route::any('clientAutoComplete', function(){
+		$term = strtolower(Request::get('term'));
+		$return_array = array();
+		$data = DB::table("clients")->distinct()->select('id','firma')->where('firma', 'LIKE', '%'.$term.'%')->groupBy('firma')->take(10)->get();
+			foreach ($data as $v) {
+	 			$return_array[] = array('id' => $v->id, 'label' => $v->firma);
+	  	}
+	  // if matches found it first create the array of the result and then convert it to json format so that 
+	  // it can be processed in the autocomplete script
+	 return Response::json($return_array);
+	 });
 	
 });
