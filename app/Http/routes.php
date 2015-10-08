@@ -34,6 +34,8 @@ Route::group(['middleware' => 'auth'], function () {
 	//ajax calls
 	Route::get('issue/{id}', 'IssuesController@listFormats');
 	Route::get('inserat/{id}', 'InserateController@calculateTotals');
+
+	Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 	
 Route::any('getdata', function(){
  $term = strtolower(Request::get('term'));
