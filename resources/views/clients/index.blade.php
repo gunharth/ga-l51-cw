@@ -17,14 +17,18 @@
       <thead>
         <tr>
           <th>ID</th>
-          <th>Name</th>
+          <th>Firma</th>
+          <th>Anschrift</th>
+          <th>Tel</th>
           <th class="text-right">&nbsp;</th>
         </tr>
       </thead>
       @foreach($clients as $client)
         <tr data-href="{{ route('clients.show', $client->id) }}" class="clickable">
           <td>{{ $client->id }}</td>
-          <td>{{ $client->name }}</td>
+          <td>{{ $client->firma }}</td>
+          <td>{{ $client->strasse }}<br />{{ $client->plz }} {{ $client->ort }}</td>
+          <td>{{ $client->tel }}</td>
           <td class="text-right">
             <a href="{{ route('clients.edit', $client->id) }}" alt="Bearbeiten" tile="bearbeiten"><i class="fa fa-2x fa-edit" data-toggle="tooltip" data-original-title="bearbeiten"></i></a> 
             &nbsp;

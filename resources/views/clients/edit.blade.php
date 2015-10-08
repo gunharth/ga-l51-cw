@@ -13,9 +13,33 @@
         'class' => 'form-horizontal'
     ]) !!}
         <div class="form-group">
-            {!! Form::label('name','Name',['class' => 'col-sm-2']) !!}
+            {!! Form::label('firma','Firma',['class' => 'col-sm-2']) !!}
             <div class="col-sm-10">
-            {!! Form::text('name',null,['class' => 'form-control', 'placeholder' => 'Name']) !!}
+            {!! Form::text('firma',null,['class' => 'form-control', 'placeholder' => 'Firma']) !!}
+            </div>
+        </div>
+        <div class="form-group">
+            {!! Form::label('strasse','Straße',['class' => 'col-sm-2']) !!}
+            <div class="col-sm-10">
+            {!! Form::text('strasse',null,['class' => 'form-control', 'placeholder' => 'Straße']) !!}
+            </div>
+        </div>
+        <div class="form-group">
+            {!! Form::label('ort','Ort',['class' => 'col-sm-2']) !!}
+            <div class="col-sm-10">
+            {!! Form::text('ort',null,['class' => 'form-control', 'placeholder' => 'Ort']) !!}
+            </div>
+        </div>
+        <div class="form-group">
+            {!! Form::label('plz','Postleitzahl',['class' => 'col-sm-2']) !!}
+            <div class="col-sm-10">
+            {!! Form::text('plz',null,['class' => 'form-control', 'placeholder' => 'Postleitzahl']) !!}
+            </div>
+        </div>
+        <div class="form-group">
+            {!! Form::label('tel','Tel',['class' => 'col-sm-2']) !!}
+            <div class="col-sm-10">
+            {!! Form::text('tel',null,['class' => 'form-control', 'placeholder' => 'Telefon']) !!}
             </div>
         </div>
          <div class="form-group">

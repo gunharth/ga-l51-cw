@@ -9,7 +9,11 @@ class Client extends Model
     //
 
      protected $fillable = [
-    	'name'
+    	'firma',
+    	'strasse',
+    	'ort',
+    	'plz',
+    	'tel'
     ];
 
     public function inserate() {

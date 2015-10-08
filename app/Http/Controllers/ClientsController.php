@@ -17,7 +17,7 @@ class ClientsController extends Controller
      */
     public function index()
     {
-        $clients = Client::orderBy('name', 'ASC')->get();
+        $clients = Client::orderBy('firma', 'ASC')->get();
         return view('clients.index', compact('clients'));
     }
 
@@ -41,7 +41,7 @@ class ClientsController extends Controller
     {
         
         $this->validate($request, [
-            'name' => 'required'
+            'firma' => 'required'
         ]);
         $input = $request->all();
         $client = Client::create($input);
@@ -85,7 +85,7 @@ class ClientsController extends Controller
     {
         
         $this->validate($request, [
-            'name' => 'required'
+            'firma' => 'required'
         ]);
         $client = Client::findOrFail($id);
         $input = $request->all(); 
