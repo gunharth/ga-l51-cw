@@ -21,7 +21,6 @@
     <div class="row">
       <div class="col-md-6">
         <div class="well">
-
           <div class="form-group">
               {!! Form::label('client','Kunde',['class' => 'col-sm-4']) !!}
               <div class="col-sm-8">
@@ -36,14 +35,7 @@
               </div>
               <input type="hidden" name="agent_id" id="agent_id" value="2">
           </div>
-
-
-          
-        
-          
        </div>
-
-
         </div>
          <div class="col-md-6">
           <div class="well">
@@ -59,7 +51,7 @@
       <div class="col-md-6">
         <div class="well">
           <div class="form-group">
-              {!! Form::label('issue_id','Medium / Ausgabe',['class' => 'col-sm-4']) !!}
+              <!--{!! Form::label('issue_id','Medium / Ausgabe',['class' => 'col-sm-4']) !!}
               <div class="col-sm-8">
               {!! Form::select(
                   'issue_id',
@@ -67,12 +59,16 @@
                   0,
                   ['class' => 'form-control']
                   ) !!}
-              </div>
-          </div>
-        
-          <div class="form-group">
-              {!! Form::label('format_id','Format',['class' => 'col-sm-4']) !!}
+              </div>-->
+              {!! Form::label('issue','Medium / Ausgabe',['class' => 'col-sm-4']) !!}
               <div class="col-md-8">
+              {!! Form::text('issue',null,['class' => 'form-control ui-autocomplete-input mediumAutoComplete', 'placeholder' => 'Medium / Ausgabe']) !!}
+              </div>
+              <input type="hidden" name="issue_id" id="issue_id">
+          </div>
+          <div class="form-group vertical-align">
+              {!! Form::label('format_id','Format',['class' => 'col-sm-4']) !!}
+              <div class="col-md-5">
               {!! Form::select(
                   'format_id',
                   $list = array('0' => '-- Auswahl --'),
@@ -80,13 +76,20 @@
                   ['class' => 'form-control', 'disabled' => 'disabled']
                   ) !!}
               </div>
+              <div class="col-md-2">
+                <label class="checkbox-inline">
+                  <input name="pr" type="checkbox" value="1" disabled="disabled" class="manual-input"> PR
+                </label>
+              </div>
+              <div class="col-md-1">
+              <a href="#" alt="Format hinzufügen" tile="Format hinzufügen" id="addFormat"><i class="fa fa fa-plus" data-toggle="tooltip" data-original-title="Format hinzufügen"></i></a> 
+              </div>
         </div>
        </div>
 
 
         </div>
          <div class="col-md-6">
-                
                 <div class="well" id="issueDetails"></div>
         </div>
     </div>
@@ -105,9 +108,7 @@
                 <label class="radio-inline">
                   <input name="art" type="radio" value="1" disabled="disabled"class="manual-input"> GG &nbsp; &nbsp;
                 </label>
-                <label class="radio-inline">
-                  <input name="art" type="radio" value="2" disabled="disabled" class="manual-input"> PR
-                </label>
+                
                
             </div>
         </div>
@@ -153,20 +154,15 @@
                 {!! Form::input('number','strecke',null,['class' => 'form-control manual-input', 'step' => '0.01', 'min' => '0', 'placeholder' => '0', 'disabled' => 'disabled']) !!}
             </div>
         </div>
-        <div class="form-group">
-            {!! Form::label('notiz','Notizen',['class' => 'col-sm-4']) !!}
-            <div class="col-md-8">
-                {!! Form::textarea('notiz',null,['class' => 'form-control manual-input', 'rows' => '2', 'disabled' => 'disabled']) !!}
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-offset-4 col-md-8">
-            {!! Form::submit('Speichern',['class' => 'btn btn-primary manual-input', 'disabled' => 'disabled']) !!}
-            </div>
+        <div class="row">
+          <div class="col-sm-offset-4 col-md-8">
+            <a class="btn btn-primary" href="#" role="button" id="reCalculate">Berechnen</a>
+          </div>
         </div>
         
-   </div>
+    </div>
         </div>
+
          <div class="col-md-6">
             <div class="well">
                 <div class="row">
@@ -251,6 +247,18 @@
                         {!! Form::input('number','ust',0,['id' => 'ust', 'class' => 'form-control input-sm', 'step' => '0.01', 'min' => '0', 'readonly' => 'readonly']) !!}
                     </div>
                 </div>
+
+                <div class="form-group">
+            {!! Form::label('notiz','Notizen',['class' => 'col-sm-3']) !!}
+            <div class="col-md-9">
+                {!! Form::textarea('notiz',null,['class' => 'form-control manual-input', 'rows' => '2', 'disabled' => 'disabled']) !!}
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-3 col-md-9">
+            {!! Form::submit('Speichern',['class' => 'btn btn-success manual-input', 'disabled' => 'disabled']) !!}
+            </div>
+        </div>
 
             </div>
         </div>

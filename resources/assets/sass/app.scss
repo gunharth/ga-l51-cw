@@ -3,6 +3,11 @@
 // second import the YETI theme variables
 @import "bootswatch/yeti/variables";
 $zindex-modal:             1050;
+$padding-base-vertical:     4px;
+$padding-small-vertical:    4px;
+$input-height-base:              ($line-height-computed + ($padding-base-vertical * 2) + 2);
+$input-height-small:             (floor($font-size-small * $line-height-small) + ($padding-small-vertical * 2) + 2);
+
 $icon-font-path: "../../fonts/";
 $fa-font-path: "../../fonts/";
 // third import bootstrap
@@ -22,6 +27,10 @@ img { max-width: 100%; height: auto;}
 hr { margin-top: 0; }
 
 #flashMessage { position: fixed; top: 0; left: 0; width: 100%; z-index: 1031;}
+
+.well {
+  min-height: 140px;
+  }
 
 .btn-file {
         position: relative;
@@ -112,3 +121,4 @@ tr.clickable {
   -moz-border-radius: 0px;
   background-image: none;
 }
+.ui-helper-hidden-accessible { display:none; }

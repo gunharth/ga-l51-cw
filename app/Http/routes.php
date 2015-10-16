@@ -36,9 +36,19 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('issuedetails/{id}', 'IssuesController@showDetails');
 	Route::get('inserat/{id}', 'InserateController@calculateTotals');
 	Route::get('client/{id}', 'ClientsController@showDetails');
+	//Route::get('mediumAutoComplete', 'MediumController@listMediums');
 
-	Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
-	
+	Route::any('mediumAutoComplete', function(){
+		$term = strtolower(Request::get('term'));
+		$return_array = array();
+		//
+		$data = DB::table("medium")->join('issues', 'medium.id', '=', 'issues.medium_id')->select('issues.id','medium.title','issues.name')->where('title', 'LIKE', '%'.$term.'%')->get();
+			foreach ($data as $v) {
+	 			$return_array[] = array('id' => $v->id, 'label' => $v->title.' - '.$v->name);
+	  	}
+	 return Response::json($return_array);
+	 });
+
 	Route::any('clientAutoComplete', function(){
 		$term = strtolower(Request::get('term'));
 		$return_array = array();
@@ -50,5 +60,8 @@ Route::group(['middleware' => 'auth'], function () {
 	  // it can be processed in the autocomplete script
 	 return Response::json($return_array);
 	 });
+
+	Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
+
 	
 });
