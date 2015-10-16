@@ -1,3 +1,3 @@
-<small>{{ $client->firma }}<br />
-{{ $client->strasse }}, {{ $client->ort }}, {{ $client->plz }}, 
+<h5>{{ $client->firma }}</h5>
+<small>{{ $client->strasse }}, {{ $client->ort }}, {{ $client->plz }}, 
 {{ $client->tel }}</small>

@@ -60,7 +60,7 @@ $(document).on('change', '.btn-file :file', function() {
   $("tr.clickable").click(function(e) {
         window.document.location = $(this).data("href");
     });
-
+var formatTemplate;
 
   $( "input.mediumAutoComplete" ).autocomplete({
       source: '/mediumAutoComplete',
@@ -69,43 +69,33 @@ $(document).on('change', '.btn-file :file', function() {
         var field = $(this).attr('name');
         var fieldval = $(this).val();
         $('#'+field+'_id').val(ui.item.id);
-        //$('#issue').val('').attr('placeholder',ui.item.label);
-
-        //alert(ui.item.id);
-        /*$.ajax({
-          method: 'GET',
-          type: 'json',
-          url: '/client/'+ui.item.id
-        }).done(function( html ) {
-          $('#'+field+'Details').html(html);
-        })*/
         var issue_id = ui.item.id;
-    var sel = $('#format_id');
-    if(issue_id == 0) {
-      sel.prop('disabled',true);
-      $('.manual-input').prop('disabled',true);
-      return false;
-    }
-    sel.prop('disabled',true);
-    $.ajax({
-        method: 'GET',
-        type: 'json',
-        url: '/issue/'+issue_id
-    }).done(function( data ) {
-      
-      sel.empty();
-      sel.append('<option value="0">-- Auswahl --</option>');
-      for (var i=0; i<data.length; i++) {
-        sel.append('<option value="' + data[i].id + '" data-calc="' + data[i].type + '">' + data[i].name + '</option>');
-      }
-      sel.prop('disabled',false);
-    })
-    $.ajax({
+        var sel = $('.format_id:eq(0)');
+        if(issue_id == 0) {
+          sel.prop('disabled',true);
+          $('.manual-input').prop('disabled',true);
+          return false;
+        }
+        sel.prop('disabled',true);
+        $.ajax({
+            method: 'GET',
+            type: 'json',
+            url: '/issue/'+issue_id
+        }).done(function( data ) {
+          sel.empty();
+          sel.append('<option value="0">-- Auswahl --</option>');
+          for (var i=0; i<data.length; i++) {
+            sel.append('<option value="' + data[i].id + '" data-calc="' + data[i].type + '">' + data[i].name + '</option>');
+          }
+          sel.prop('disabled',false);
+        })
+        $.ajax({
           method: 'GET',
           type: 'json',
           url: '/issuedetails/'+issue_id
         }).done(function( html ) {
           $('#issueDetails').html(html);
+          formatTemplate = $('#formats-outer').html();
         })
       }
     });
@@ -145,6 +135,7 @@ $(document).on('change', '.btn-file :file', function() {
   });*/
 
 function getInseratTotals() {
+  //alert('called');
   var issue_id = $('#issue_id').val();
   if(issue_id == 0) {
     //alert('Bitte wählen Sie ein Medium/Ausgabe');
@@ -152,11 +143,18 @@ function getInseratTotals() {
 
     return false;
   }
-  var format_id = $('#format_id').val();
-  if(format_id == 0) {
+  var format_id_string = '';
+  $('select.format_id').each(function(i) {
+    //console.log(i+'aaa'+$(this).val());
+    var format_id = $(this).val();
+    if(format_id > 0) {
+      format_id_string += '&format_id[]='+$(this).val();
+    }
+  })
+  console.log(format_id_string);
+  if(format_id_string == '') {
     //alert('Bitte wählen Sie ein Format');
       $('.manual-input').prop('disabled',true);
-
     return false;
   }
   $('.manual-input').prop('disabled',false);
@@ -178,8 +176,8 @@ function getInseratTotals() {
   $.ajax({
       method: 'GET',
       type: 'json',
-      url: '/inserat/'+format_id,
-      data: 'art='+art+'&rabatt='+rabatt+'&provision='+provision+'&preisinput='+preisinput+'&bruttoinput='+bruttoinput+'&nettoinput='+nettoinput
+      url: '/inserat/1',
+      data: 'art='+art+'&rabatt='+rabatt+'&provision='+provision+'&preisinput='+preisinput+'&bruttoinput='+bruttoinput+'&nettoinput='+nettoinput+format_id_string
   }).done(function( data ) {
     $('#preis').val(data.totals.preis);
     $('#wert_rabatt').val(data.totals.wert_rabatt);
@@ -194,13 +192,16 @@ function getInseratTotals() {
   })
 }
 
-$('#addFormat').on('click', function(e) {
+$('#formats-outer').on('click','.addFormat', function(e) {
     e.preventDefault()
-        var format_id = $('#format_id').val();
+    //var html = $('#formats-outer').html();
+    $('#formats-outer').append(formatTemplate);
+
+        /*var format_id = $('#format_id').val();
         if(format_id == 0) {
           return false;
-        }
-        alert('add format');
+        }*/
+        //alert('add format');
         //getInseratTotals()
   });
 
@@ -210,7 +211,7 @@ $('#addFormat').on('click', function(e) {
         e.preventDefault()
         getInseratTotals()
   });
-  $('#format_id').on('change', function() {
+  $('#formats-outer').on('change','select', function() {
       getInseratTotals()
   });
   /*$('#rabatt,#provision').on('blur', function() {
@@ -254,13 +255,16 @@ $('#addFormat').on('click', function(e) {
       
     });
 
+    $('#inseratSubmit').on('click', function() {
+      $('#inserat').submit();
+    })
 
- $(window).keydown(function(event){
+ /*$(window).keydown(function(event){
     if(event.keyCode == 13) {
       event.preventDefault();
       return false;
     }
-  });
+  });*/
 
 
 });

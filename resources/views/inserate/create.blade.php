@@ -12,6 +12,7 @@
     </div>
     <hr  />
     {!! Form::open([
+      'id' => 'inserat',
       'route' => ['inserate.store'],
       'class' => 'form-horizontal'
     ]) !!}
@@ -28,6 +29,7 @@
               </div>
               <input type="hidden" name="client_id" id="client_id" value="1">
           </div>
+          <hr>
           <div class="form-group">
               {!! Form::label('agent','Agentur',['class' => 'col-sm-4']) !!}
               <div class="col-md-8">
@@ -66,14 +68,17 @@
               </div>
               <input type="hidden" name="issue_id" id="issue_id">
           </div>
-          <div class="form-group vertical-align">
+          <hr>
+          <div id="formats-outer">
+
+            <div class="form-group vertical-align">
               {!! Form::label('format_id','Format',['class' => 'col-sm-4']) !!}
               <div class="col-md-5">
               {!! Form::select(
-                  'format_id',
+                  'format_id[]',
                   $list = array('0' => '-- Auswahl --'),
                   0,
-                  ['class' => 'form-control', 'disabled' => 'disabled']
+                  ['class' => 'form-control format_id', 'disabled' => 'disabled']
                   ) !!}
               </div>
               <div class="col-md-2">
@@ -82,9 +87,14 @@
                 </label>
               </div>
               <div class="col-md-1">
-              <a href="#" alt="Format hinzufügen" tile="Format hinzufügen" id="addFormat"><i class="fa fa fa-plus" data-toggle="tooltip" data-original-title="Format hinzufügen"></i></a> 
+                <a href="#" alt="Format hinzufügen" tile="Format hinzufügen" class="addFormat"><i class="fa fa fa-plus" data-toggle="tooltip" data-original-title="Format hinzufügen"></i></a> 
               </div>
-        </div>
+            </div>
+
+            
+
+
+          </div>
        </div>
 
 
@@ -254,10 +264,15 @@
                 {!! Form::textarea('notiz',null,['class' => 'form-control manual-input', 'rows' => '2', 'disabled' => 'disabled']) !!}
             </div>
         </div>
-        <div class="form-group">
+        <!--<div class="form-group">
             <div class="col-sm-offset-3 col-md-9">
             {!! Form::submit('Speichern',['class' => 'btn btn-success manual-input', 'disabled' => 'disabled']) !!}
             </div>
+        </div>-->
+        <div class="row">
+          <div class="col-sm-offset-4 col-md-8">
+            <a class="btn btn-success" href="#" role="button" id="inseratSubmit">Speichern</a>
+          </div>
         </div>
 
             </div>

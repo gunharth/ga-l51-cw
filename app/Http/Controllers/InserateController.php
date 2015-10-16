@@ -112,7 +112,14 @@ class InserateController extends Controller
     public function calculateTotals(Request $request, $format_id) {
         //return $request->rabatt;
         //if($format_id != 0) {
-        $format = Format::findOrFail($format_id);
+        //$format = new ;
+        $format = new Format;
+        $format->preis = 0;
+        foreach($request->format_id as $f) {
+            $for = Format::findOrFail($f);
+            $format->preis += $for->preis;
+        }
+        //$format = Format::findOrFail($format_id);
         //} else {
 
           //  $format->preis = $request->preisinput;

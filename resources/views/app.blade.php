@@ -30,7 +30,7 @@
     <!--footer-->
     <div class="navbar navbar-default navbar-fixed-bottom">
       <div class="container">
-        <p class="navbar-text">Goldader v 0.1 - © <?php echo date('Y');?> - Gunharth Randolf / communautic Group</p>
+        <p class="navbar-text">Goldader v 0.2 - © <?php echo date('Y');?> - Gunharth Randolf / communautic Group</p>
       </div>
   </div>
     
