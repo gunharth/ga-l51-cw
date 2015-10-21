@@ -17,6 +17,7 @@ class CreateFormatInseratTable extends Migration
             $table->foreign('format_id')->references('id')->on('formats')->onDelete('cascade');
             $table->integer('inserat_id')->unsigned()->index();
             $table->foreign('inserat_id')->references('id')->on('inserate')->onDelete('cascade');
+            $table->tinyInteger('pr')->unsigned()->default(0);
             $table->timestamps();
         });
     }
