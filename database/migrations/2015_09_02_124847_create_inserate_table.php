@@ -17,9 +17,7 @@ class CreateInserateTable extends Migration
             $table->string('title');
             $table->integer('user_id')->unsigned();
             $table->integer('client_id')->unsigned();
-            $table->integer('agent_id')->unsigned();
             $table->integer('issue_id')->unsigned();
-            $table->integer('format_id')->unsigned();
             $table->tinyInteger('type')->unsigned();
             $table->tinyInteger('art')->unsigned();
             $table->decimal('strecke', 7, 2);
@@ -43,16 +41,9 @@ class CreateInserateTable extends Migration
             $table->foreign('client_id')
                   ->references('id')
                   ->on('clients');
-            $table->foreign('agent_id')
-                  ->references('id')
-                  ->on('clients');
             $table->foreign('issue_id')
                   ->references('id')
                   ->on('issues')
-                  ->onDelete('cascade');
-            $table->foreign('format_id')
-                  ->references('id')
-                  ->on('formats')
                   ->onDelete('cascade');
         });
     }

@@ -21,7 +21,7 @@ class CreateClientsTable extends Migration
             $table->string('ort');
             $table->string('tel');
             $table->string('vat_country');
-            $table->integer('vat')->unsigned();
+            $table->integer('vat_number')->unsigned();
             $table->tinyInteger('agent')->unsigned()->default(0);
             $table->timestamps();
         });
