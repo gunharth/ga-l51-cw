@@ -161,7 +161,7 @@ class Format extends Model
     }
 
     public function inserate() {
-        return $this->hasMany('App\Inserat');
+        return $this->belongsToMany('App\Inserat')->withPivot('pr');
     }
 
     /*public function scopeManual($query) {

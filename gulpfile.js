@@ -21,6 +21,12 @@ var elixir = require('laravel-elixir');
 
 
 elixir(function(mix) {
+     mix.browserSync({
+         //online: false,
+         proxy : 'goldader.dev'
+   });
+
+
      mix.sass('app.scss')
          // copy relevant files to the resources folder.  This is the css
          .copy(bowerDirBootstrap, 'resources/assets/sass/bootstrap')

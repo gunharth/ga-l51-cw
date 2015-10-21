@@ -18,10 +18,8 @@
         <tr>
           <th>ID</th>
           <th>Kunde</th>
-          <th>Agentur</th>
-          <th>Medium</th>
-          <th>Erscheinungstermin</th>
-          <th>Ausgabe</th>
+          <th>Medium - Ausgabe</th>
+          <th>ET</th>
           <th>Format</th>
           <th>Preis</th>
           <th>Rab.</th>
@@ -34,13 +32,18 @@
       </thead>
       @foreach($inserate as $inserat)
         <tr>
-          <td>{{ $inserat->id }}</td>
-          <td>{{ $inserat->client->name }}</td>
-          <td>{{ $inserat->agent->name }}</td>
-          <td>{{ $inserat->format->issue->medium->title }}</td>
-          <td>{{ $inserat->format->issue->erscheinungstermin }}</td>
-          <td>{{ $inserat->format->issue->name }}</td>
-          <td>{{ $inserat->format->name}}</td>
+          <td>{{ $inserat->id }} {{$productionCosts}}</td>
+          <td>{{ $inserat->client->firma }}</td>
+          <td>{{ $inserat->format->get(0)->issue->medium->title }} - {{ $inserat->format->get(0)->issue->name }}</td>
+          <td>{{ $inserat->format->get(0)->issue->erscheinungstermin }}</td>
+          <td>
+          @for ($i = 0; $i < count($inserat->format); $i++)
+            {{ $inserat->format[$i]->name }}
+            @if ($inserat->format[$i]->pivot->pr == 1) PR @endif
+            @if ($i < count($inserat->format)-1) + @endif
+          @endfor
+
+          </td>
           <td>{{ $inserat->preis }}</td>
           <td>{{ $inserat->preis2 }}</td>
           <td>{{ $inserat->preis3 }}</td>

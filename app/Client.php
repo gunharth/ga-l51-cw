@@ -13,7 +13,10 @@ class Client extends Model
     	'strasse',
     	'ort',
     	'plz',
-    	'tel'
+    	'tel',
+        'vat_country',
+        'vat_number',
+        'agent'
     ];
 
     public function inserate() {

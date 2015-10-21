@@ -16,9 +16,7 @@ class Inserat extends Model
     protected $fillable = [
     	'user_id',
         'client_id',
-        'agent_id',
     	'issue_id',
-    	'format_id',
         'type',
         'art',
         'strecke',
@@ -46,7 +44,7 @@ class Inserat extends Model
     }
 
     public function format() {
-        return $this->belongsTo('App\Format');
+        return $this->belongsToMany('App\Format', 'format_inserat')->withTimestamps()->withPivot('pr');
     }
 
     

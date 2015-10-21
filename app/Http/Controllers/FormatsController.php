@@ -24,7 +24,8 @@ class FormatsController extends Controller
      */
     public function index()
     {
-        //
+        $formats = Format::all();
+        dd($formats);
     }
 
     /**

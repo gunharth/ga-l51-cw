@@ -10,6 +10,7 @@ use App\Inserat;
 use App\Issue;
 use App\Format;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class InserateController extends Controller
 {
@@ -20,17 +21,11 @@ class InserateController extends Controller
      */
     public function index()
     {
-        //$inserate = Inserat::orderBy('edited_at', 'ASC')->get();
-        //$inserate = Inserat::all();
-        /*foreach($inserate as $inserat) {
-            $inserate->user = $inserat->user;
-        }*/
-
-        //dd($inserate);
-        //return Inserat::with('User','format.issue.medium')->get();
         $inserate = Inserat::with('user','client','agent','format.issue.medium')->get();
-        //return $inserate;
-        return view('inserate.index', compact('inserate'));
+        //dd($inserate);
+        $productionCosts = $inserate->sum('preis');
+        //dd($productionCosts);
+        return view('inserate.index', compact('inserate','productionCosts'));
     }
 
     /**
@@ -40,8 +35,6 @@ class InserateController extends Controller
      */
     public function create()
     {
-        //$issues = Issue::all();
-       // $types = [0=>'Kategorie'] + MediumType::lists('title','id')->toArray();
         $issues = [0=>'-- Auswahl --'] + Issue::get()->lists('select_box','id')->toArray();
         return view('inserate.create',compact('issues'));
     }
@@ -54,10 +47,20 @@ class InserateController extends Controller
      */
     public function store(Request $request)
     {
-        $request->merge(array('user_id' => '1'));
-        $input = $request->all();
-        //$input->user_id = 1;
-        $inserat = Inserat::create($input);
+        $inserat = new Inserat($request->all());
+        Auth::user()->inserate()->save($inserat);
+
+        //$inserat->format()->attach($request->format_id);
+        //$inserat->format()->attach(array(3 => ['pr' => 1]));
+        foreach($request->format_id as $key => $id) {
+            //dd($id);
+            //$inserat->format()->attach($id, [array_get($request->pr, $key)]);
+            if(isset($request->pr) && is_array($request->pr) && array_key_exists($key, $request->pr)) {
+            $inserat->format()->attach(array($id => ['pr' => $request->pr[$key]]));
+        } else {
+            $inserat->format()->attach(array($id => ['pr' => 0]));
+        }
+        }
 
         \Session::flash('flash_message', trans('messages.create_success'));
         return redirect()->route('inserate.index');
@@ -119,6 +122,7 @@ class InserateController extends Controller
             $for = Format::findOrFail($f);
             $format->preis += $for->preis;
         }
+        //$format->preis +=  $request->preisaddinput;
         //$format = Format::findOrFail($format_id);
         //} else {
 
@@ -128,6 +132,9 @@ class InserateController extends Controller
         $format->rabatt = $request->rabatt;
         $format->provision = $request->provision;
         $format->art = $request->art;
+        if($request->preisaddinput > 0) {
+            $format->preis = $request->preisaddinput;
+        }
         if($request->preisinput > 0) {
             $format->preis = $request->preisinput;
         }

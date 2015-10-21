@@ -175,6 +175,9 @@ class Issue extends Model
     public function formats() {
     	return $this->hasMany('App\Format')->orderBy('type')->orderBy('art');
     }
+    public function formatsIssue() {
+        return $this->hasMany('App\Format')->where('type',0)->where('art',0);
+    }
 
     /*public function scopeManual($query) {
         return $query->where('type', 0);

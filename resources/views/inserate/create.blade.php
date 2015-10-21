@@ -29,21 +29,11 @@
               </div>
               <input type="hidden" name="client_id" id="client_id" value="1">
           </div>
-          <hr>
-          <div class="form-group">
-              {!! Form::label('agent','Agentur',['class' => 'col-sm-4']) !!}
-              <div class="col-md-8">
-              {!! Form::text('agent',null,['class' => 'form-control ui-autocomplete-input clientAutoComplete', 'placeholder' => 'Agentur']) !!}
-              </div>
-              <input type="hidden" name="agent_id" id="agent_id" value="2">
-          </div>
        </div>
         </div>
          <div class="col-md-6">
           <div class="well">
             <div id="clientDetails"></div>
-            <hr>
-            <div id="agentDetails"></div>
           </div>
         </div>
     </div>
@@ -70,7 +60,6 @@
           </div>
           <hr>
           <div id="formats-outer">
-
             <div class="form-group vertical-align">
               {!! Form::label('format_id','Format',['class' => 'col-sm-4']) !!}
               <div class="col-md-5">
@@ -83,25 +72,37 @@
               </div>
               <div class="col-md-2">
                 <label class="checkbox-inline">
-                  <input name="pr" type="checkbox" value="1" disabled="disabled" class="manual-input"> PR
+                  <input name="pr[0]" type="checkbox" value="1" disabled="disabled" class="manual-input"> PR
                 </label>
               </div>
               <div class="col-md-1">
                 <a href="#" alt="Format hinzufügen" tile="Format hinzufügen" class="addFormat"><i class="fa fa fa-plus" data-toggle="tooltip" data-original-title="Format hinzufügen"></i></a> 
               </div>
             </div>
-
-            
-
-
           </div>
        </div>
-
-
-        </div>
+       </div>
          <div class="col-md-6">
-                <div class="well" id="issueDetails"></div>
-        </div>
+            <div class="well">
+              <div id="issueDetails"></div>
+              <hr>
+                  <div class="form-group">
+                    {!! Form::label('sujet','Kunde/Sujet',['class' => 'col-sm-3']) !!}
+                    <div class="col-md-9">
+                        {!! Form::text('sujet',null,['class' => 'form-control manual-input']) !!}
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    {!! Form::label('auftragsnummer','Auftragsnummer',['class' => 'col-sm-3']) !!}
+                    <div class="col-md-9">
+                        {!! Form::text('auftragsnummer',null,['class' => 'form-control manual-input']) !!}
+                    </div>
+                  </div>
+                </div>
+                
+                
+                
+      </div>
     </div>
 
 
@@ -123,7 +124,14 @@
             </div>
         </div>
         <div class="form-group">
-            {!! Form::label('preisinput','Zielpreis',['class' => 'col-sm-4']) !!}
+            {!! Form::label('preisaddinput','Aufpreis',['class' => 'col-sm-4']) !!}
+            <div class="col-md-8 input-group addon">
+                <span class="input-group-addon">€</span>
+                {!! Form::input('number','preisaddinput',null,['class' => 'form-control manual-input', 'step' => '0.01', 'min' => '0', 'placeholder' => '0', 'disabled' => 'disabled']) !!}
+            </div>
+        </div>
+        <div class="form-group">
+            {!! Form::label('preisinput','Zielpreis inkl. Rab',['class' => 'col-sm-4']) !!}
             <div class="col-md-8 input-group addon">
                 <span class="input-group-addon">€</span>
                 {!! Form::input('number','preisinput',null,['class' => 'form-control manual-input', 'step' => '0.01', 'min' => '0', 'placeholder' => '0', 'disabled' => 'disabled']) !!}
