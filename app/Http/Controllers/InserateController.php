@@ -21,7 +21,7 @@ class InserateController extends Controller
      */
     public function index()
     {
-        $inserate = Inserat::with('user','client','agent','format.issue.medium')->get();
+        $inserate = Inserat::with('user','client','format.issue.medium')->get();
         //dd($inserate);
         $totalPreis = $inserate->sum('preis');
         //dd($productionCosts);

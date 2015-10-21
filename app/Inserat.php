@@ -39,10 +39,6 @@ class Inserat extends Model
         return $this->belongsTo('App\Client','client_id');
     }
 
-    public function agent() {
-        return $this->belongsTo('App\Client','agent_id');
-    }
-
     public function format() {
         return $this->belongsToMany('App\Format', 'format_inserat')->withTimestamps()->withPivot('pr');
     }
