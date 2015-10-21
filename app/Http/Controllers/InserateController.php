@@ -55,7 +55,7 @@ class InserateController extends Controller
         foreach($request->format_id as $key => $id) {
             //dd($id);
             //$inserat->format()->attach($id, [array_get($request->pr, $key)]);
-            if(isset($request->pr) && is_array($request->pr) && array_key_exists($key, $request->pr)) {
+            if(isset($request->pr) && array_key_exists($key, $request->pr)) {
             $inserat->format()->attach(array($id => ['pr' => $request->pr[$key]]));
         } else {
             $inserat->format()->attach(array($id => ['pr' => 0]));
