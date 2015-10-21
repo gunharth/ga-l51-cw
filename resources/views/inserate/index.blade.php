@@ -21,7 +21,7 @@
           <th>Medium - Ausgabe</th>
           <th>ET</th>
           <th>Format</th>
-          <th>Preis</th>
+          <th>Preis <br>€ {{$totalPreis}}</th>
           <th>Rab.</th>
           <th>AP</th>
           <th>Netto</th>
@@ -32,7 +32,7 @@
       </thead>
       @foreach($inserate as $inserat)
         <tr>
-          <td>{{ $inserat->id }} {{$productionCosts}}</td>
+          <td>{{ $inserat->id }}</td>
           <td>{{ $inserat->client->firma }}</td>
           <td>{{ $inserat->format->get(0)->issue->medium->title }} - {{ $inserat->format->get(0)->issue->name }}</td>
           <td>{{ $inserat->format->get(0)->issue->erscheinungstermin }}</td>
