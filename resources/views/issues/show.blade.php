@@ -86,14 +86,14 @@
           <td>{{ $format->flaeche }}</td>
           <td>{{ $format->preis }}</td>
           <td class="text-right">
-            <a href="{{ route('medium.issues.formats.edit', [$medium->slug, $issue->id, $format->id]) }}" alt="Bearbeiten" tile="bearbeiten"><i class="fa fa-2x fa-edit" data-toggle="tooltip" data-original-title="bearbeiten"></i></a> 
+            <a href="{{ route('medium.issues.formats.edit', [$medium->slug, $issue->id, $format->id]) }}" alt="Bearbeiten" tile="bearbeiten"><i class="fa fa-lg fa-edit" data-toggle="tooltip" data-original-title="bearbeiten"></i></a> 
             &nbsp;
               {!! Form::open([
                 'method' => 'DELETE',
                 'route' => ['medium.issues.formats.destroy', $medium->slug, $issue->id, $format->id],
                 'style' => 'display: inline;'
             ]) !!}
-                 <a href="#" data-toggle="modal" data-target="#confirmDelete" data-title="Format löschen" data-message="Wollen Sie '{{ $medium->title }} - {{ $issue->name }} - {{ $format->name }}' wirklich löschen?" data-action="Löschen"><i class="fa fa-2x fa-trash-o" data-toggle="tooltip" data-original-title="löschen"></i></a>
+                 <a href="#" data-toggle="modal" data-target="#confirmDelete" data-title="Format löschen" data-message="Wollen Sie '{{ $medium->title }} - {{ $issue->name }} - {{ $format->name }}' wirklich löschen?" data-action="Löschen"><i class="fa fa-lg fa-trash-o" data-toggle="tooltip" data-original-title="löschen"></i></a>
             {!! Form::close() !!}
           </td>
           </tr>

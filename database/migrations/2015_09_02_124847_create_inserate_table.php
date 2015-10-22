@@ -17,6 +17,8 @@ class CreateInserateTable extends Migration
             $table->string('title');
             $table->integer('user_id')->unsigned();
             $table->integer('client_id')->unsigned();
+            $table->string('sujet');
+            $table->string('auftragsnummer');
             $table->integer('issue_id')->unsigned();
             $table->tinyInteger('type')->unsigned();
             $table->tinyInteger('art')->unsigned();
@@ -29,6 +31,7 @@ class CreateInserateTable extends Migration
             $table->integer('werbeabgabe');
             $table->decimal('preis4', 7, 2);
             $table->decimal('brutto', 7, 2);
+            $table->text('notes');
             $table->timestamps();
             
             $table->index('type');

@@ -28,11 +28,9 @@
       @yield('content')
     </div>
     <!--footer-->
-    <div class="navbar navbar-default navbar-fixed-bottom">
       <div class="container">
-        <p class="navbar-text">Goldader v 0.2 - © <?php echo date('Y');?> - Gunharth Randolf / communautic Group</p>
+        <p><small><em>Goldader v 0.2 - © <?php echo date('Y');?> - Gunharth Randolf / communautic Group</em></small></p>
       </div>
-  </div>
     
     @include('partials/modal')
     <script src="{{ elixir('js/app.js') }}"></script>

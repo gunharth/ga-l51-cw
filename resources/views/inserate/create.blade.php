@@ -27,7 +27,7 @@
               <div class="col-sm-8">
               {!! Form::text('client',null,['class' => 'form-control ui-autocomplete-input clientAutoComplete', 'placeholder' => 'Kunde']) !!}
               </div>
-              <input type="hidden" name="client_id" id="client_id" value="1">
+              <input type="hidden" name="client_id" id="client_id">
           </div>
        </div>
         </div>
@@ -43,15 +43,6 @@
       <div class="col-md-6">
         <div class="well">
           <div class="form-group">
-              <!--{!! Form::label('issue_id','Medium / Ausgabe',['class' => 'col-sm-4']) !!}
-              <div class="col-sm-8">
-              {!! Form::select(
-                  'issue_id',
-                  $issues,
-                  0,
-                  ['class' => 'form-control']
-                  ) !!}
-              </div>-->
               {!! Form::label('issue','Medium / Ausgabe',['class' => 'col-sm-4']) !!}
               <div class="col-md-8">
               {!! Form::text('issue',null,['class' => 'form-control ui-autocomplete-input mediumAutoComplete', 'placeholder' => 'Medium / Ausgabe']) !!}
@@ -93,7 +84,7 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    {!! Form::label('auftragsnummer','Auftragsnummer',['class' => 'col-sm-3']) !!}
+                    {!! Form::label('auftragsnummer','Auftrag/Nr.',['class' => 'col-sm-3']) !!}
                     <div class="col-md-9">
                         {!! Form::text('auftragsnummer',null,['class' => 'form-control manual-input']) !!}
                     </div>
@@ -107,7 +98,7 @@
 
 
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-4">
             <div class="well">
         
         <div class="form-group">
@@ -124,56 +115,56 @@
             </div>
         </div>
         <div class="form-group">
-            {!! Form::label('preisaddinput','Aufpreis',['class' => 'col-sm-4']) !!}
-            <div class="col-md-8 input-group addon">
+            {!! Form::label('preisaddinput','Aufpreis',['class' => 'col-sm-6']) !!}
+            <div class="col-md-6 input-group addon">
                 <span class="input-group-addon">€</span>
                 {!! Form::input('number','preisaddinput',null,['class' => 'form-control manual-input', 'step' => '0.01', 'min' => '0', 'placeholder' => '0', 'disabled' => 'disabled']) !!}
             </div>
         </div>
         <div class="form-group">
-            {!! Form::label('preisinput','Zielpreis inkl. Rab',['class' => 'col-sm-4']) !!}
-            <div class="col-md-8 input-group addon">
+            {!! Form::label('preisinput','Zielpreis inkl. Rab',['class' => 'col-sm-6']) !!}
+            <div class="col-md-6 input-group addon">
                 <span class="input-group-addon">€</span>
                 {!! Form::input('number','preisinput',null,['class' => 'form-control manual-input', 'step' => '0.01', 'min' => '0', 'placeholder' => '0', 'disabled' => 'disabled']) !!}
             </div>
         </div>
         <div class="form-group">
-            {!! Form::label('rabatt','Rabatt',['class' => 'col-sm-4']) !!}
-            <div class="col-md-8 input-group addon">
+            {!! Form::label('rabatt','Rabatt',['class' => 'col-sm-6']) !!}
+            <div class="col-sm-6 input-group addon">
                 <span class="input-group-addon">%</span>
                 {!! Form::input('number','rabatt',null,['class' => 'form-control manual-input', 'min' => '0', 'step' => '1', 'placeholder' => '0', 'disabled' => 'disabled']) !!}
             </div>
         </div>
         <div class="form-group">
-            {!! Form::label('provision','Agenturprovision',['class' => 'col-sm-4']) !!}
-            <div class="col-md-8 input-group addon">
+            {!! Form::label('provision','Agenturprovision',['class' => 'col-sm-6']) !!}
+            <div class="col-sm-6 input-group addon">
                 <span class="input-group-addon">%</span>
                 {!! Form::input('number','provision',null,['class' => 'form-control manual-input', 'min' => '0', 'placeholder' => '0', 'disabled' => 'disabled']) !!}
             </div>
         </div>
         <div class="form-group">
-            {!! Form::label('nettoinput','Zielpreis Netto',['class' => 'col-sm-4']) !!}
-            <div class="col-md-8 input-group addon">
+            {!! Form::label('nettoinput','Zielpreis Netto',['class' => 'col-sm-6']) !!}
+            <div class="col-sm-6 input-group addon">
                 <span class="input-group-addon">€</span>
                 {!! Form::input('number','nettoinput',null,['class' => 'form-control manual-input', 'step' => '0.01', 'min' => '0', 'placeholder' => '0', 'disabled' => 'disabled']) !!}
             </div>
         </div>
         <div class="form-group">
-            {!! Form::label('bruttoinput','Zielpreis Brutto',['class' => 'col-sm-4']) !!}
-            <div class="col-md-8 input-group addon">
+            {!! Form::label('bruttoinput','Zielpreis Brutto',['class' => 'col-sm-6']) !!}
+            <div class="col-sm-6 input-group addon">
                 <span class="input-group-addon">€</span>
                 {!! Form::input('number','bruttoinput',null,['class' => 'form-control manual-input', 'step' => '0.01', 'min' => '0', 'placeholder' => '0', 'disabled' => 'disabled']) !!}
             </div>
         </div>
         <div class="form-group">
-            {!! Form::label('strecke','Strecke/Fläche',['class' => 'col-sm-4']) !!}
-            <div class="col-md-8 input-group addon">
+            {!! Form::label('strecke','Strecke/Fläche',['class' => 'col-sm-6']) !!}
+            <div class="col-sm-6 input-group addon">
                 <span class="input-group-addon">,</span>
                 {!! Form::input('number','strecke',null,['class' => 'form-control manual-input', 'step' => '0.01', 'min' => '0', 'placeholder' => '0', 'disabled' => 'disabled']) !!}
             </div>
         </div>
         <div class="row">
-          <div class="col-sm-offset-4 col-md-8">
+          <div class="col-sm-offset-6 col-sm-6">
             <a class="btn btn-primary" href="#" role="button" id="reCalculate">Berechnen</a>
           </div>
         </div>
@@ -181,32 +172,43 @@
     </div>
         </div>
 
-         <div class="col-md-6">
+         <div class="col-md-8">
             <div class="well">
                 <div class="row">
-                    <div class="col-xs-9">
+                    <div class="col-sm-6">
                         <div class="form-group">
-                            {!! Form::label('preis','Preis',['class' => 'col-xs-4']) !!}
-                            <div class="col-xs-8 input-group addon">
+                            {!! Form::label('preis','Preis',['class' => 'col-sm-6']) !!}
+                            <div class="col-sm-6 input-group addon">
                                 <span class="input-group-addon">€</span>
                                 {!! Form::input('number','preis',0,['class' => 'form-control', 'step' => '0.01', 'min' => '0', 'readonly' => 'readonly']) !!}
                             </div>
                         </div>
                     </div>
-                    <div class="col-xs-3">&nbsp;</div>
+                    
                 </div>
                 <div class="row">
-                    <div class="col-xs-9">
+                    <div class="col-sm-6">
                         <div class="form-group">
-                            {!! Form::label('preis2','Preis inkl. Rab.',['class' => 'col-xs-4']) !!}
-                            <div class="col-xs-8 input-group addon">
+                            {!! Form::label('preis2','Preis inkl. Rab.',['class' => 'col-sm-6']) !!}
+                            <div class="col-sm-6 input-group addon">
                                 <span class="input-group-addon">€</span>
                                 {!! Form::input('number','preis2',0,['class' => 'form-control', 'step' => '0.01', 'min' => '0', 'readonly' => 'readonly']) !!}
                             </div>
                         </div>
                     </div>
-                    <div class="col-xs-3">
+                    <div class="col-sm-3">
+                        <div class="col-sm-12 input-group input-group-sm addon">
+                                <span class="input-group-addon">%</span>
+                                {!! Form::input('number','wert_rabatt_proz',0,['id' => 'wert_rabatt_proz', 'class' => 'form-control', 'step' => '0.01', 'min' => '0', 'readonly' => 'readonly']) !!}
+
+                            </div>
+                        
+                    </div>
+                    <div class="col-sm-3">
+                    <div class="input-group input-group-sm addon">
+                        <span class="input-group-addon">€</span>
                         {!! Form::input('number','wert_rabatt',0,['id' => 'wert_rabatt', 'class' => 'form-control input-sm', 'step' => '0.01', 'min' => '0', 'readonly' => 'readonly']) !!}
+                    </div>
                     </div>
                 </div>
                 <div class="row">
@@ -267,19 +269,14 @@
                 </div>
 
                 <div class="form-group">
-            {!! Form::label('notiz','Notizen',['class' => 'col-sm-3']) !!}
+            {!! Form::label('notes','Notizen',['class' => 'col-sm-3']) !!}
             <div class="col-md-9">
-                {!! Form::textarea('notiz',null,['class' => 'form-control manual-input', 'rows' => '2', 'disabled' => 'disabled']) !!}
+                {!! Form::textarea('notes',null,['class' => 'form-control manual-input', 'rows' => '2', 'disabled' => 'disabled']) !!}
             </div>
         </div>
-        <!--<div class="form-group">
-            <div class="col-sm-offset-3 col-md-9">
-            {!! Form::submit('Speichern',['class' => 'btn btn-success manual-input', 'disabled' => 'disabled']) !!}
-            </div>
-        </div>-->
         <div class="row">
           <div class="col-sm-offset-4 col-md-8">
-            <a class="btn btn-success" href="#" role="button" id="inseratSubmit">Speichern</a>
+            <a class="btn btn-success disabled" href="#" role="button" id="inseratSubmit">Speichern</a>
           </div>
         </div>
 

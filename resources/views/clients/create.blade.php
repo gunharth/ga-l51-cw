@@ -22,6 +22,12 @@
             </div>
         </div>
         <div class="form-group">
+            {!! Form::label('ansprache','Ansprache/Person',['class' => 'col-sm-2']) !!}
+            <div class="col-sm-10">
+            {!! Form::text('ansprache',null,['class' => 'form-control', 'placeholder' => 'Ansprache/Person']) !!}
+            </div>
+        </div>
+        <div class="form-group">
             {!! Form::label('strasse','Straße',['class' => 'col-sm-2']) !!}
             <div class="col-sm-10">
             {!! Form::text('strasse',null,['class' => 'form-control', 'placeholder' => 'Straße']) !!}

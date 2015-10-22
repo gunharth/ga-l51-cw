@@ -24,16 +24,16 @@
       @foreach($users as $user)
         <tr data-href="{{ route('users.show', $user->id) }}" class="clickable">
           <td>{{ $user->id }}</td>
-          <td>{{ $user->name }}</td>
+          <td>{{ $user->name }} {{ $user->last_name }}</td>
           <td class="text-right">
-            <a href="{{ route('users.edit', $user->id) }}" alt="Bearbeiten" tile="bearbeiten"><i class="fa fa-2x fa-edit" data-toggle="tooltip" data-original-title="bearbeiten"></i></a> 
+            <a href="{{ route('users.edit', $user->id) }}" alt="Bearbeiten" tile="bearbeiten"><i class="fa fa-lg fa-edit" data-toggle="tooltip" data-original-title="bearbeiten"></i></a> 
             &nbsp;
               {!! Form::open([
                 'method' => 'DELETE',
                 'route' => ['users.destroy', $user->id],
                 'style' => 'display: inline;'
             ]) !!}
-                 <a href="#" data-toggle="modal" data-target="#confirmDelete" data-title="Kunde löschen" data-message="Wollen Sie {{ $user->name }} wirklich löschen?" data-action="Löschen"><i class="fa fa-2x fa-trash-o" data-toggle="tooltip" data-original-title="löschen"></i></a>
+                 <a href="#" data-toggle="modal" data-target="#confirmDelete" data-title="Kunde löschen" data-message="Wollen Sie {{ $user->name }} wirklich löschen?" data-action="Löschen"><i class="fa fa-lg fa-trash-o" data-toggle="tooltip" data-original-title="löschen"></i></a>
             {!! Form::close() !!}
           </td>
           </tr>

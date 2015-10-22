@@ -25,7 +25,7 @@ $(document).on('change', '.btn-file :file', function() {
         
     });
 
-    $('#flashMessage').not('.alert-important').delay(2000).slideUp(300);
+    $('#flashMessage').not('.alert-important').delay(1000).slideUp(300);
 
      $('#confirmDelete').on('show.bs.modal', function (e) {
       $message = $(e.relatedTarget).attr('data-message');
@@ -107,6 +107,7 @@ function getInseratTotals() {
   if(issue_id == 0) {
     //alert('Bitte wählen Sie ein Medium/Ausgabe');
       $('.manual-input').prop('disabled',true);
+      $('#inseratSubmit').addClass('disabled');
     return false;
   }
   var format_id_string = '';
@@ -121,12 +122,13 @@ function getInseratTotals() {
   if(format_id_string == '') {
     //alert('Bitte wählen Sie ein Format');
       $('.manual-input').prop('disabled',true);
+      $('#inseratSubmit').addClass('disabled');
     return false;
   }
   $('.manual-input').prop('disabled',false);
+  $('#inseratSubmit').removeClass('disabled');
   if($('#isAgent').text() == 0) {
       $('#provision').prop('disabled',true);
-
   }
   //var type = $('#format_id').find('option:selected').data("calc");
   //$('#type').val(type);
@@ -154,6 +156,7 @@ function getInseratTotals() {
     $('#preis').val(data.totals.preis);
     $('#wert_rabatt').val(data.totals.wert_rabatt);
     $('#preis2').val(data.totals.rabatt);
+    $('#wert_rabatt_proz').val(data.totals.wert_rabatt_proz);
     $('#wert_provision').val(data.totals.wert_provision);
     $('#preis3').val(data.totals.provision);
     $('#wert_werbeabgabe').val(data.totals.wert_werbeabgabe);
@@ -188,18 +191,18 @@ $('#formats-outer').on('click','.addFormat', function(e) {
         getInseratTotals()
   });*/
   $('#preisinput').on('blur', function() {
-        $('#nettoinput').val(0);
-        $('#bruttoinput').val(0);
+        $('#nettoinput').val('');
+        $('#bruttoinput').val('');
         //getInseratTotals()
   });
   $('#nettoinput').on('blur', function() {
-        $('#preisinput').val(0);
-        $('#bruttoinput').val(0);
+        $('#preisinput').val('');
+        $('#bruttoinput').val('');
         //getInseratTotals()
   });
   $('#bruttoinput').on('blur', function() {
-        $('#nettoinput').val(0);
-        $('#preisinput').val(0);
+        $('#nettoinput').val('');
+        $('#preisinput').val('');
         //getInseratTotals()
   });
   /*$('input[name="art"]:radio' ).on('change', function() {

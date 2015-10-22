@@ -40,10 +40,10 @@ class Format extends Model
             //$brutto = $this->bruttoinput;
             //$netto = round($brutto/120*100,2);
             //$ust = round($netto*0.2,2);
-            $preis = $netto;
+            //$preis = $netto;
 
             if($this->type == 0) {
-                $wert_werbeabgabe = $netto-round($netto/105*100,2);
+                $wert_werbeabgabe = round($netto/100*5,2);
                 $wa = round($netto*1.05,2);
                 //$preis = $netto-$wert_werbeabgabe;
             }
@@ -52,18 +52,25 @@ class Format extends Model
             $provision = $netto;
             $rabatt = $provision;
             if($this->provision > 0) {
-                $rabatt = round($provision/(100-$this->provision)*100,2);
-                $wert_provision = round(($rabatt/100)*$this->provision,2);
+                //$rabatt = round($provision/(100-$this->provision)*100,2);
+                
+                $provision = ($netto/(100-$this->provision))*100;
+                $wert_provision = round($provision-$netto,2);
+                $rabatt = $provision;
             }
-            $preis = $rabatt;
+            //$preis = $rabatt;
             if($this->rabatt > 0) {
-                $preis = round($rabatt/(100-$this->rabatt)*100,2);
-                $wert_rabatt = round(($preis/100)*$this->rabatt,2);
+                //$preis = round($rabatt/(100-$this->rabatt)*100,2);
+                $wert_rabatt = round(($rabatt/100)*$this->rabatt,2);
             }
+            $wert_rabatt_proz = 100-(($rabatt/$this->preis)*100);
+            $wert_rabatt = round(($this->preis/100)*$wert_rabatt_proz,2);
+
             return array(
-                'preis' => number_format((float)$preis,2,'.',''), 
+                'preis' => number_format((float)$this->preis,2,'.',''), 
                 'rabatt' => number_format((float)$rabatt,2,'.',''), 
                 'wert_rabatt' => number_format((float)$wert_rabatt,2,'.',''), 
+                'wert_rabatt_proz' => number_format((float)$wert_rabatt_proz,2,'.',''), 
                 'provision' => number_format((float)$provision,2,'.',''),
                 'wert_provision' => number_format((float)$wert_provision,2,'.',''), 
                 'wert_werbeabgabe' => number_format((float)$wert_werbeabgabe,2,'.',''),
@@ -101,9 +108,10 @@ class Format extends Model
                 $wert_rabatt = round(($preis/100)*$this->rabatt,2);
             }
             return array(
-                'preis' => number_format((float)$preis,2,'.',''), 
+                'preis' => number_format((float)$this->preis,2,'.',''), 
                 'rabatt' => number_format((float)$rabatt,2,'.',''), 
-                'wert_rabatt' => number_format((float)$wert_rabatt,2,'.',''), 
+                'wert_rabatt' => number_format((float)$wert_rabatt,2,'.',''),
+                'wert_rabatt_proz' => $this->rabatt, 
                 'provision' => number_format((float)$provision,2,'.',''),
                 'wert_provision' => number_format((float)$wert_provision,2,'.',''), 
                 'wert_werbeabgabe' => number_format((float)$wert_werbeabgabe,2,'.',''),

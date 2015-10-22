@@ -2,6 +2,7 @@
 @import "bootstrap/stylesheets/bootstrap/variables";
 // second import the YETI theme variables
 @import "bootswatch/yeti/variables";
+$font-size-base:          13px;
 $zindex-modal:             1050;
 $padding-base-vertical:     4px;
 $padding-small-vertical:    4px;
@@ -12,7 +13,7 @@ $icon-font-path: "../../fonts/";
 $fa-font-path: "../../fonts/";
 // third import bootstrap
 @import "bootstrap/stylesheets/bootstrap";
-// forth import cosmo bootswatch
+// forth import yeti bootswatch
 @import "bootswatch/yeti/bootswatch";
 // import fontawesome
 @import "fontawesome/font-awesome";
@@ -21,6 +22,12 @@ body {
     padding-top: 60px;
     padding-bottom: 60px;
 }
+.table.small-text { font-size: 12px; }
+.input-group-sm { padding: 4px 4px;}
+
+#isAgent { display: none; }
+
+.navbar-fixed-bottom { min-height: 40px;}
 
 img { max-width: 100%; height: auto;}
 
@@ -50,7 +57,9 @@ hr { margin-top: 0; }
         display: block;
  }
 
- .input-group.date,  .input-group.addon { padding-left: 15px; padding-right: 15px; }
+ /*.input-group.date,  .input-group.addon { padding-left: 15px; padding-right: 15px; }*/
+ .form-group { margin-bottom: 10px; }
+ .input-group-addon { padding: 0; }
 
  .vertical-align {
     display: flex;

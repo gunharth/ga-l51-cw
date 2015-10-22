@@ -13,11 +13,13 @@
       </div>
     </div>
     <hr />
-    <table class="table table-striped table-hover ">
+    <table class="table small-text table-striped table-hover ">
       <thead>
         <tr>
           <th>ID</th>
           <th>Kunde</th>
+          <th>Kunde/Sujet</th>
+          <th>Auftrag/Nr.</th>
           <th>Medium - Ausgabe</th>
           <th>ET</th>
           <th>Format</th>
@@ -27,6 +29,7 @@
           <th>Netto</th>
           <th>Brutto</th>
           <th>Berater</th>
+          <th>Anmerkung</th>
           <th class="text-right">&nbsp;</th>
         </tr>
       </thead>
@@ -34,6 +37,8 @@
         <tr>
           <td>{{ $inserat->id }}</td>
           <td>{{ $inserat->client->firma }}</td>
+          <td>{{ $inserat->sujet }}</td>
+          <td>{{ $inserat->auftragsnummer }}</td>
           <td>{{ $inserat->format->get(0)->issue->medium->title }} - {{ $inserat->format->get(0)->issue->name }}</td>
           <td>{{ $inserat->format->get(0)->issue->erscheinungstermin }}</td>
           <td>
@@ -49,7 +54,8 @@
           <td>{{ $inserat->preis3 }}</td>
           <td>{{ $inserat->preis4 }}</td>
           <td>{{ $inserat->brutto }}</td>
-          <td>{{ $inserat->user->name }}</td>
+          <td>{{ $inserat->user->last_name }}</td>
+          <td>{{ nl2br($inserat->notes) }}</td>
           </tr>
         @endforeach
       </tbody>

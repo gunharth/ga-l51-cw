@@ -47,6 +47,11 @@ class InserateController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'client_id' => 'required',
+            'issue_id' => 'required',
+            'format_id' => 'min:1'
+        ]);
         $inserat = new Inserat($request->all());
         Auth::user()->inserate()->save($inserat);
 
@@ -133,10 +138,10 @@ class InserateController extends Controller
         $format->provision = $request->provision;
         $format->art = $request->art;
         if($request->preisaddinput > 0) {
-            $format->preis = $request->preisaddinput;
+            $format->preis += $request->preisaddinput;
         }
         if($request->preisinput > 0) {
-            $format->preis = $request->preisinput;
+            $format->rabatt = $request->preisinput;
         }
         if($request->nettoinput > 0) {
             $format->nettoinput = $request->nettoinput;

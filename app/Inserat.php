@@ -27,7 +27,10 @@ class Inserat extends Model
     	'preis3',
     	'werbeabgabe',
     	'preis4',
-    	'brutto'
+    	'brutto',
+        'sujet',
+        'auftragsnummer',
+        'notes'
     ];
 
 

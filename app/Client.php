@@ -10,6 +10,7 @@ class Client extends Model
 
      protected $fillable = [
     	'firma',
+        'ansprache',
     	'strasse',
     	'ort',
     	'plz',
