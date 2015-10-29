@@ -14,37 +14,38 @@ class Inserat extends Model
     */
 
     protected $fillable = [
-    	'user_id',
+        'user_id',
         'client_id',
-    	'issue_id',
+        'issue_id',
         'type',
         'art',
         'strecke',
-    	'preis',
-    	'rabatt',
-    	'preis2',
-    	'provision',
-    	'preis3',
-    	'werbeabgabe',
-    	'preis4',
-    	'brutto',
+        'preis',
+        'rabatt',
+        'preis2',
+        'provision',
+        'preis3',
+        'werbeabgabe',
+        'preis4',
+        'brutto',
         'sujet',
         'auftragsnummer',
         'notes'
     ];
 
 
-    public function user() {
-    	return $this->belongsTo('App\User');
+    public function user()
+    {
+        return $this->belongsTo('App\User');
     }
 
-    public function client() {
-        return $this->belongsTo('App\Client','client_id');
+    public function client()
+    {
+        return $this->belongsTo('App\Client', 'client_id');
     }
 
-    public function format() {
+    public function format()
+    {
         return $this->belongsToMany('App\Format', 'format_inserat')->withTimestamps()->withPivot('pr');
     }
-
-    
 }

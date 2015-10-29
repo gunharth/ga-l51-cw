@@ -62,7 +62,7 @@
             <div class="col-sm-10">
                   {!! Form::select(
                   'vat_country',
-                  $list = array('0' => 'ATU', '1' => 'DE'),
+                  $list = array('ATU' => 'ATU', 'DE' => 'DE'),
                   0,
                   ['class' => 'form-control']
                   ) !!}

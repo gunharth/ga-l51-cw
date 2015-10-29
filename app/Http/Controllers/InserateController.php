@@ -141,7 +141,7 @@ class InserateController extends Controller
             $format->preis += $request->preisaddinput;
         }
         if($request->preisinput > 0) {
-            $format->rabatt = $request->preisinput;
+            $format->preisinput = $request->preisinput;
         }
         if($request->nettoinput > 0) {
             $format->nettoinput = $request->nettoinput;
@@ -149,6 +149,7 @@ class InserateController extends Controller
         if($request->bruttoinput > 0) {
             $format->bruttoinput = $request->bruttoinput;
         }
+        $format->add_vat = $request->add_vat;
 
         /*if($rabatt > 0) {
             $rabattvalue = round(($format->preis/100)*$format->rabatt,2);

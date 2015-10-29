@@ -30154,22 +30154,30 @@ function getInseratTotals() {
   var nettoinput = $('#nettoinput').val();
   var bruttoinput = $('#bruttoinput').val();
   var provision = $('#provision').val();
+  var client_vat = $('#vatCountry').text();
+  var add_vat = 1;
+  if(client_vat != 'ATU') {
+    var add_vat = 0;
+  }
   $.ajax({
       method: 'GET',
       type: 'json',
       url: '/inserat/1',
-      data: 'art='+art+'&rabatt='+rabatt+'&provision='+provision+'&preisinput='+preisinput+'&preisaddinput='+preisaddinput+'&bruttoinput='+bruttoinput+'&nettoinput='+nettoinput+format_id_string
+      data: 'art='+art+'&rabatt='+rabatt+'&provision='+provision+'&preisinput='+preisinput+'&preisaddinput='+preisaddinput+'&bruttoinput='+bruttoinput+'&nettoinput='+nettoinput+'&add_vat='+add_vat+format_id_string
   }).done(function( data ) {
     $('#preis').val(data.totals.preis);
     $('#wert_rabatt').val(data.totals.wert_rabatt);
     $('#preis2').val(data.totals.rabatt);
     $('#wert_rabatt_proz').val(data.totals.wert_rabatt_proz);
     $('#wert_provision').val(data.totals.wert_provision);
+    $('#wert_provision_proz').val(data.totals.wert_provision_proz);
     $('#preis3').val(data.totals.provision);
     $('#wert_werbeabgabe').val(data.totals.wert_werbeabgabe);
+    $('#wert_wa_proz').val(data.totals.wert_wa_proz);
     $('#preis4').val(data.totals.wa);
     $('#netto').val(data.totals.netto);
     $('#ust').val(data.totals.ust);
+    $('#wert_ust_proz').val(data.totals.wert_ust_proz);
     $('#brutto').val(data.totals.brutto);
   })
 }
@@ -30200,6 +30208,7 @@ $('#formats-outer').on('click','.addFormat', function(e) {
   $('#preisinput').on('blur', function() {
         $('#nettoinput').val('');
         $('#bruttoinput').val('');
+        $('#rabatt').val('');
         //getInseratTotals()
   });
   $('#nettoinput').on('blur', function() {

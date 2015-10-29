@@ -10,10 +10,9 @@
         </div>
     </div>
     <hr  />
-    <div class="row">
       
 
-    <table class="table table-striped table-hover table-condensed table-bordered">
+    <table class="table table-striped table-hover table-condensed table-bordered small-text">
       <thead>
         <tr>
           <th>ID</th>
@@ -25,7 +24,7 @@
         </tr>
       </thead>
       @foreach($clients as $client)
-        <tr data-href="{{ route('clients.show', $client->id) }}" class="clickable">
+        <tr data-href="{{ route('clients.show', $client->id) }}" class="">
           <td>{{ $client->id }}</td>
           <td>{{ $client->firma }}</td>
           <td>{{ $client->ansprache }}</td>
@@ -46,5 +45,4 @@
         @endforeach
       </tbody>
     </table>
-    </div>
   @stop

@@ -53,8 +53,8 @@
             <div class="col-sm-10">
                   {!! Form::select(
                   'vat_country',
-                  $list = array('0' => 'ATU', '1' => 'DE'),
-                  0,
+                  $list = array('ATU' => 'ATU', 'DE' => 'DE'),
+                   $client->vat_country,
                   ['class' => 'form-control']
                   ) !!}
                   {!! Form::text('vat_number',null,['class' => 'form-control', 'placeholder' => 'Nummer']) !!}

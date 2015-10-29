@@ -1,131 +1,218 @@
 // first import bootstrap variable
 @import "bootstrap/stylesheets/bootstrap/variables";
-// second import the YETI theme variables
-@import "bootswatch/yeti/variables";
-$font-size-base:          13px;
-$zindex-modal:             1050;
-$padding-base-vertical:     4px;
+// second import the flatly theme variables
+@import "bootswatch/flatly/variables";
+
+/*$font-size-base:          13px;*/
+
+$zindex-modal: 1050;
+
+/*$padding-base-vertical:     4px;
 $padding-small-vertical:    4px;
 $input-height-base:              ($line-height-computed + ($padding-base-vertical * 2) + 2);
-$input-height-small:             (floor($font-size-small * $line-height-small) + ($padding-small-vertical * 2) + 2);
+$input-height-small:             (floor($font-size-small * $line-height-small) + ($padding-small-vertical * 2) + 2);*/
 
 $icon-font-path: "../../fonts/";
 $fa-font-path: "../../fonts/";
 // third import bootstrap
 @import "bootstrap/stylesheets/bootstrap";
-// forth import yeti bootswatch
-@import "bootswatch/yeti/bootswatch";
+// forth import flatly bootswatch
+@import "bootswatch/flatly/bootswatch";
 // import fontawesome
 @import "fontawesome/font-awesome";
-
 body {
     padding-top: 60px;
     padding-bottom: 60px;
 }
-.table.small-text { font-size: 12px; }
-.input-group-sm { padding: 4px 4px;}
 
-#isAgent { display: none; }
-
-.navbar-fixed-bottom { min-height: 40px;}
-
-img { max-width: 100%; height: auto;}
-
-hr { margin-top: 0; }
-
-#flashMessage { position: fixed; top: 0; left: 0; width: 100%; z-index: 1031;}
-
-
-
-.btn-file {
-        position: relative;
-        overflow: hidden;
-    }
- .btn-file input[type=file] {
-        position: absolute;
-        top: 0;
-        right: 0;
-        min-width: 100%;
-        min-height: 100%;
-        font-size: 100px;
-        text-align: right;
-        filter: alpha(opacity=0);
-        opacity: 0;
-        outline: none;
-        background: white;
-        cursor: inherit;
-        display: block;
- }
-
- /*.input-group.date,  .input-group.addon { padding-left: 15px; padding-right: 15px; }*/
- .form-group { margin-bottom: 10px; }
- .input-group-addon { padding: 0; }
-
- .vertical-align {
+.vertical-align {
     display: flex;
     align-items: center;
 }
+
+.radio-inline, .checkbox-inline {
+    padding-top: 0 !important;
+}
+
+.input-group-addon {
+    min-width: 36px;
+    padding: 0;
+}
+
+.form-control { padding: 10px 0px 10px 10px; }
+hr { border-top: 1px solid #e6e6e6; }
+.table.small-text { font-size: 12px; }
+
+/* label { font-weight: normal; } */
+
+
+/*.table.small-text { font-size: 12px; }
+.input-group-sm { padding: 4px 4px;}
+
+hr { margin-top: 0; }
+
+ .form-group { margin-bottom: 10px; }
+
+ 
 [rel="popover"]{
             cursor: pointer;
-            display:inline-block; /* chrome-fix */
+            display:inline-block;
         }
 .fa-2x { font-size: 1.7em; }
 
 tr.clickable {
     cursor: pointer;
 }
+*/
 
-.input-group-addon {
-    min-width: 36px;
+
+/* non bootstrap settings */
+
+#isAgent {
+    display: none;
 }
+
+#flashMessage {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1031;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+
+/* file upload button */
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+
+
+/* jQuery autocomplete */
 
 .ui-autocomplete {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  z-index: 1000;
-  float: left;
-  display: none;
-  min-width: 160px;
-  _width: 160px;
-  padding: 4px 0;
-  margin: 2px 0 0 0;
-  list-style: none;
-  background-color: #ffffff;
-  border-color: #ccc;
-  border-color: rgba(0, 0, 0, 0.2);
-  border-style: solid;
-  border-width: 1px;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-  -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-  -webkit-background-clip: padding-box;
-  -moz-background-clip: padding;
-  background-clip: padding-box;
-  *border-right-width: 2px;
-  *border-bottom-width: 2px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    float: left;
+    display: none;
+    min-width: 160px;
+    _width: 160px;
+    padding: 4px 0;
+    margin: 2px 0 0 0;
+    list-style: none;
+    background-color: #ffffff;
+    border-color: #ccc;
+    border-color: rgba(0, 0, 0, 0.2);
+    border-style: solid;
+    border-width: 1px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding;
+    background-clip: padding-box;
+    *border-right-width: 2px;
+    *border-bottom-width: 2px;
 }
-.ui-autocomplete .ui-menu-item { padding-left: 10px; font-size: small;}
-.ui-autocomplete .ui-menu-item.ui-state-focus { cursor: pointer; }
+
+.ui-autocomplete .ui-menu-item {
+    padding-left: 10px;
+    font-size: small;
+}
+
+.ui-autocomplete .ui-menu-item.ui-state-focus {
+    cursor: pointer;
+}
+
 .ui-autocomplete .ui-menu-item > a.ui-corner-all {
-  display: block;
-  padding: 3px 15px;
-  clear: both;
-  font-weight: normal;
-  line-height: 18px;
-  color: #555555;
-  white-space: nowrap;
+    display: block;
+    padding: 3px 15px;
+    clear: both;
+    font-weight: normal;
+    line-height: 18px;
+    color: #555555;
+    white-space: nowrap;
 }
-.ui-autocomplete .ui-menu-item > a.ui-corner-all.ui-state-hover, .ui-autocomplete .ui-menu-item > a.ui-corner-all.ui-state-active {
-  color: #ffffff;
-  text-decoration: none;
-  background-color: #0088cc;
-  border-radius: 0px;
-  -webkit-border-radius: 0px;
-  -moz-border-radius: 0px;
-  background-image: none;
+
+.ui-autocomplete .ui-menu-item > a.ui-corner-all.ui-state-hover,
+.ui-autocomplete .ui-menu-item > a.ui-corner-all.ui-state-active {
+    color: #ffffff;
+    text-decoration: none;
+    background-color: #0088cc;
+    border-radius: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    background-image: none;
 }
-.ui-helper-hidden-accessible { display:none; }
+
+.ui-helper-hidden-accessible {
+    display: none;
+}
+
+html,body {
+  height:100%;
+}
+      
+.row-flex, .row-flex > div[class*='col-'] {  
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex:1 1 auto;
+}
+
+.row-flex-wrap {
+  -webkit-flex-flow: row wrap;
+    align-content: flex-start;
+    flex:0;
+}
+
+.row-flex > div[class*='col-'], .container-flex > div[class*='col-'] {
+   margin:-.2px; /* hack adjust for wrapping */
+}
+
+.container-flex > div[class*='col-'] div,.row-flex > div[class*='col-'] > div {
+  width:100%;
+}
+
+
+.flex-col {
+    display: flex;
+    display: -webkit-flex;
+    flex: 1 100%;
+  flex-flow: column nowrap;
+}
+
+.flex-grow {
+  display: flex;
+    -webkit-flex: 2;
+    flex: 2;
+}
