@@ -11,9 +11,10 @@
   </div>
 </div>
 <hr  />
-{!! Form::open([
+{!! Form::model($inserat,[
+  'method' => 'PATCH',
   'id' => 'inserat',
-  'route' => ['inserate.store'],
+  'route' => ['inserate.update', $inserat->id],
   'class' => 'form-horizontal'
 ]) !!}
 <input id="type" type="hidden" name="type">
@@ -25,15 +26,17 @@
       <div class="form-group">
           {!! Form::label('client','Kunde',['class' => 'col-sm-4']) !!}
           <div class="col-sm-8">
-          {!! Form::text('client',null,['class' => 'form-control ui-autocomplete-input clientAutoComplete', 'placeholder' => 'Kunde']) !!}
+          {!! Form::text('client',$client->firma,['class' => 'form-control ui-autocomplete-input clientAutoComplete', 'placeholder' => 'Kunde']) !!}
           </div>
-          <input type="hidden" name="client_id" id="client_id">
+          <input type="hidden" name="client_id" id="client_id" value="{{ $client->id }}">
       </div>
    </div>
   </div>
   <div class="col-md-6">
     <div class="well">
-      <div id="clientDetails"></div>
+      <div id="clientDetails">
+        @include('clients.partials.details')
+      </div>
     </div>
   </div>
 </div>
@@ -45,31 +48,34 @@
       <div class="form-group">
         {!! Form::label('issue','Medium / Ausgabe',['class' => 'col-sm-4']) !!}
         <div class="col-md-8">
-        {!! Form::text('issue',null,['class' => 'form-control ui-autocomplete-input mediumAutoComplete', 'placeholder' => 'Medium / Ausgabe']) !!}
+        {!! Form::text('issue',$inserat->format->get(0)->issue->medium->title . ' - ' .  $inserat->format->get(0)->issue->name ,['class' => 'form-control ui-autocomplete-input mediumAutoComplete', 'placeholder' => 'Medium / Ausgabe']) !!}
         </div>
-        <input type="hidden" name="issue_id" id="issue_id">
+        <input type="hidden" name="issue_id" id="issue_id" value="{{ $inserat->issue_id }}">
       </div>
       <hr>
       <div id="formats-outer">
-        <div class="form-group vertical-align">
-          {!! Form::label('format_id','Format',['class' => 'col-sm-4']) !!}
-          <div class="col-md-5">
-          {!! Form::select(
-              'format_id[]',
-              $list = array('0' => '-- Auswahl --'),
-              0,
-              ['class' => 'form-control format_id', 'disabled' => 'disabled']
-              ) !!}
-          </div>
-          <div class="col-md-2">
-            <label class="checkbox-inline">
-              <input name="pr[0]" type="checkbox" value="1" disabled="disabled" class="manual-input"> PR
-            </label>
-          </div>
-          <div class="col-md-1">
-            <a href="#" alt="Format hinzufügen" tile="Format hinzufügen" class="addFormat"><i class="fa fa fa-plus" data-toggle="tooltip" data-original-title="Format hinzufügen"></i></a> 
-          </div>
-        </div>
+        @for ($i = 0; $i < count($inserat->format); $i++)
+            <div class="form-group vertical-align">
+              {!! Form::label('format_id','Format',['class' => 'col-sm-4']) !!}
+              <div class="col-md-5">
+              {!! Form::select(
+                  'format_id[]',
+                  $formatList,
+                  $inserat->format[$i]->id,
+                  ['class' => 'form-control format_id']
+                  ) !!}
+              </div>
+              <div class="col-md-2">
+                <label class="checkbox-inline">
+                  <input name="pr[0]" type="checkbox" value="1" disabled="disabled" class="manual-input"> PR
+                </label>
+              </div>
+              <div class="col-md-1">
+                <a href="#" alt="Format hinzufügen" tile="Format hinzufügen" class="addFormat"><i class="fa fa fa-plus" data-toggle="tooltip" data-original-title="Format hinzufügen"></i></a> 
+              </div>
+            </div>
+          @endfor
+        
       </div>
     </div>
   </div>
@@ -115,49 +121,49 @@
           {!! Form::label('preisaddinput','Aufpreis',['class' => 'col-sm-6']) !!}
           <div class="col-md-6 input-group addon">
               <span class="input-group-addon">€</span>
-              {!! Form::input('number','preisaddinput',null,['class' => 'form-control manual-input', 'step' => '0.01', 'min' => '0', 'placeholder' => '0', 'disabled' => 'disabled']) !!}
+              {!! Form::input('number','preisaddinput',null,['class' => 'form-control manual-input', 'step' => '0.01', 'min' => '0', 'placeholder' => '0']) !!}
           </div>
       </div>
       <div class="form-group">
           {!! Form::label('preisinput','Zielpreis inkl. Rab',['class' => 'col-sm-6']) !!}
           <div class="col-md-6 input-group addon">
               <span class="input-group-addon">€</span>
-              {!! Form::input('number','preisinput',null,['class' => 'form-control manual-input', 'step' => '0.01', 'min' => '0', 'placeholder' => '0', 'disabled' => 'disabled']) !!}
+              {!! Form::input('number','preisinput',null,['class' => 'form-control manual-input', 'step' => '0.01', 'min' => '0', 'placeholder' => '0']) !!}
           </div>
       </div>
       <div class="form-group">
           {!! Form::label('rabatt','Rabatt',['class' => 'col-sm-6']) !!}
           <div class="col-sm-6 input-group addon">
               <span class="input-group-addon">%</span>
-              {!! Form::input('number','rabatt',null,['class' => 'form-control manual-input', 'min' => '0', 'max' => '30', 'step' => '1', 'placeholder' => '0', 'disabled' => 'disabled']) !!}
+              {!! Form::input('number','rabatt',null,['class' => 'form-control manual-input', 'min' => '0', 'max' => '30', 'step' => '1', 'placeholder' => '0']) !!}
           </div>
       </div>
       <div class="form-group">
           {!! Form::label('provision','Agenturprovision',['class' => 'col-sm-6']) !!}
           <div class="col-sm-6 input-group addon">
               <span class="input-group-addon">%</span>
-              {!! Form::input('number','provision',null,['class' => 'form-control manual-input', 'min' => '0', 'max' => '30', 'step' => '1', 'placeholder' => '0', 'disabled' => 'disabled']) !!}
+              {!! Form::input('number','provision',null,['class' => 'form-control manual-input', 'min' => '0', 'max' => '30', 'placeholder' => '0']) !!}
           </div>
       </div>
       <div class="form-group">
           {!! Form::label('nettoinput','Zielpreis Netto',['class' => 'col-sm-6']) !!}
           <div class="col-sm-6 input-group addon">
               <span class="input-group-addon">€</span>
-              {!! Form::input('number','nettoinput',null,['class' => 'form-control manual-input', 'step' => '0.01', 'min' => '0', 'placeholder' => '0', 'disabled' => 'disabled']) !!}
+              {!! Form::input('number','nettoinput',null,['class' => 'form-control manual-input', 'step' => '0.01', 'min' => '0', 'placeholder' => '0']) !!}
           </div>
       </div>
       <!--<div class="form-group">
           {!! Form::label('bruttoinput','Zielpreis Brutto',['class' => 'col-sm-6']) !!}
           <div class="col-sm-6 input-group addon">
               <span class="input-group-addon">€</span>
-              {!! Form::input('number','bruttoinput',null,['class' => 'form-control manual-input', 'step' => '0.01', 'min' => '0', 'placeholder' => '0', 'disabled' => 'disabled']) !!}
+              {!! Form::input('number','bruttoinput',null,['class' => 'form-control manual-input', 'step' => '0.01', 'min' => '0', 'placeholder' => '0']) !!}
           </div>
       </div>-->
       <div class="form-group">
           {!! Form::label('strecke','Strecke/Fläche',['class' => 'col-sm-6']) !!}
           <div class="col-sm-6 input-group addon">
               <span class="input-group-addon">,</span>
-              {!! Form::input('number','strecke',null,['class' => 'form-control manual-input', 'step' => '0.01', 'min' => '0', 'placeholder' => '0', 'disabled' => 'disabled']) !!}
+              {!! Form::input('number','strecke',null,['class' => 'form-control manual-input', 'step' => '0.01', 'min' => '0', 'placeholder' => '0']) !!}
           </div>
       </div>
       <div class="row">
@@ -302,7 +308,7 @@
       <div class="form-group">
         {!! Form::label('notes','Notizen',['class' => 'col-sm-3']) !!}
         <div class="col-sm-9">
-            {!! Form::textarea('notes',null,['class' => 'form-control manual-input', 'rows' => '2', 'disabled' => 'disabled']) !!}
+            {!! Form::textarea('notes',null,['class' => 'form-control manual-input', 'rows' => '2']) !!}
       </div>
       </div>
       <div class="row">

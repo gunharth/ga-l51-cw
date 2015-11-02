@@ -35,6 +35,7 @@ class CreateIssuesTable extends Migration
             $table->boolean('archive');
             $table->index('archive');
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('medium_id')
                   ->references('id')

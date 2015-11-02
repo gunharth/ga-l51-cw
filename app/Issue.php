@@ -4,14 +4,18 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Issue extends Model
 {
     
-	protected $dates = [
+	use SoftDeletes;
+
+    protected $dates = [
         'redaktionsschluss',
         'drucktermin',
-        'erscheinungstermin'
+        'erscheinungstermin',
+        'deleted_at'
     ];
 
     protected $fillable = [

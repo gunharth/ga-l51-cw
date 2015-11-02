@@ -29,6 +29,7 @@
     </div>
     <!--footer-->
       <div class="container">
+        <p>&nbsp;</p>
         <p><small><em>Goldader v 0.2 - © <?php echo date('Y');?> - Gunharth Randolf / communautic Group</em></small></p>
       </div>
     

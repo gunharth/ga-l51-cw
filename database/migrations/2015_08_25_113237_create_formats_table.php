@@ -21,6 +21,7 @@ class CreateFormatsTable extends Migration
             $table->decimal('preis', 7, 2);
             $table->decimal('flaeche', 7, 2);
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('issue_id')
                   ->references('id')

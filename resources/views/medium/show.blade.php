@@ -29,13 +29,16 @@
         </tr>
       </thead>
       @foreach($medium->issues as $issue)
-        <tr data-href="{{ route('medium.issues.show', [$medium->slug,$issue->id]) }}" class="clickable @if($issue->archive != '1') success @endif">
+        <!--<tr data-href="{{ route('medium.issues.show', [$medium->slug,$issue->id]) }}" class="@if($issue->archive != '1') success @endif">-->
+        <tr>
           <td>{{ $issue->name }}</td>
           <td>{{ $issue->erscheinungstermin }}</td>
           <td class="text-right">
             <a href="{{ route('medium.issues.edit', [$medium->slug,$issue->id]) }}" alt="Bearbeiten" tile="bearbeiten"><i class="fa fa-lg fa-edit" data-toggle="tooltip" data-original-title="bearbeiten"></i></a> 
             &nbsp;
-            {!! Form::open(
+            <a href="/replicate/issue/{{ $issue->id }}" alt="kopieren" tile="kopieren"><i class="fa fa-lg fa-files-o" data-toggle="tooltip" data-original-title="kopieren"></i></a> 
+            &nbsp;
+            <!--{!! Form::open(
                 ['method' => 'PATCH',
                 'route' => ['medium.issues.update', $medium->slug,$issue->id],
                 'style' => 'display: inline;'
@@ -43,7 +46,7 @@
                 {!! Form::hidden('archive','1') !!}
                  <a href="#" class="" data-toggle="modal" data-target="#confirmDelete" data-title="Ausgabe archivieren" data-message="Wollen Sie {{ $medium->title }} - Ausgabe {{ $issue->name }} wirklich archivieren?" data-action="Archivieren"><i class="fa fa-lg fa-archive" data-toggle="tooltip" data-original-title="archivieren"></i></a>
             {!! Form::close() !!}
-            &nbsp;
+            &nbsp;-->
               {!! Form::open([
                 'method' => 'DELETE',
                 'route' => ['medium.issues.destroy', $medium->slug,$issue->id],

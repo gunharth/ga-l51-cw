@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Client;
@@ -39,14 +38,14 @@ class ClientsController extends Controller
      */
     public function store(Request $request)
     {
-        
         $this->validate($request, [
             'firma' => 'required'
         ]);
         $input = $request->all();
         $client = Client::create($input);
         \Session::flash('flash_message', trans('messages.create_success'));
-        return redirect()->route('clients.edit', [$client->id]);
+        //return redirect()->route('clients.edit', [$client->id]);
+        return redirect()->route('clients.index');
     }
 
     /**
@@ -58,8 +57,7 @@ class ClientsController extends Controller
     public function show($id)
     {
         $client = Client::findOrFail($id);
-        return view('clients.show',compact('client'));
-
+        return view('clients.show', compact('client'));
     }
 
     /**
@@ -71,7 +69,7 @@ class ClientsController extends Controller
     public function edit($id)
     {
         $client = Client::findOrFail($id);
-        return view('clients.edit',compact('client'));
+        return view('clients.edit', compact('client'));
     }
 
     /**
@@ -83,12 +81,11 @@ class ClientsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
         $this->validate($request, [
             'firma' => 'required'
         ]);
         $client = Client::findOrFail($id);
-        $input = $request->all(); 
+        $input = $request->all();
         $client->fill($input)->save();
 
         \Session::flash('flash_message', trans('messages.create_success'));
@@ -106,7 +103,7 @@ class ClientsController extends Controller
     {
         $client = Client::findOrFail($id);
         $client->delete();
-        \Session::flash('flash_message', 'Task successfully deleted!');
+        \Session::flash('flash_message', trans('messages.destroy_success'));
         return redirect()->route('clients.index');
     }
 
@@ -114,7 +111,6 @@ class ClientsController extends Controller
     {
         $client = Client::findOrFail($id);
         //return $client;
-        return view('clients.partials.details',compact('client'));
-
+        return view('clients.partials.details', compact('client'));
     }
 }

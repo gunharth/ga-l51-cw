@@ -14,8 +14,8 @@ class CreateClientsTable extends Migration
     {
         Schema::create('clients', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('ansprache');
             $table->string('firma')->index();
+            $table->string('ansprache');
             $table->string('strasse');
             $table->string('plz');
             $table->string('ort');
@@ -24,6 +24,7 @@ class CreateClientsTable extends Migration
             $table->integer('vat_number')->unsigned();
             $table->tinyInteger('agent')->unsigned()->default(0);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

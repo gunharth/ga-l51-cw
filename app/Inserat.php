@@ -3,9 +3,14 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Inserat extends Model
 {
+    use SoftDeletes;
+
+    protected $dates = ['deleted_at'];
+
     protected $table = 'inserate';
 
     /*
@@ -16,22 +21,45 @@ class Inserat extends Model
     protected $fillable = [
         'user_id',
         'client_id',
+        'client_text',
         'issue_id',
         'type',
         'art',
         'strecke',
         'preis',
-        'rabatt',
+        'wert_rabatt_proz',
+        'wert_rabatt',
         'preis2',
-        'provision',
+        'wert_provision_proz',
+        'wert_provision',
         'preis3',
-        'werbeabgabe',
+        'netto',
+        'wert_wa_proz',
+        'wert_werbeabgabe',
         'preis4',
+        'wert_ust_proz',
+        'ust',
         'brutto',
         'sujet',
         'auftragsnummer',
         'notes'
     ];
+
+    public function getPreisAttribute($value) {
+        if($value == '0.00') {
+            return '';
+        } else {
+            return $value;
+        }
+    }
+
+    public function getRabattAttribute($value) {
+        if($value == '0') {
+            return '0.00';
+        } else {
+            return $value;
+        }
+    }
 
 
     public function user()

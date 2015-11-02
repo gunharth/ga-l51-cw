@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Inserat;
@@ -14,6 +13,8 @@ use Illuminate\Support\Facades\Auth;
 
 class InserateController extends Controller
 {
+    use Traits;
+
     /**
      * Display a listing of the resource.
      *
@@ -21,11 +22,11 @@ class InserateController extends Controller
      */
     public function index()
     {
-        $inserate = Inserat::with('user','client','format.issue.medium')->get();
+        $inserate = Inserat::with('user', 'client', 'format.issue.medium')->get();
         //dd($inserate);
         $totalPreis = $inserate->sum('preis');
         //dd($productionCosts);
-        return view('inserate.index', compact('inserate','totalPreis'));
+        return view('inserate.index', compact('inserate', 'totalPreis'));
     }
 
     /**
@@ -35,8 +36,8 @@ class InserateController extends Controller
      */
     public function create()
     {
-        $issues = [0=>'-- Auswahl --'] + Issue::get()->lists('select_box','id')->toArray();
-        return view('inserate.create',compact('issues'));
+        //$issues = [0=>'-- Auswahl --'] + Issue::get()->lists('select_box','id')->toArray();
+        return view('inserate.create');
     }
 
     /**
@@ -57,19 +58,18 @@ class InserateController extends Controller
 
         //$inserat->format()->attach($request->format_id);
         //$inserat->format()->attach(array(3 => ['pr' => 1]));
-        foreach($request->format_id as $key => $id) {
+        foreach ($request->format_id as $key => $id) {
             //dd($id);
             //$inserat->format()->attach($id, [array_get($request->pr, $key)]);
-            if(isset($request->pr) && array_key_exists($key, $request->pr)) {
-            $inserat->format()->attach(array($id => ['pr' => $request->pr[$key]]));
-        } else {
-            $inserat->format()->attach(array($id => ['pr' => 0]));
-        }
+            if (isset($request->pr) && array_key_exists($key, $request->pr)) {
+                $inserat->format()->attach(array($id => ['pr' => $request->pr[$key]]));
+            } else {
+                $inserat->format()->attach(array($id => ['pr' => 0]));
+            }
         }
 
         \Session::flash('flash_message', trans('messages.create_success'));
         return redirect()->route('inserate.index');
-       
     }
 
     /**
@@ -91,7 +91,16 @@ class InserateController extends Controller
      */
     public function edit($id)
     {
-        //
+        //$inserat = Inserat::findOrFail($id);
+        $inserat = Inserat::with('user', 'format.issue.medium')->find($id);
+        $client = $inserat->client;
+        //$formatList = $this->listFormats($inserat->issue_id);
+        $formatList = Format::where('issue_id', $inserat->issue_id)->orderBy('type')->orderBy('art')->lists('name', 'id');
+        //$formatList = $inserat->format->lists('name','id');
+        //$issue = $inserat->format;
+
+       //dd($inserat);
+        return view('inserate.edit', compact('inserat', 'client', 'formatList'));
     }
 
     /**
@@ -117,13 +126,14 @@ class InserateController extends Controller
         //
     }
 
-    public function calculateTotals(Request $request, $format_id) {
+    public function calculateTotals(Request $request, $format_id)
+    {
         //return $request->rabatt;
         //if($format_id != 0) {
         //$format = new ;
         $format = new Format;
         $format->preis = 0;
-        foreach($request->format_id as $f) {
+        foreach ($request->format_id as $f) {
             $for = Format::findOrFail($f);
             $format->preis += $for->preis;
         }
@@ -137,16 +147,16 @@ class InserateController extends Controller
         $format->rabatt = $request->rabatt;
         $format->provision = $request->provision;
         $format->art = $request->art;
-        if($request->preisaddinput > 0) {
+        if ($request->preisaddinput > 0) {
             $format->preis += $request->preisaddinput;
         }
-        if($request->preisinput > 0) {
+        if ($request->preisinput > 0) {
             $format->preisinput = $request->preisinput;
         }
-        if($request->nettoinput > 0) {
+        if ($request->nettoinput > 0) {
             $format->nettoinput = $request->nettoinput;
         }
-        if($request->bruttoinput > 0) {
+        if ($request->bruttoinput > 0) {
             $format->bruttoinput = $request->bruttoinput;
         }
         $format->add_vat = $request->add_vat;
@@ -160,5 +170,4 @@ class InserateController extends Controller
         //$formats = $issue->formats;
         return $format;
     }
-
 }

@@ -14,5 +14,6 @@ return [
     */
 
     'create_success' => 'Die Daten wurden erfolgreich gespeichert',
+    'destroy_success' => 'Die Daten wurden erfolgreich gelöscht',
 
 ];

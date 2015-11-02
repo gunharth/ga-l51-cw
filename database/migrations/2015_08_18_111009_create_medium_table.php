@@ -19,6 +19,7 @@ class CreateMediumTable extends Migration
             $table->string('slug')->unique();
             $table->string('cover');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

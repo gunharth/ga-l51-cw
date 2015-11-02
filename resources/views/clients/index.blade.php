@@ -11,7 +11,6 @@
     </div>
     <hr  />
       
-
     <table class="table table-striped table-hover table-condensed table-bordered small-text">
       <thead>
         <tr>
@@ -38,7 +37,7 @@
                 'route' => ['clients.destroy', $client->id],
                 'style' => 'display: inline;'
             ]) !!}
-                 <a href="#" data-toggle="modal" data-target="#confirmDelete" data-title="Kunde löschen" data-message="Wollen Sie {{ $client->name }} wirklich löschen?" data-action="Löschen"><i class="fa fa-lg fa-trash-o" data-toggle="tooltip" data-original-title="löschen"></i></a>
+                 <a href="#" data-toggle="modal" data-target="#confirmDelete" data-title="Kunde löschen" data-message="Wollen Sie {{ $client->firma }} wirklich löschen?" data-action="Löschen"><i class="fa fa-lg fa-trash-o" data-toggle="tooltip" data-original-title="löschen"></i></a>
             {!! Form::close() !!}
           </td>
           </tr>

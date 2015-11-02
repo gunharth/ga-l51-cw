@@ -12,7 +12,7 @@
     <hr />
 
     <div class="well">
-        <p>Dev notes: yoyo</p>
+        <p></p>
         <p>&nbsp;</p>
     </div>
   @stop

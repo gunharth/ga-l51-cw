@@ -131,7 +131,7 @@ class FormatsController extends Controller
     {
         $format = Format::findOrFail($id);
         $format->delete();
-        \Session::flash('flash_message', 'Ausgabe wurde erfolgreich gelöscht');
+        \Session::flash('flash_message', trans('messages.destroy_success'));
         return redirect()->route('medium.issues.edit', [$medium_slug, $issue_id]);
     }
 }

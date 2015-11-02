@@ -25,8 +25,8 @@
           <th>Format</th>
           <th>Preis <br>€ {{$totalPreis}}</th>
           <th>Rab.</th>
-          <th>AP</th>
-          <th>Netto</th>
+          <th>AP/Netto</th>
+          <th>WA</th>
           <th>Brutto</th>
           <th>Berater</th>
           <th>Anmerkung</th>
@@ -36,7 +36,7 @@
       @foreach($inserate as $inserat)
         <tr>
           <td>{{ $inserat->id }}</td>
-          <td>{{ $inserat->client->firma }}</td>
+          <td>{{ $inserat->client->firma }} {{ $inserat->client_text }}</td>
           <td>{{ $inserat->sujet }}</td>
           <td>{{ $inserat->auftragsnummer }}</td>
           <td>{{ $inserat->format->get(0)->issue->medium->title }} - {{ $inserat->format->get(0)->issue->name }}</td>
@@ -51,7 +51,7 @@
           </td>
           <td>{{ $inserat->preis }}</td>
           <td>{{ $inserat->preis2 }}</td>
-          <td>{{ $inserat->preis3 }}</td>
+          <td>{{ $inserat->netto }}</td>
           <td>{{ $inserat->preis4 }}</td>
           <td>{{ $inserat->brutto }}</td>
           <td>{{ $inserat->user->last_name }}</td>

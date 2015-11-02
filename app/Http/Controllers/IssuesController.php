@@ -3,17 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Medium;
 use App\Issue;
 use App\Format;
+
 //use Carbon\Carbon;
 
 class IssuesController extends Controller
 {
-    
+    use Traits;
+
     // public function __construct() {
     //     $this->middleware('auth');
     // }
@@ -39,7 +40,7 @@ class IssuesController extends Controller
         $medium = Medium::findBySlug($medium_slug);
         //return $medium->id;
 
-        return view('issues.create',compact('medium'));
+        return view('issues.create', compact('medium'));
     }
 
     /**
@@ -67,7 +68,7 @@ class IssuesController extends Controller
         //return redirect()->back();
         //$medium = $input;
         //dd($medium);
-        return redirect()->route('medium.issues.edit', [$issue->medium_id,$issue->id]);
+        return redirect()->route('medium.issues.edit', [$issue->medium_id, $issue->id]);
        // return view('medium.show/$medium->slug',compact('medium'));
     }
 
@@ -77,14 +78,14 @@ class IssuesController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function show($medium_slug,$id)
+    public function show($medium_slug, $id)
     {
         $issue = Issue::findOrFail($id);
         //$issue->medium = $issue->medium;
         $medium = $issue->medium;
         $issue->formats = $issue->formatsIssue;
         $issue->productionCosts = $issue->getIssueProductionCosts();
-        return view('issues.show',compact('issue','medium'));
+        return view('issues.show', compact('issue', 'medium'));
     }
 
     /**
@@ -93,13 +94,13 @@ class IssuesController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function edit($medium_slug,$id)
+    public function edit($medium_slug, $id)
     {
         $issue = Issue::findOrFail($id);
         //$issue = Issue::find($id)->formats->where('type',0)->where('art',0);
         $medium = $issue->medium;
         $issue->formats = $issue->formatsIssue;
-        return view('issues.edit',compact('issue','medium'));
+        return view('issues.edit', compact('issue', 'medium'));
     }
 
     /**
@@ -111,14 +112,13 @@ class IssuesController extends Controller
      */
     public function update(Request $request, $medium_slug, $id)
     {
-        
         $issue = Issue::findOrFail($id);
 
         /*$this->validate($request, [
             'name' => 'required'
         ]);*/
         
-        $input = $request->all(); 
+        $input = $request->all();
 
         $issue->fill($input)->save();
 
@@ -137,23 +137,51 @@ class IssuesController extends Controller
     {
         $issue = Issue::findOrFail($id);
         $issue->delete();
-        \Session::flash('flash_message', 'Ausgabe wurde erfolgreich gelöscht');
+        \Session::flash('flash_message', trans('messages.destroy_success'));
         return redirect()->route('medium.show', $medium_slug);
     }
 
-    public function listFormats($id) {
+
+    /*public function listFormats($id)
+    {
         $issue = Issue::findOrFail($id);
         $formats = $issue->formats;
         //$formats = [0=>'-- Auswahl --'] + $issue->formats->toArray();
         return $formats;
-    }
+    }*/
+
 
     public function showDetails($id)
     {
         $issue = Issue::findOrFail($id);
         $medium = $issue->medium;
         //return $client;
-        return view('issues.partials.details',compact('issue','medium'));
+        return view('issues.partials.details', compact('issue', 'medium'));
+    }
 
+    public function replicate($id)
+    {
+        $issue = Issue::findOrFail($id);
+        $issue->name = $issue->name . ' Kopie';
+        $clone = $issue->replicate();
+        $clone->save();
+
+        if ($issue->formats->count() > 0)
+{
+    $formats_array = [];
+
+    foreach ($issue->formats as $format) {
+        $format_copy = $format->replicate();
+        $format_copy->issue_id = $clone->id;
+        array_push($formats_array, $format_copy);
+    }
+
+    $clone->formats()->saveMany($formats_array);
+}
+
+        
+        
+        
+        return redirect()->back();
     }
 }

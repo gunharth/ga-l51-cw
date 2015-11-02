@@ -30,7 +30,6 @@
             <div class="col-sm-10">
             {!! Form::select(
                 'type_id',
-                //$types,
                 $types,
                 $medium->type_id,
                 ['class' => 'form-control']

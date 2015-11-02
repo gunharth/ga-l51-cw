@@ -106,7 +106,7 @@ class MediumTypesController extends Controller
     {
         $type = MediumType::findOrFail($id);
         $type->delete();
-        \Session::flash('flash_message', 'Task successfully deleted!');
+        \Session::flash('flash_message', trans('messages.destroy_success'));
         return redirect()->route('types.index');
     }
 }

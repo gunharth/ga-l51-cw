@@ -17,6 +17,7 @@ class CreateInserateTable extends Migration
             $table->string('title');
             $table->integer('user_id')->unsigned();
             $table->integer('client_id')->unsigned();
+            $table->string('client_text');
             $table->string('sujet');
             $table->string('auftragsnummer');
             $table->integer('issue_id')->unsigned();
@@ -24,15 +25,22 @@ class CreateInserateTable extends Migration
             $table->tinyInteger('art')->unsigned();
             $table->decimal('strecke', 7, 2);
             $table->decimal('preis', 7, 2);
-            $table->integer('rabatt');
+            $table->integer('wert_rabatt_proz');
+            $table->decimal('wert_rabatt', 7, 2);
             $table->decimal('preis2', 7, 2);
-            $table->integer('provision');
+            $table->integer('wert_provision_proz');
+            $table->decimal('wert_provision', 7, 2);
             $table->decimal('preis3', 7, 2);
-            $table->integer('werbeabgabe');
+            $table->decimal('netto', 7, 2);
+            $table->integer('wert_wa_proz');
+            $table->decimal('wert_werbeabgabe', 7, 2);
             $table->decimal('preis4', 7, 2);
+            $table->integer('wert_ust_proz');
+            $table->decimal('ust', 7, 2);
             $table->decimal('brutto', 7, 2);
             $table->text('notes');
             $table->timestamps();
+            $table->softDeletes();
             
             $table->index('type');
             $table->index('art');

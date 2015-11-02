@@ -3,9 +3,14 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Format extends Model
 {
+    use SoftDeletes;
+
+    protected $dates = ['deleted_at'];
+
     protected $fillable = [
         'name',
         'preis',
@@ -56,7 +61,7 @@ class Format extends Model
                 //$preis = $netto-$wert_werbeabgabe;
             }
 
-            if($this->add_vat == 0) {
+            if ($this->add_vat == 0) {
                 $ust = 0;
                 $wert_ust_proz = 0;
                 $brutto = $wa;
@@ -71,7 +76,7 @@ class Format extends Model
             if ($this->provision > 0) {
                 //$rabatt = round($provision/(100-$this->provision)*100,2);
 
-                if($this->provision < 100) {
+                if ($this->provision < 100) {
                     $provision = ($netto/(100-$this->provision))*100;
                     $wert_provision = round($provision-$netto, 2);
                     $wert_provision_proz = $this->provision;
@@ -151,7 +156,7 @@ class Format extends Model
             $provision = $rabatt;
             $brutto = $rabatt;
             $wert_rabatt = $this->preis-$this->preisinput;
-            $wert_rabatt_proz = round(100-(($this->preisinput/$this->preis)*100),2);
+            $wert_rabatt_proz = round(100-(($this->preisinput/$this->preis)*100), 2);
             $wert_provision = 0;
             $wert_provision_proz = 0;
             $wert_werbeabgabe = 0;
@@ -178,7 +183,7 @@ class Format extends Model
                 $wa = $brutto+$wert_werbeabgabe;
                 $wert_wa_proz = 5;
             }
-            if($this->add_vat == 0) {
+            if ($this->add_vat == 0) {
                 $ust = 0;
                 $wert_ust_proz = 0;
                 $brutto = $wa;
@@ -236,7 +241,7 @@ class Format extends Model
                 $wa = $brutto+$wert_werbeabgabe;
                 $wert_wa_proz = 5;
             }
-            if($this->add_vat == 0) {
+            if ($this->add_vat == 0) {
                 $ust = 0;
                 $wert_ust_proz = 0;
                 $brutto = $wa;

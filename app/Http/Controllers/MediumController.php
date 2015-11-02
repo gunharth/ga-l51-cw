@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Medium;
@@ -40,8 +39,8 @@ class MediumController extends Controller
      */
     public function create()
     {
-        $types = MediumType::lists('title','id');
-        return view('medium.create')->with('types',$types);
+        $types = MediumType::lists('title', 'id');
+        return view('medium.create')->with('types', $types);
     }
 
     /**
@@ -52,7 +51,6 @@ class MediumController extends Controller
      */
     public function store(Request $request)
     {
-        
         $this->validate($request, [
             'title' => 'required'
         ]);
@@ -83,8 +81,7 @@ class MediumController extends Controller
         $medium->type = MediumType::find($medium->type_id);
         //$medium->formats = $medium->formats;
         $medium->issues = $medium->issues;
-        return view('medium.show',compact('medium'));
-
+        return view('medium.show', compact('medium'));
     }
 
     /**
@@ -96,10 +93,11 @@ class MediumController extends Controller
     public function edit($id)
     {
         $medium = Medium::findOrFail($id);
-        $types = [0=>'Kategorie'] + MediumType::lists('title','id')->toArray();
+        $types = [0=>'Kategorie'] + MediumType::lists('title', 'id')->toArray();
         //$country_options = [” => ‘Please Select Your Country’] + Country::lists(‘short_name’, ‘id’);
         //$types = [0=>'Select a client from the list'] + $types;
-        return view('medium.edit',compact('medium','types'));
+        return view('medium.edit', compact('medium', 'types'));
+        //return view('medium.index');
     }
 
     /**
@@ -111,7 +109,6 @@ class MediumController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
         $medium = Medium::findOrFail($id);
 
         $this->validate($request, [
@@ -119,7 +116,7 @@ class MediumController extends Controller
         ]);
 
         $filename = "";
-        if($request->file('file')) {
+        if ($request->file('file')) {
             $file = $request->file('file');
             $extension = $file->getClientOriginalExtension();
             $filename = $file->getFilename().'.'.$extension;
@@ -136,7 +133,7 @@ class MediumController extends Controller
                 base_path() . '/public/uploads/', $filename
             );*/
             $request->merge(array('cover' => $filename));
-         }
+        }
         /*$entry = new Fileentry();
         $entry->mime = $file->getClientMimeType();
         $entry->original_filename = $file->getClientOriginalName();
@@ -144,8 +141,8 @@ class MediumController extends Controller
  */
        // $entry->save();
         //$request->input('yodel', $filename);
-        
-        $input = $request->all(); 
+
+        $input = $request->all();
         //$input->cover = $filename;
         //dd($input);
         //$input->cover = $cover;
@@ -154,7 +151,11 @@ class MediumController extends Controller
 
         \Session::flash('flash_message', trans('messages.create_success'));
 
-        return redirect()->back();
+        //return redirect()->back();
+        //return view('medium.index');
+        //return redirect()->route('medium.index');
+        //return redirect()->route('medium.issues.edit', [$issue->medium_id,$issue->id]);
+        return view('medium.show', compact('medium'));
     }
 
     /**
@@ -166,12 +167,13 @@ class MediumController extends Controller
     public function destroy($id)
     {
         $medium = Medium::findOrFail($id);
+        /* image delete - BUT as we do a softdelete not needed for now 
         $image = $medium->cover;
         if(File::isFile(public_path().'/uploads/'.$image)) {
             File::delete(public_path().'/uploads/'.$image);
-        }
+        }*/
         $medium->delete();
-        \Session::flash('flash_message', 'Task successfully deleted!');
+        \Session::flash('flash_message', trans('messages.destroy_success'));
         return redirect()->route('medium.index');
     }
 }
