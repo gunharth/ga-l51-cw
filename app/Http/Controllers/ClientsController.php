@@ -27,7 +27,9 @@ class ClientsController extends Controller
      */
     public function create()
     {
-        return view('clients.create');
+        $client = new Client;
+        $client->vat_country = 0;
+        return view('clients.create', compact('client'));
     }
 
     /**

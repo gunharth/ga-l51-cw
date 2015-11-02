@@ -46,7 +46,7 @@
           {!! Form::select(
           'vat_country',
           $list = array('ATU' => 'ATU', 'DE' => 'DE'),
-          0,
+          $client->vat,
           ['class' => 'form-control']
           ) !!}
           {!! Form::text('vat_number',null,['class' => 'form-control', 'placeholder' => 'Nummer']) !!}
