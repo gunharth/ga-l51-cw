@@ -23,7 +23,7 @@ class Inserat extends Model
         'client_id',
         'client_text',
         'issue_id',
-        'type',
+        //'type',
         'art',
         'strecke',
         'preis',

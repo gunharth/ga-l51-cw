@@ -21,7 +21,7 @@ class CreateInserateTable extends Migration
             $table->string('sujet');
             $table->string('auftragsnummer');
             $table->integer('issue_id')->unsigned();
-            $table->tinyInteger('type')->unsigned();
+            //$table->tinyInteger('type')->unsigned();
             $table->tinyInteger('art')->unsigned();
             $table->decimal('strecke', 7, 2);
             $table->decimal('preis', 7, 2);

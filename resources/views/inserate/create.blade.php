@@ -16,7 +16,6 @@
   'route' => ['inserate.store'],
   'class' => 'form-horizontal'
 ]) !!}
-<input id="type" type="hidden" name="type">
 
 <!-- clients -->
 <div class="row row-flex row-flex-wrap">

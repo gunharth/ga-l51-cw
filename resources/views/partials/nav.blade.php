@@ -1,5 +1,5 @@
 <div class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
+      <div class="container-fluid">
         <div class="navbar-header">
           <a href="/" class="navbar-brand">Goldader</a>
           @if(Auth::check())

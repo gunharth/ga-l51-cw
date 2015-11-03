@@ -1,11 +1,11 @@
 @extends('app')
 
-@section('pagetitle','Neues Inserat anlegen')
+@section('pagetitle','Inserat bearbeiten')
 
 @section('content')
 
 <div class="row vertical-align">
-  <div class="col-md-6"><h1>Neues Inserat anlegen</h1></div>
+  <div class="col-md-6"><h1>Inserat bearbeiten</h1></div>
   <div class="col-md-6 text-right">
     <a href="{{ route('inserate.index') }}" alt="Zurück" tile="zurück"><i class="fa fa-lg fa-arrow-left" data-toggle="tooltip" data-original-title="zurück"></i></a> 
   </div>
@@ -17,7 +17,6 @@
   'route' => ['inserate.update', $inserat->id],
   'class' => 'form-horizontal'
 ]) !!}
-<input id="type" type="hidden" name="type">
 
 <!-- clients -->
 <div class="row row-flex row-flex-wrap">
@@ -55,26 +54,26 @@
       <hr>
       <div id="formats-outer">
         @for ($i = 0; $i < count($inserat->format); $i++)
-            <div class="form-group vertical-align">
-              {!! Form::label('format_id','Format',['class' => 'col-sm-4']) !!}
-              <div class="col-md-5">
-              {!! Form::select(
-                  'format_id[]',
-                  $formatList,
-                  $inserat->format[$i]->id,
-                  ['class' => 'form-control format_id']
-                  ) !!}
-              </div>
-              <div class="col-md-2">
-                <label class="checkbox-inline">
-                  <input name="pr[0]" type="checkbox" value="1" disabled="disabled" class="manual-input"> PR
-                </label>
-              </div>
-              <div class="col-md-1">
-                <a href="#" alt="Format hinzufügen" tile="Format hinzufügen" class="addFormat"><i class="fa fa fa-plus" data-toggle="tooltip" data-original-title="Format hinzufügen"></i></a> 
-              </div>
+          <div class="form-group vertical-align">
+            {!! Form::label('format_id','Format',['class' => 'col-sm-4']) !!}
+            <div class="col-md-5">
+              <select class="form-control format_id" name="format_id[]">
+                <option value="0">-- Auswahl --</option>
+                  @foreach($formatList as $format)
+                  <option value="{{ $format->id }}" data-calc="{{ $format->type }}" @if($inserat->format[$i]->id == $format->id) selected="selected" @endif >{{ $format->name }}</option>
+                  @endforeach
+                </select>
             </div>
-          @endfor
+            <div class="col-md-2">
+              <label class="checkbox-inline">
+                <input name="pr[{{$i}}]" type="checkbox" value="1" class="manual-input" @if($inserat->format[$i]->pivot->pr == 1) checked="checked" @endif> PR
+              </label>
+            </div>
+            <div class="col-md-1">
+              <a href="#" alt="Format hinzufügen" tile="Format hinzufügen" class="addFormat"><i class="fa fa fa-plus" data-toggle="tooltip" data-original-title="Format hinzufügen"></i></a> 
+            </div>
+          </div>
+        @endfor
         
       </div>
     </div>
@@ -101,10 +100,10 @@
         <div class="col-md-9">
           <div class="input-group">
             <label class="radio-inline">
-              <input name="art" type="radio" value="0" checked="cheked" disabled="disabled" class="manual-input"> Auftrag &nbsp; &nbsp;
+              <input name="art" type="radio" value="0" class="manual-input" @if($inserat->art == 0) checked="checked" @endif> Auftrag &nbsp; &nbsp;
             </label>
             <label class="radio-inline">
-              <input name="art" type="radio" value="1" disabled="disabled"class="manual-input"> GG &nbsp; &nbsp;
+              <input name="art" type="radio" value="1" class="manual-input" @if($inserat->art == 1) checked="checked" @endif> GG &nbsp; &nbsp;
             </label>
           </div>
         </div>
@@ -313,7 +312,7 @@
       </div>
       <div class="row">
         
-          <a class="btn btn-success pull-right disabled" href="#" role="button" id="inseratSubmit">Speichern</a>
+          <a class="btn btn-success pull-right" href="#" role="button" id="inseratSubmit">Speichern</a>
         
       </div> 
     </div>

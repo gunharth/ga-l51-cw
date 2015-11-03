@@ -16,7 +16,7 @@
   </head>
   <body class="fuelux">
     @include('partials/nav')
-    <div class="container">
+    <div class="container-fluid">
       @include('partials.errors')
       @if(Session::has('flash_message'))
           <div id="flashMessage">
@@ -26,9 +26,9 @@
           </div>
       @endif
       @yield('content')
-    </div>
+    
     <!--footer-->
-      <div class="container">
+      
         <p>&nbsp;</p>
         <p><small><em>Goldader v 0.2 - © <?php echo date('Y');?> - Gunharth Randolf / communautic Group</em></small></p>
       </div>

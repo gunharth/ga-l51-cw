@@ -30069,6 +30069,13 @@ $(document).on('change', '.btn-file :file', function() {
     });
 
 var formatTemplate;
+var checkEdit = $('#formats-outer').html();
+if(checkEdit != "") {
+  var fT = $('#formats-outer div:eq(0)').clone();
+  $(fT).find('option:selected').removeAttr('selected');
+  //$(fT + ' option:eq(0)').prop('selected');
+  formatTemplate = fT;
+}
 
   $( "input.mediumAutoComplete" ).autocomplete({
       source: '/mediumAutoComplete',
@@ -30109,10 +30116,8 @@ var formatTemplate;
     });
 
 function getInseratTotals() {
-  //alert('called');
   var issue_id = $('#issue_id').val();
   if(issue_id == 0) {
-    //alert('Bitte wählen Sie ein Medium/Ausgabe');
       $('.manual-input').prop('disabled',true);
       $('#inseratSubmit').addClass('disabled');
     return false;
@@ -30125,9 +30130,7 @@ function getInseratTotals() {
       format_id_string += '&format_id[]='+$(this).val();
     }
   })
-  //console.log(format_id_string);
   if(format_id_string == '') {
-    //alert('Bitte wählen Sie ein Format');
       $('.manual-input').prop('disabled',true);
       $('#inseratSubmit').addClass('disabled');
     return false;

@@ -23,7 +23,7 @@
           <th>Medium - Ausgabe</th>
           <th>ET</th>
           <th>Format</th>
-          <th>Preis <br>€ {{$totalPreis}}</th>
+          <th>Preis</th>
           <th>Rab.</th>
           <th>AP/Netto</th>
           <th>WA</th>
@@ -31,6 +31,21 @@
           <th>Berater</th>
           <th>Anmerkung</th>
           <th class="text-right">&nbsp;</th>
+        </tr>
+        <tr>
+          <td colspan="3"><strong>Anzahl/Aufträge: {{$inserate->totalInserate}}</strong></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td><strong>Seiten: {{$inserate->totalFlaeche}}</strong></td>
+          <td><strong>€ {{$inserate->totalPreis}}</strong></td>
+          <td><strong>{{$inserate->totalRabattProz}}%</strong></td>
+          <td><strong>€ {{$inserate->totalNetto}}</strong></td>
+          <td></td>
+          <td><strong>€ {{$inserate->totalBrutto}}</strong></td>
+          <td></td>
+          <td></td>
+          <td class="text-right">&nbsp;</td>
         </tr>
       </thead>
       @foreach($inserate as $inserat)
@@ -47,7 +62,6 @@
             @if ($inserat->format[$i]->pivot->pr == 1) PR @endif
             @if ($i < count($inserat->format)-1) + @endif
           @endfor
-
           </td>
           <td>{{ $inserat->preis }}</td>
           <td>{{ $inserat->preis2 }}</td>
@@ -56,6 +70,16 @@
           <td>{{ $inserat->brutto }}</td>
           <td>{{ $inserat->user->last_name }}</td>
           <td>{{ nl2br($inserat->notes) }}</td>
+          <td class="text-nowrap">
+            <a href="{{ route('inserate.edit', $inserat->id) }}" class="btn btn-xs btn-info" alt="Bearbeiten" tile="bearbeiten"><i class="fa fa-edit" data-toggle="tooltip" data-original-title="bearbeiten"></i></a>
+              {!! Form::open([
+                'method' => 'DELETE',
+                'route' => ['inserate.destroy', $inserat->id],
+                'style' => 'display: inline;'
+            ]) !!}
+                 <a href="#" class="btn btn-xs btn-danger" data-toggle="modal" data-target="#confirmDelete" data-title="Inserat löschen" data-message="Wollen Sie dieses Inserat wirklich löschen?" data-action="Löschen"><i class="fa fa-trash-o" data-toggle="tooltip" data-original-title="löschen"></i></a>
+            {!! Form::close() !!}
+          </td>
           </tr>
         @endforeach
       </tbody>
