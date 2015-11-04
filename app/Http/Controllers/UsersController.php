@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use Hash;
 use App\User;
 
 class UsersController extends Controller
@@ -20,7 +19,6 @@ class UsersController extends Controller
     {
         $users = User::orderBy('name', 'ASC')->get();
         return view('users.index', compact('users'));
-
     }
 
     /**
@@ -30,7 +28,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        //
+        return view('users.create');
     }
 
     /**
@@ -41,7 +39,21 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'last_name' => 'required',
+            'password' => 'required',
+            'password_confirm' => 'required|same:password'
+        ]);
+
+        //$user = new User;
+        $input = $request->all();
+        //dd($input);
+        $input['password'] = Hash::make($input['password']);
+        $user = User::create($input);
+        \Session::flash('flash_message', trans('messages.create_success'));
+        //return redirect()->route('clients.edit', [$client->id]);
+        return redirect()->route('users.index');
     }
 
     /**
@@ -63,7 +75,8 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::findOrFail($id);
+        return view('users.edit', compact('user'));
     }
 
     /**
@@ -75,7 +88,25 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'last_name' => 'required',
+            'password_confirm' => 'same:password'
+        ]);
+
+        $user = User::findOrFail($id);
+        if ($request->password == '') {
+            $input = $request->except('password');
+        } else {
+            $input = $request->all();
+            $input['password'] = Hash::make($input['password']);
+        }
+        
+        $user->fill($input)->save();
+
+        \Session::flash('flash_message', trans('messages.create_success'));
+
+        return redirect()->back();
     }
 
     /**
@@ -86,6 +117,9 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->delete();
+        \Session::flash('flash_message', trans('messages.destroy_success'));
+        return redirect()->route('inserate.index');
     }
 }

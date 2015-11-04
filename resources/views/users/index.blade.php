@@ -22,7 +22,7 @@
         </tr>
       </thead>
       @foreach($users as $user)
-        <tr data-href="{{ route('users.show', $user->id) }}" class="clickable">
+        <tr data-href="{{ route('users.show', $user->id) }}">
           <td>{{ $user->id }}</td>
           <td>{{ $user->name }} {{ $user->last_name }}</td>
           <td class="text-right">

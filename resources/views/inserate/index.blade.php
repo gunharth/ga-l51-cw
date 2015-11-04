@@ -71,13 +71,13 @@
           <td>{{ $inserat->user->last_name }}</td>
           <td>{{ nl2br($inserat->notes) }}</td>
           <td class="text-nowrap">
-            <a href="{{ route('inserate.edit', $inserat->id) }}" class="btn btn-xs btn-info" alt="Bearbeiten" tile="bearbeiten"><i class="fa fa-edit" data-toggle="tooltip" data-original-title="bearbeiten"></i></a>
+            <a href="{{ route('inserate.edit', $inserat->id) }}" alt="Bearbeiten" tile="bearbeiten"><i class="fa fa-edit fa-lg" data-toggle="tooltip" data-original-title="bearbeiten"></i></a>
               {!! Form::open([
                 'method' => 'DELETE',
                 'route' => ['inserate.destroy', $inserat->id],
                 'style' => 'display: inline;'
             ]) !!}
-                 <a href="#" class="btn btn-xs btn-danger" data-toggle="modal" data-target="#confirmDelete" data-title="Inserat löschen" data-message="Wollen Sie dieses Inserat wirklich löschen?" data-action="Löschen"><i class="fa fa-trash-o" data-toggle="tooltip" data-original-title="löschen"></i></a>
+                 <a href="#" data-toggle="modal" data-target="#confirmDelete" data-title="Inserat löschen" data-message="Wollen Sie dieses Inserat wirklich löschen?" data-action="Löschen"><i class="fa fa-trash-o fa-lg" data-toggle="tooltip" data-original-title="löschen"></i></a>
             {!! Form::close() !!}
           </td>
           </tr>
