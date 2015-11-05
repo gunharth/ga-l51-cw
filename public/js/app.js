@@ -123511,6 +123511,7 @@ $(function() {
      */
     var table = $('.dataTables-example').dataTable({
         responsive: true,
+        "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
         dom: "<'row'<'col-sm-3'l><'col-sm-6'f><'col-sm-3 text-right'B>>" +
             "<'row'<'col-sm-12'tr>>" +
             "<'row'<'col-sm-5'i><'col-sm-7'p>>",
