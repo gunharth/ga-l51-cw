@@ -268,7 +268,8 @@ $(function() {
             'copyHtml5',
             'excelHtml5',
             'csvHtml5',
-            'pdfHtml5'
+            'pdfHtml5',
+            'print'
         ],
         language: {
             "sEmptyTable": "Keine Daten in der Tabelle vorhanden",

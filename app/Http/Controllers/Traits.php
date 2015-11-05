@@ -18,4 +18,9 @@ trait Traits
         //$formats = [0=>'-- Auswahl --'] + $issue->formats->toArray();
         return $formats;
     }
+
+    public function moneyFormat($number)
+    {
+        return number_format((float)$number, 2, ',', '.');
+    }
 }

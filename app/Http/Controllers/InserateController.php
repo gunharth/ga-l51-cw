@@ -24,12 +24,12 @@ class InserateController extends Controller
     {
         $inserate = Inserat::with('user', 'client', 'format.issue.medium')->get();
         $inserate->totalInserate = $inserate->count();
-        $inserate->totalPreis = $inserate->sum('preis');
-        $inserate->totalNetto = $inserate->sum('netto');
-        $inserate->totalBrutto = $inserate->sum('brutto');
+        $inserate->totalPreis = $this->moneyFormat($inserate->sum('preis'));
+        $inserate->totalNetto = $this->moneyFormat($inserate->sum('netto'));
+        $inserate->totalBrutto = $this->moneyFormat($inserate->sum('brutto'));
         $inserate->totalRabatt = $inserate->sum('preis2');
         // Rabatt in %
-        $inserate->totalRabattProz = round(100-($inserate->totalRabatt/$inserate->totalPreis)*100, 2);
+        $inserate->totalRabattProz = round(100-($inserate->totalRabatt/$inserate->sum('preis'))*100, 2);
         $inserate->totalFlaeche = $inserate->sum('strecke');
         foreach ($inserate as $inserat) {
             foreach ($inserat->format as $format) {

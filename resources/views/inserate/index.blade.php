@@ -20,9 +20,9 @@
           <td><strong>Anzahl/Aufträge Total: {{$inserate->totalInserate}}</strong></td>
           <td><strong>Seiten Total: {{$inserate->totalFlaeche}}</strong></td>
           <td><strong>Preis Total: € {{$inserate->totalPreis}}</strong></td>
-          <td><strong>Rabatt Total:{{$inserate->totalRabattProz}}%</strong></td>
-          <td><strong>Netto Total:€ {{$inserate->totalNetto}}</strong></td>
-          <td><strong>Brutto Total:€ {{$inserate->totalBrutto}}</strong></td>
+          <td><strong>Rabatt Total: {{$inserate->totalRabattProz}}%</strong></td>
+          <td><strong>Netto Total: € {{$inserate->totalNetto}}</strong></td>
+          <td><strong>Brutto Total: € {{$inserate->totalBrutto}}</strong></td>
         </tr>
     </table>
 
