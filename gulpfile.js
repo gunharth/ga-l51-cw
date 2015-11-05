@@ -41,6 +41,8 @@ elixir(function(mix) {
 
     mix.styles([
          'resources/assets/css/bootstrap-datepicker.css',
+         'resources/assets/css/dataTables.bootstrap.css',
+         'resources/assets/css/buttons.bootstrap.css',
          'public/css/app.css'
       ],
          'public/css/app.css',
@@ -56,6 +58,15 @@ elixir(function(mix) {
              'js/bootstrap.js',
              'js/bootstrap-datepicker.js',
              'js/bootstrap-datepicker.de.js',
+             'js/datatables/jszip.js',
+             'js/datatables/pdfmake.js',
+             'js/datatables/vfs_fonts.js',
+             'js/datatables//jquery.dataTables.js',
+            'js/datatables/dataTables.bootstrap.js',
+            'js/datatables/dataTables.buttons.js',
+            'js/datatables/buttons.bootstrap.js',
+            'js/datatables/buttons.html5.js',
+            'js/datatables/buttons.print.js',
              'js/app.js'
          ],
          'public/js/app.js',

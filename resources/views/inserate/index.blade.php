@@ -13,7 +13,20 @@
       </div>
     </div>
     <hr />
-    <table class="table small-text table-striped table-hover ">
+  
+
+  <table class="table small-text table-striped table-bordered no-wrap">
+      <tr>
+          <td><strong>Anzahl/Aufträge Total: {{$inserate->totalInserate}}</strong></td>
+          <td><strong>Seiten Total: {{$inserate->totalFlaeche}}</strong></td>
+          <td><strong>Preis Total: € {{$inserate->totalPreis}}</strong></td>
+          <td><strong>Rabatt Total:{{$inserate->totalRabattProz}}%</strong></td>
+          <td><strong>Netto Total:€ {{$inserate->totalNetto}}</strong></td>
+          <td><strong>Brutto Total:€ {{$inserate->totalBrutto}}</strong></td>
+        </tr>
+    </table>
+
+    <table class="table small-text table-striped table-bordered table-hover no-wrap dataTables-example">
       <thead>
         <tr>
           <th>ID</th>
@@ -32,22 +45,8 @@
           <th>Anmerkung</th>
           <th class="text-right">&nbsp;</th>
         </tr>
-        <tr>
-          <td colspan="3"><strong>Anzahl/Aufträge: {{$inserate->totalInserate}}</strong></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td><strong>Seiten: {{$inserate->totalFlaeche}}</strong></td>
-          <td><strong>€ {{$inserate->totalPreis}}</strong></td>
-          <td><strong>{{$inserate->totalRabattProz}}%</strong></td>
-          <td><strong>€ {{$inserate->totalNetto}}</strong></td>
-          <td></td>
-          <td><strong>€ {{$inserate->totalBrutto}}</strong></td>
-          <td></td>
-          <td></td>
-          <td class="text-right">&nbsp;</td>
-        </tr>
       </thead>
+      <tbody>
       @foreach($inserate as $inserat)
         <tr>
           <td>{{ $inserat->id }}</td>
