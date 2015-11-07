@@ -15,7 +15,8 @@
     "bootswatch-sass": "~3.3.1",
     "font-awesome": "fontawesome#~4.4.0",
     "jquery-ui": "~1.11.4",
-    "jqueryuibootstrap": "jquery-ui-bootstrap/jquery-ui-bootstrap#masterbs3"
+    "jqueryuibootstrap": "jquery-ui-bootstrap/jquery-ui-bootstrap#masterbs3",
+    "morris.js": "morrisjs#~0.5.1"
   },
   "resolutions": {
     "bootstrap-sass-official": "~3.3.5"
