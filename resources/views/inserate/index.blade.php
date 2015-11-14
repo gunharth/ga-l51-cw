@@ -43,7 +43,7 @@
           <th>Brutto</th>
           <th>Berater</th>
           <th>Anmerkung</th>
-          <th class="text-right">&nbsp;</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
