@@ -156,7 +156,7 @@
           {!! Form::label('strecke','Strecke/Fläche',['class' => 'col-sm-6']) !!}
           <div class="col-sm-6 input-group addon">
               <span class="input-group-addon">,</span>
-              {!! Form::input('number','strecke',null,['class' => 'form-control manual-input', 'step' => '0.01', 'min' => '0', 'placeholder' => '0', 'disabled' => 'disabled']) !!}
+              {!! Form::input('number','strecke',null,['class' => 'form-control', 'step' => '0.01', 'min' => '0', 'placeholder' => '0', 'disabled' => 'disabled']) !!}
           </div>
       </div>
       <div class="row">
