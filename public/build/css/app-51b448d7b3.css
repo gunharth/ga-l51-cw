@@ -9150,7 +9150,7 @@ html, body {
   flex: 1 1 auto; }
 
 .row-flex-wrap {
-  -webkit-flex-flow: row wrap;
+  /*-webkit-flex-flow: row wrap;*/
   -webkit-align-content: flex-start;
   -ms-flex-line-pack: start;
   align-content: flex-start;

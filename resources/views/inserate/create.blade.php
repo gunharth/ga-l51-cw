@@ -7,7 +7,7 @@
 <div class="row vertical-align">
   <div class="col-md-6"><h1>Neues Inserat anlegen</h1></div>
   <div class="col-md-6 text-right">
-    <a href="{{ route('inserate.index') }}" alt="Zurück" tile="zurück"><i class="fa fa-lg fa-arrow-left" data-toggle="tooltip" data-original-title="zurück"></i></a> 
+    <a href="{{ route('inserate.index') }}" title="zurück"><i class="fa fa-lg fa-arrow-left" data-toggle="tooltip" data-original-title="zurück"></i></a> 
   </div>
 </div>
 <hr  />
@@ -66,7 +66,7 @@
             </label>
           </div>
           <div class="col-md-1">
-            <a href="#" alt="Format hinzufügen" tile="Format hinzufügen" class="addFormat"><i class="fa fa fa-plus" data-toggle="tooltip" data-original-title="Format hinzufügen"></i></a> 
+            <a href="#" alt="Format hinzufügen" title="Format hinzufügen" class="addFormat"><i class="fa fa fa-plus" data-toggle="tooltip" data-original-title="Format hinzufügen"></i></a> 
           </div>
         </div>
       </div>
@@ -94,7 +94,7 @@
         <div class="col-md-9">
           <div class="input-group">
             <label class="radio-inline">
-              <input name="art" type="radio" value="0" checked="cheked" disabled="disabled" class="manual-input"> Auftrag &nbsp; &nbsp;
+              <input name="art" type="radio" value="0" checked="checked" disabled="disabled" class="manual-input"> Auftrag &nbsp; &nbsp;
             </label>
             <label class="radio-inline">
               <input name="art" type="radio" value="1" disabled="disabled"class="manual-input"> GG &nbsp; &nbsp;
