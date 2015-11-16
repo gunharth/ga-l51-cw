@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=Ausgabe-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>@yield('pagetitle')</title>
     <link href="{{ elixir('css/app.css') }}" rel="stylesheet" type="text/css">
@@ -40,7 +40,7 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
 <script type="text/javascript">
   
-  $(function () {
+  /*$(function () {
   // data stolen from http://howmanyleft.co.uk/vehicle/jaguar_'e'_type
   var tax_data = [
        {"period": "2011 Q3", "licensed": 3407, "sorned": 660},
@@ -124,7 +124,7 @@
       {year: '2012', value: 20}
     ]
   });
-});
+});*/
 
 </script>
   </body>
