@@ -141,7 +141,7 @@ $(function() {
           $('input[name=art]').prop('disabled',true)
         }*/
         //$('#strecke').prop('disabled',true);
-        /*if($('#format_id').find('option:selected').text() == 'Strecke') {
+        /*if($('select.format_id').find('option:selected').text() == 'Strecke') {
           $('#strecke').prop('disabled',false);
         }*/
         var art = $('input[name=art]:checked').val()
@@ -198,6 +198,10 @@ $(function() {
         getInseratTotals()
     });
     $('#formats-outer').on('change', 'select', function() {
+        $('#strecke').prop('disabled',true);
+        if($(this).find('option:selected').text() == 'Strecke') {
+          $('#strecke').prop('disabled',false);
+        }
         getInseratTotals()
     });
     /*$('#rabatt,#provision').on('blur', function() {

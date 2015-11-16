@@ -78,6 +78,15 @@
             {!! Form::text('seiten',null,['class' => 'form-control']) !!}
             </div>
         </div>
+        <div class="form-group">
+            {!! Form::label('sollumsatz','Soll/Umsatz',['class' => 'col-sm-2']) !!}
+            <div class="col-sm-10">
+                <div class="input-group addon">
+                    <span class="input-group-addon">€</span>
+                    {!! Form::input('number','sollumsatz',null,['class' => 'form-control', 'step' => '0.01', 'min' => '0', 'placeholder' => '0000,00']) !!}
+                </div>
+            </div>
+        </div>
         <h3>Produktionskosten</h3>
         <hr />
         <div class="form-group">

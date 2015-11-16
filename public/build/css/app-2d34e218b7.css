@@ -9054,6 +9054,9 @@ tr.clickable {
 #isAgent {
   display: none; }
 
+.modal {
+  z-index: 1041; }
+
 #flashMessage {
   position: fixed;
   top: 0;

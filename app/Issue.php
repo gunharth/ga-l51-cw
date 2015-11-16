@@ -28,6 +28,7 @@ class Issue extends Model
         'vertrieb',
         'druckauflage',
         'seiten',
+        'sollumsatz',
         'basisanbot',
         'redaktion',
         'fotokosten',
