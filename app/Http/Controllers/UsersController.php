@@ -64,7 +64,10 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::findOrFail($id);
+        //$client = Issue::with('inserate')->find($id);
+        $inserate = $user->inserate;
+        return view('users.show', compact('user','inserate'));
     }
 
     /**

@@ -13,7 +13,7 @@
     <div class="row">
       
 
-    <table class="table table-striped table-hover table-condensed table-bordered">
+    <table class="table table-striped table-hover table-condensed table-bordered small-text">
       <thead>
         <tr>
           <th>ID</th>
@@ -26,6 +26,8 @@
           <td>{{ $user->id }}</td>
           <td>{{ $user->name }} {{ $user->last_name }}</td>
           <td class="text-right">
+            <a href="{{ route('users.show', $user->id) }}" title="anzeigen"><i class="fa fa-lg fa-eye" data-toggle="tooltip" data-original-title="anzeigen"></i></a> 
+            &nbsp;
             <a href="{{ route('users.edit', $user->id) }}" title="bearbeiten"><i class="fa fa-lg fa-edit" data-toggle="tooltip" data-original-title="bearbeiten"></i></a> 
             &nbsp;
               {!! Form::open([

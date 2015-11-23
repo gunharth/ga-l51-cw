@@ -1,36 +1,15 @@
 @extends('app')
 
-@section('pagetitle',$client->firma)
+@section('pagetitle',$user->name . ' ' . $user->last_name)
 
 @section('content')
     <div class="row vertical-align">
-      <div class="col-md-6"><h1>{{ $client->firma }}</h1></div>
+      <div class="col-md-6"><h1>{{ $user->name }} {{ $user->last_name }}</h1></div>
         <div class="col-md-6 text-right">
           <a href="{{ route('clients.index') }}" title="zurück"><i class="fa fa-lg fa-arrow-left" data-toggle="tooltip" data-original-title="zurück"></i></a> 
         </div>
     </div>
     <hr  />
-    <div class="well">
-    <div class="row">
-    <div class="col-sm-6">
-    <table class="table">
-    <tr><td><strong>Firma</strong></td><td>{{ $client->firma }}</td></tr>
-    <tr><td><strong>Anprache / Person</strong></td><td>{{ $client->ansprache }}</td></tr>
-    <tr><td><strong>Strasse</strong></td><td>{{ $client->strasse }}</td></tr>
-    <tr><td><strong>PLZ</strong></td><td>{{ $client->plz }}</td></tr>
-    <tr><td><strong>Ort</strong></td><td>{{ $client->ort }}</td></tr>
-</table>
-</div>
- <div class="col-sm-6">
-<table class="table">
-    <tr><td><strong>Tel.</strong></td><td>{{ $client->tel }}</td></tr>
-    <tr><td><strong>Agentur</strong></td><td> @if ($client->agent === 1) Ja @else Nein @endif </td></tr>
-    <tr><td><strong>UID</strong></td><td>{{ $client->vat_country }}{{ $client->vat_number }}</td></tr>
-</table>
-</div>
-</div>
-</div>
-
         
     <h2>Inserate</h2>
 <table class="table small-text table-striped table-bordered table-hover no-wrap dataTables-clientShow">
