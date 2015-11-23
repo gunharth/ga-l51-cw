@@ -8,9 +8,9 @@
         </div>
         <div class="col-sm-4 col-md-4 text-right">
         @if($showactions)
-          <a href="{{ route('medium.index') }}" alt="Zurück" tile="zurück"><i class="fa fa-lg fa-arrow-left" data-toggle="tooltip" data-original-title="zurück"></i></a> 
+          <a href="{{ route('medium.index') }}" title="zurück"><i class="fa fa-lg fa-arrow-left" data-toggle="tooltip" data-original-title="zurück"></i></a> 
           &nbsp; 
-          <a href="{{ route('medium.edit', $medium->id) }}" alt="Bearbeiten" tile="bearbeiten"><i class="fa fa-lg fa-edit" data-toggle="tooltip" data-original-title="bearbeiten"></i></a> 
+          <a href="{{ route('medium.edit', $medium->id) }}" title="bearbeiten"><i class="fa fa-lg fa-edit" data-toggle="tooltip" data-original-title="bearbeiten"></i></a> 
           &nbsp; 
           {!! Form::open([
             'method' => 'DELETE',
@@ -21,10 +21,10 @@
           {!! Form::close() !!}
         @endif
         @if($backbutton)
-          <a href="{{ route($backroute,$backrouteid) }}" alt="Zurück" tile="zurück"><i class="fa fa-lg fa-arrow-left" data-toggle="tooltip" data-original-title="zurück"></i></a> 
+          <a href="{{ route($backroute,$backrouteid) }}" title="zurück"><i class="fa fa-lg fa-arrow-left" data-toggle="tooltip" data-original-title="zurück"></i></a> 
         @endif
         @if($prevbutton)
-          <a href="{{ URL::previous() }}" alt="Zurück" tile="zurück"><i class="fa fa-lg fa-arrow-left" data-toggle="tooltip" data-original-title="zurück"></i></a> 
+          <a href="{{ URL::previous() }}" title="zurück"><i class="fa fa-lg fa-arrow-left" data-toggle="tooltip" data-original-title="zurück"></i></a> 
         @endif
         </div>
     </div>

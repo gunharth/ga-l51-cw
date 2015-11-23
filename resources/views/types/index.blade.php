@@ -6,7 +6,7 @@
     <div class="row vertical-align">
       <div class="col-md-6"><h1>Kategorie</h1></div>
         <div class="col-md-6 text-right">
-        <a href="{{ route('types.create') }}" alt="Neu" tile="Neu"><i class="fa fa-lg fa-edit" data-toggle="tooltip" data-original-title="neues Medium anlegen"></i> Neu</a>
+        <a href="{{ route('types.create') }}" title="Neu"><i class="fa fa-lg fa-edit" data-toggle="tooltip" data-original-title="neues Medium anlegen"></i> Neu</a>
         </div>
     </div>
     <hr  />
@@ -21,7 +21,7 @@
         <tr>
           <td>{{ $type->title }}</td>
           <td class="text-right">
-            <a href="{{ route('types.edit', $type->id) }}" alt="Bearbeiten" tile="bearbeiten"><i class="fa fa-lg fa-edit" data-toggle="tooltip" data-original-title="bearbeiten"></i></a> 
+            <a href="{{ route('types.edit', $type->id) }}" title="bearbeiten"><i class="fa fa-lg fa-edit" data-toggle="tooltip" data-original-title="bearbeiten"></i></a> 
             &nbsp;
               {!! Form::open([
                 'method' => 'DELETE',

@@ -6,7 +6,7 @@
     <div class="row vertical-align">
       <div class="col-md-6"><h1>Medium</h1></div>
         <div class="col-md-6 text-right">
-        <a href="{{ route('medium.create') }}" alt="Neu" tile="Neu"><i class="fa fa-lg fa-edit" data-toggle="tooltip" data-original-title="neu"></i></a>
+        <a href="{{ route('medium.create') }}" title="Neu"><i class="fa fa-lg fa-edit" data-toggle="tooltip" data-original-title="neu"></i></a>
         </div>
     </div>
     <hr  />

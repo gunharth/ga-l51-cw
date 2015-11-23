@@ -123528,11 +123528,8 @@ $(function() {
     $(".data-attributes span").peity("donut");
 
     /**
-     * datatables Inserate index
-     * @type {
-     * }
+     * datatables language settings
      */
-    
     var dataTablesLanguage = {
             "sEmptyTable": "Keine Daten in der Tabelle vorhanden",
             "sInfo": "_START_ bis _END_ von _TOTAL_ Einträgen",
@@ -123560,7 +123557,6 @@ $(function() {
                 colvis: 'Spalten'
             }
         }
-
 
     var tableInserateIndex = $('.dataTables-inserateIndex').dataTable({
         responsive: true,
@@ -123610,11 +123606,6 @@ $(function() {
         language: dataTablesLanguage
     });
 
-    /**
-     * datatables Inserate index
-     * @type {
-     * }
-     */
     var tableIssueShow = $('.dataTables-issueShow').dataTable({
         responsive: true,
         "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "Alle"]],
@@ -123648,6 +123639,38 @@ $(function() {
                     //columns: ':visible'
                     //columns: ':visible'
                     columns: [ 0, 1, 2, 6, 12 ]
+                }
+            },
+            'print',
+            'colvis'
+        ],
+        language: dataTablesLanguage
+    });
+
+
+    var tableClientShow = $('.dataTables-clientShow').dataTable({
+        responsive: true,
+        "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "Alle"]],
+        dom: "<'row'<'col-sm-3'l><'col-sm-3'f><'col-sm-6 text-right'B>>" +
+            "<'row'<'col-sm-12'tr>>" +
+            "<'row'<'col-sm-5'i><'col-sm-7'p>>",
+        buttons: [
+            //'copyHtml5',
+            //'excelHtml5',
+            //'csvHtml5',
+            //'pdfHtml5',
+            {
+                extend: 'excelHtml5',
+                orientation: 'landscape',
+                exportOptions: {
+                    columns: ':visible'
+                }
+            },
+            {
+                extend: 'pdfHtml5',
+                orientation: 'landscape',
+                exportOptions: {
+                    columns: ':visible'
                 }
             },
             'print',

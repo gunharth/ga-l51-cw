@@ -85,7 +85,7 @@
           <td>{{ $inserat->user->last_name }}</td>
           <td>{{ nl2br($inserat->notes) }}</td>
           <td class="text-nowrap">
-            <a href="{{ route('inserate.edit', $inserat->id) }}" alt="Bearbeiten" tile="bearbeiten"><i class="fa fa-edit fa-lg" data-toggle="tooltip" data-original-title="bearbeiten"></i></a>
+            <a href="{{ route('inserate.edit', $inserat->id) }}" title="bearbeiten"><i class="fa fa-edit fa-lg" data-toggle="tooltip" data-original-title="bearbeiten"></i></a>
               {!! Form::open([
                 'method' => 'DELETE',
                 'route' => ['inserate.destroy', $inserat->id],

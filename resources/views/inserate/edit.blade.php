@@ -7,7 +7,7 @@
 <div class="row vertical-align">
   <div class="col-md-6"><h1>Inserat bearbeiten</h1></div>
   <div class="col-md-6 text-right">
-    <a href="{{ Session::get('backUrl') }}" alt="Zurück" tile="zurück"><i class="fa fa-lg fa-arrow-left" data-toggle="tooltip" data-original-title="zurück"></i></a> 
+    <a href="{{ Session::get('backUrl') }}" title="zurück"><i class="fa fa-lg fa-arrow-left" data-toggle="tooltip" data-original-title="zurück"></i></a> 
   </div>
 </div>
 <hr  />
@@ -70,7 +70,7 @@
               </label>
             </div>
             <div class="col-md-1">
-              <a href="#" alt="Format hinzufügen" tile="Format hinzufügen" class="addFormat"><i class="fa fa fa-plus" data-toggle="tooltip" data-original-title="Format hinzufügen"></i></a> 
+              <a href="#" title="Format hinzufügen" class="addFormat"><i class="fa fa fa-plus" data-toggle="tooltip" data-original-title="Format hinzufügen"></i></a> 
             </div>
           </div>
         @endfor

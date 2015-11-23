@@ -59,7 +59,9 @@ class ClientsController extends Controller
     public function show($id)
     {
         $client = Client::findOrFail($id);
-        return view('clients.show', compact('client'));
+        //$client = Issue::with('inserate')->find($id);
+        $inserate = $client->inserate;
+        return view('clients.show', compact('client','inserate'));
     }
 
     /**

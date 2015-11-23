@@ -6,7 +6,7 @@
     <div class="row vertical-align">
       <div class="col-md-6"><h1>Benutzer</h1></div>
         <div class="col-md-6 text-right">
-        <a href="{{ route('users.create') }}" alt="Neu" tile="Neu"><i class="fa fa-lg fa-edit" data-toggle="tooltip" data-original-title="neu"></i></a>
+        <a href="{{ route('users.create') }}" title="Neu"><i class="fa fa-lg fa-edit" data-toggle="tooltip" data-original-title="neu"></i></a>
         </div>
     </div>
     <hr  />
@@ -26,7 +26,7 @@
           <td>{{ $user->id }}</td>
           <td>{{ $user->name }} {{ $user->last_name }}</td>
           <td class="text-right">
-            <a href="{{ route('users.edit', $user->id) }}" alt="Bearbeiten" tile="bearbeiten"><i class="fa fa-lg fa-edit" data-toggle="tooltip" data-original-title="bearbeiten"></i></a> 
+            <a href="{{ route('users.edit', $user->id) }}" title="bearbeiten"><i class="fa fa-lg fa-edit" data-toggle="tooltip" data-original-title="bearbeiten"></i></a> 
             &nbsp;
               {!! Form::open([
                 'method' => 'DELETE',

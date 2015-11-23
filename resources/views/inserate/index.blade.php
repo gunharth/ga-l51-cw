@@ -9,7 +9,7 @@
         <h1>Inserate</h1>
       </div>
       <div class="col-md-4 text-right">
-          <a href="{{ route('inserate.create') }}" alt="Neu" tile="Neu"><i class="fa fa-lg fa-edit" data-toggle="tooltip" data-original-title="neu"></i></a>
+          <a href="{{ route('inserate.create') }}" title="Neu"><i class="fa fa-lg fa-edit" data-toggle="tooltip" data-original-title="neu"></i></a>
       </div>
     </div>
     <hr />
@@ -70,7 +70,7 @@
           <td>{{ $inserat->user->last_name }}</td>
           <td>{{ nl2br($inserat->notes) }}</td>
           <td class="text-nowrap">
-            <a href="{{ route('inserate.edit', $inserat->id) }}" alt="Bearbeiten" tile="bearbeiten"><i class="fa fa-edit fa-lg" data-toggle="tooltip" data-original-title="bearbeiten"></i></a>
+            <a href="{{ route('inserate.edit', $inserat->id) }}" title="bearbeiten"><i class="fa fa-edit fa-lg" data-toggle="tooltip" data-original-title="bearbeiten"></i></a>
               {!! Form::open([
                 'method' => 'DELETE',
                 'route' => ['inserate.destroy', $inserat->id],
