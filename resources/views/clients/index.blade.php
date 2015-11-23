@@ -11,7 +11,8 @@
     </div>
     <hr  />
       
-    <table class="table table-striped table-hover table-condensed table-bordered small-text">
+    
+    <table class="table small-text table-striped table-bordered table-hover no-wrap dataTables-inserateIndex">
       <thead>
         <tr>
           <th>ID</th>
@@ -19,7 +20,7 @@
           <th>Ansprache/Person</th>
           <th>Anschrift</th>
           <th>Tel</th>
-          <th class="text-right">&nbsp;</th>
+          <th></th>
         </tr>
       </thead>
       @foreach($clients as $client)
@@ -31,9 +32,7 @@
           <td>{{ $client->tel }}</td>
           <td class="text-right">
             <a href="{{ route('clients.show', $client->id) }}" title="anzeigen"><i class="fa fa-lg fa-eye" data-toggle="tooltip" data-original-title="anzeigen"></i></a> 
-            &nbsp;
             <a href="{{ route('clients.edit', $client->id) }}" title="bearbeiten"><i class="fa fa-lg fa-edit" data-toggle="tooltip" data-original-title="bearbeiten"></i></a> 
-            &nbsp;
               {!! Form::open([
                 'method' => 'DELETE',
                 'route' => ['clients.destroy', $client->id],

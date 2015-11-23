@@ -9,9 +9,7 @@
         <div class="col-sm-4 col-md-4 text-right">
         @if($showactions)
           <a href="{{ route('medium.index') }}" title="zurück"><i class="fa fa-lg fa-arrow-left" data-toggle="tooltip" data-original-title="zurück"></i></a> 
-          &nbsp; 
           <a href="{{ route('medium.edit', $medium->id) }}" title="bearbeiten"><i class="fa fa-lg fa-edit" data-toggle="tooltip" data-original-title="bearbeiten"></i></a> 
-          &nbsp; 
           {!! Form::open([
             'method' => 'DELETE',
             'route' => ['medium.destroy', $medium->id],

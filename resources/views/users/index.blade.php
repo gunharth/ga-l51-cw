@@ -27,9 +27,7 @@
           <td>{{ $user->name }} {{ $user->last_name }}</td>
           <td class="text-right">
             <a href="{{ route('users.show', $user->id) }}" title="anzeigen"><i class="fa fa-lg fa-eye" data-toggle="tooltip" data-original-title="anzeigen"></i></a> 
-            &nbsp;
             <a href="{{ route('users.edit', $user->id) }}" title="bearbeiten"><i class="fa fa-lg fa-edit" data-toggle="tooltip" data-original-title="bearbeiten"></i></a> 
-            &nbsp;
               {!! Form::open([
                 'method' => 'DELETE',
                 'route' => ['users.destroy', $user->id],

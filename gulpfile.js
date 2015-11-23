@@ -68,6 +68,7 @@ elixir(function(mix) {
             'js/datatables/buttons.html5.js',
             'js/datatables/buttons.print.js',
             'js/datatables/buttons.colVis.min.js',
+            'js/datatables/buttons.flash.min.js',
             'js/jquery.peity.min.js',
              'js/app.js'
          ],

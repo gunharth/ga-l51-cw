@@ -11,6 +11,8 @@ $(document).on('change', '.btn-file :file', function() {
     input.trigger('fileselect', [numFiles, label]);
 });
 
+//$.fn.dataTable.Buttons.swfPath = '//cdn.datatables.net/buttons/1.0.0/swf/flashExport.swf';
+
 $(function() {
     $('.btn-file :file').on('fileselect', function(event, numFiles, label) {
 
@@ -260,6 +262,7 @@ $(function() {
     /**
      * datatables language settings
      */
+
     var dataTablesLanguage = {
             "sEmptyTable": "Keine Daten in der Tabelle vorhanden",
             "sInfo": "_START_ bis _END_ von _TOTAL_ Einträgen",
@@ -295,10 +298,7 @@ $(function() {
             "<'row'<'col-sm-12'tr>>" +
             "<'row'<'col-sm-5'i><'col-sm-7'p>>",
         buttons: [
-            //'copyHtml5',
-            //'excelHtml5',
-            //'csvHtml5',
-            //'pdfHtml5',
+            'colvis',
             {
                 extend: 'excelHtml5',
                 orientation: 'landscape',
@@ -313,25 +313,12 @@ $(function() {
                     columns: ':visible'
                 }
             },
-            /*{
-                extend: 'pdfHtml5',
-                text: 'PP',
-                orientation: 'landscape',
-                exportOptions: {
-                    //columns: ':visible'
-                    //columns: ':visible'
-                    columns: [ 0, 1, 2, 6, 12 ]
-                }
-            },*/
-            //'print',
             {
                 extend: 'print',
-                //orientation: 'landscape',
                 exportOptions: {
                     columns: ':visible'
                 }
-            },
-            'colvis'
+            }
         ],
         language: dataTablesLanguage
     });
@@ -343,10 +330,7 @@ $(function() {
             "<'row'<'col-sm-12'tr>>" +
             "<'row'<'col-sm-5'i><'col-sm-7'p>>",
         buttons: [
-            //'copyHtml5',
-            //'excelHtml5',
-            //'csvHtml5',
-            //'pdfHtml5',
+            'colvis',
             {
                 extend: 'excelHtml5',
                 orientation: 'landscape',
@@ -366,29 +350,28 @@ $(function() {
                 text: 'PP',
                 orientation: 'landscape',
                 exportOptions: {
-                    //columns: ':visible'
-                    //columns: ':visible'
                     columns: [ 0, 1, 2, 6, 12 ]
                 }
             },
-            'print',
-            'colvis'
+            {
+                extend: 'print',
+                exportOptions: {
+                    columns: ':visible'
+                }
+            }
         ],
         language: dataTablesLanguage
     });
+    
 
-
-    var tableClientShow = $('.dataTables-clientShow').dataTable({
+    var tableClientsIndex = $('.dataTables-clientsIndex').dataTable({
         responsive: true,
         "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "Alle"]],
         dom: "<'row'<'col-sm-3'l><'col-sm-3'f><'col-sm-6 text-right'B>>" +
             "<'row'<'col-sm-12'tr>>" +
             "<'row'<'col-sm-5'i><'col-sm-7'p>>",
         buttons: [
-            //'copyHtml5',
-            //'excelHtml5',
-            //'csvHtml5',
-            //'pdfHtml5',
+            'colvis',
             {
                 extend: 'excelHtml5',
                 orientation: 'landscape',
@@ -403,8 +386,44 @@ $(function() {
                     columns: ':visible'
                 }
             },
-            'print',
-            'colvis'
+            {
+                extend: 'print',
+                exportOptions: {
+                    columns: ':visible'
+                }
+            }
+        ],
+        language: dataTablesLanguage
+    });
+
+    var tableClientShow = $('.dataTables-clientShow').dataTable({
+        responsive: true,
+        "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "Alle"]],
+        dom: "<'row'<'col-sm-3'l><'col-sm-3'f><'col-sm-6 text-right'B>>" +
+            "<'row'<'col-sm-12'tr>>" +
+            "<'row'<'col-sm-5'i><'col-sm-7'p>>",
+        buttons: [
+            'colvis',
+            {
+                extend: 'excelHtml5',
+                orientation: 'landscape',
+                exportOptions: {
+                    columns: ':visible'
+                }
+            },
+            {
+                extend: 'pdfHtml5',
+                orientation: 'landscape',
+                exportOptions: {
+                    columns: ':visible'
+                }
+            },
+            {
+                extend: 'print',
+                exportOptions: {
+                    columns: ':visible'
+                }
+            }
         ],
         language: dataTablesLanguage
     });

@@ -22,7 +22,6 @@
           <td>{{ $type->title }}</td>
           <td class="text-right">
             <a href="{{ route('types.edit', $type->id) }}" title="bearbeiten"><i class="fa fa-lg fa-edit" data-toggle="tooltip" data-original-title="bearbeiten"></i></a> 
-            &nbsp;
               {!! Form::open([
                 'method' => 'DELETE',
                 'route' => ['types.destroy', $type->id],

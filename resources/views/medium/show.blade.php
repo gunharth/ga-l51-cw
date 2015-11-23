@@ -35,11 +35,8 @@
           <td>{{ $issue->erscheinungstermin }}</td>
           <td class="text-right">
             <a href="{{ route('medium.issues.show', [$medium->slug,$issue->id]) }}" title="anzeigen"><i class="fa fa-lg fa-eye" data-toggle="tooltip" data-original-title="anzeigen"></i></a> 
-            &nbsp;
             <a href="{{ route('medium.issues.edit', [$medium->slug,$issue->id]) }}" title="bearbeiten"><i class="fa fa-lg fa-edit" data-toggle="tooltip" data-original-title="bearbeiten"></i></a> 
-            &nbsp;
             <a href="/replicate/issue/{{ $issue->id }}" title="kopieren"><i class="fa fa-lg fa-files-o" data-toggle="tooltip" data-original-title="kopieren"></i></a> 
-            &nbsp;
             <!--{!! Form::open(
                 ['method' => 'PATCH',
                 'route' => ['medium.issues.update', $medium->slug,$issue->id],
