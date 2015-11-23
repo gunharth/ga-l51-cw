@@ -19,7 +19,7 @@ class DashboardController extends Controller
     public function index()
     {
         //$issues = Issue::get(); 
-        $issues = Issue::with('medium', 'inserate.client', 'inserate.format')->get();
+        $issues = Issue::with('medium', 'inserate.client', 'inserate.format')->orderBy('erscheinungstermin', 'asc')->get();
         //dd($issues);
         //
         //get total Flaeche

@@ -3,13 +3,10 @@
 @section('title','Dashboard')
 
 @section('content')
-	<div class="row vertical-align">
-    <div class="col-sm-12 col-md-12">
-      <h1>Dashboard</h1>
-    </div>
-  </div>
-    <hr />
     <div class="row">
+      <div class="col-sm-12">
+      <h2>Stand</h2>
+      </div>
       @foreach($issues as $issue)
       <div class="col-sm-3 text-center">
       <div style="border: 1px solid #e6e6e6; border-radius: 5px; padding: 5px;">
@@ -30,6 +27,7 @@
           </div>
           <div class="col-sm-12 text-right">
         <a href="{{ route('medium.issues.show', [$issue->medium->slug,$issue->id]) }}" title="anzeigen"><i class="fa fa-lg fa-eye" data-toggle="tooltip" data-original-title="anzeigen"></i></a> 
+        <a href="{{ route('medium.issues.edit', [$issue->medium->slug,$issue->id]) }}" title="bearbeiten"><i class="fa fa-lg fa-edit" data-toggle="tooltip" data-original-title="bearbeiten"></i></a> 
         </div>
         </div>
         
