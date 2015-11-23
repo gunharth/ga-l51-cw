@@ -78,14 +78,59 @@ class IssuesController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function show($medium_slug, $id)
+    public function show(Request $request, $medium_slug, $id)
     {
-        $issue = Issue::findOrFail($id);
+        /*$issue = Issue::findOrFail($id);
         //$issue->medium = $issue->medium;
         $medium = $issue->medium;
         $issue->formats = $issue->formatsIssue;
+        $inserate = $issue->formats.inserate;
         $issue->productionCosts = $issue->getIssueProductionCosts();
-        return view('issues.show', compact('issue', 'medium'));
+        return view('issues.show', compact('issue', 'medium'));*/
+
+       /* $inserat = Inserat::with('user', 'format.issue.medium')->find($id);
+        $client = $inserat->client;
+        $formatList = $this->listFormats($inserat->issue_id);
+        return view('inserate.edit', compact('inserat', 'client', 'formatList'));*/
+
+        \Session::flash('backUrl', $request->url());
+
+        $issue = Issue::with('formats','inserate.client','inserate.format')->find($id);
+        //dd($issue->formats;
+        //dd($issue->inserate);
+        $medium = $issue->medium;
+        $inserate = $issue->inserate;
+        $inserate->totalInserate = $issue->inserate->count();
+        $inserate->totalPreis = $this->moneyFormat($inserate->sum('preis'));
+        $inserate->totalNettoRaw = $inserate->sum('netto');
+        $inserate->totalNetto = $this->moneyFormat($inserate->sum('netto'));
+        $inserate->totalBrutto = $this->moneyFormat($inserate->sum('brutto'));
+        $inserate->totalRabatt = $inserate->sum('preis2');
+        // Rabatt in %
+        $inserate->totalRabattProz = 0;
+        $summe = $inserate->sum('preis');
+        if($summe > 0) {
+        $inserate->totalRabattProz = round(100-($inserate->totalRabatt/$inserate->sum('preis'))*100, 2);
+    }
+        $inserate->totalFlaeche = 0;
+        foreach($issue->inserate as $inserat) {
+                foreach($inserat->format as $format) {
+                    $inserate->totalFlaeche += $format->flaeche;
+                }
+        }
+        //dd($inserate->formats->toArray());
+        /*for ($i = 0; $i < count($issue->inserate->format); $i++) {
+            $inserate->totalFlaeche += $issue->inserate->format[$i]->flaeche;
+        }*/
+        //$inserate->totalFlaeche = $inserate->sum('formats->flaeche');
+        //dd($inserate->totalFlaeche);
+        /*$inserate = $issue->inserate->with('client');
+        dd($inserate);*/
+        //$client = $inserat->client;
+        //$formatList = $this->listFormats($inserat->issue_id);
+        //return view('inserate.edit', compact('inserat', 'client', 'formatList'));
+        return view('issues.show', compact('issue', 'medium', 'inserate'));
+
     }
 
     /**

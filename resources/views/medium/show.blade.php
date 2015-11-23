@@ -17,7 +17,7 @@
         <h2>Ausgaben</h2>
       </div>
       <div class="col-md-4 text-right">
-          <a href="{{ route('medium.issues.create',$medium->slug) }}" alt="Neu" tile="Neu"><i class="fa fa-lg fa-edit" data-toggle="tooltip" data-original-title="neu"></i></a>
+          <a href="{{ route('medium.issues.create',$medium->slug) }}" title="Neu"><i class="fa fa-lg fa-edit" data-toggle="tooltip" data-original-title="neu"></i></a>
       </div>
     </div>
     <table class="table table-striped table-hover table-condensed table-bordered">
@@ -34,9 +34,11 @@
           <td>{{ $issue->name }}</td>
           <td>{{ $issue->erscheinungstermin }}</td>
           <td class="text-right">
-            <a href="{{ route('medium.issues.edit', [$medium->slug,$issue->id]) }}" alt="Bearbeiten" tile="bearbeiten"><i class="fa fa-lg fa-edit" data-toggle="tooltip" data-original-title="bearbeiten"></i></a> 
+            <a href="{{ route('medium.issues.show', [$medium->slug,$issue->id]) }}" title="anzeigen"><i class="fa fa-lg fa-eye" data-toggle="tooltip" data-original-title="anzeigen"></i></a> 
             &nbsp;
-            <a href="/replicate/issue/{{ $issue->id }}" alt="kopieren" tile="kopieren"><i class="fa fa-lg fa-files-o" data-toggle="tooltip" data-original-title="kopieren"></i></a> 
+            <a href="{{ route('medium.issues.edit', [$medium->slug,$issue->id]) }}" title="bearbeiten"><i class="fa fa-lg fa-edit" data-toggle="tooltip" data-original-title="bearbeiten"></i></a> 
+            &nbsp;
+            <a href="/replicate/issue/{{ $issue->id }}" title="kopieren"><i class="fa fa-lg fa-files-o" data-toggle="tooltip" data-original-title="kopieren"></i></a> 
             &nbsp;
             <!--{!! Form::open(
                 ['method' => 'PATCH',

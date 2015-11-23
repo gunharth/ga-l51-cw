@@ -26,7 +26,7 @@
         </tr>
     </table>
 
-    <table class="table small-text table-striped table-bordered table-hover no-wrap dataTables-example">
+    <table class="table small-text table-striped table-bordered table-hover no-wrap dataTables-inserateIndex">
       <thead>
         <tr>
           <th>ID</th>

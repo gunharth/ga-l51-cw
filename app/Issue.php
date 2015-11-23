@@ -193,6 +193,10 @@ class Issue extends Model
     	return $this->belongsTo('App\Medium');
     }
 
+    public function inserate() {
+        return $this->hasMany('App\Inserat');
+    }
+
     /*public function onCreate() {
         App\Format::create();
         //return $this->belongsTo('App\Medium');

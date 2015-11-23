@@ -17,9 +17,10 @@ Route::controllers([
 ]);
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/', function () {
+    /*Route::get('/', function () {
         return view('dashboard');
-    });
+    });*/
+Route::get('/', 'DashboardController@index');
 
     Route::resource('medium', 'MediumController');
     Route::resource('clients', 'ClientsController');

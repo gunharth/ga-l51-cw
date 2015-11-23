@@ -9,7 +9,30 @@
         </div>
     </div>
     <hr />
-    
+    <div class="row">
+    @foreach($issues as $issue)
+       <div class="col-sm-3 text-center">
+       <h3>{{ $issue->medium->title }} <br> {{ $issue->name }}</h3>
+       <div class="row">
+        <div class="col-sm-6">
+          <h4>Umsatz</h4> {{ $issue->totalNetto }} / {{ $issue->sollumsatz }}
+          <p class="data-attributes">
+  <span data-peity='{ "fill": ["green", "#eeeeee"],    "innerRadius": 10, "radius": 40 }'>{{ $issue->totalNettoRaw }}/{{ $issue->sollumsatzRaw }}</span>
+</p>
+        </div>
+        <div class="col-sm-6">
+          <h4>Seiten</h4> {{ $issue->totalFlaeche }} / {{ $issue->seiten }}
+          <p class="data-attributes">
+  <span data-peity='{ "fill": ["green", "#eeeeee"],    "innerRadius": 10, "radius": 40 }'>{{ $issue->totalFlaeche }}/{{ $issue->seiten }}</span>
+</p>
+        </div>
+      </div>
+
+       
+
+       </div>
+    @endforeach
+    </div>
     <div class="row">
       <div class="col-sm-6">
         <h2>Statistik Ideen </h2>

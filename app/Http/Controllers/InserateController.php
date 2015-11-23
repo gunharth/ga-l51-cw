@@ -20,7 +20,7 @@ class InserateController extends Controller
      *
      * @return Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $inserate = Inserat::with('user', 'client', 'format.issue.medium')->get();
         $inserate->totalInserate = $inserate->count();
@@ -36,6 +36,9 @@ class InserateController extends Controller
                 $inserate->totalFlaeche += $format->flaeche;
             }
         }
+
+        \Session::flash('backUrl', $request->url());
+
         return view('inserate.index', compact('inserate'));
     }
 
@@ -46,6 +49,8 @@ class InserateController extends Controller
      */
     public function create()
     {
+        
+        
         return view('inserate.create');
     }
 
@@ -98,6 +103,10 @@ class InserateController extends Controller
         $inserat = Inserat::with('user', 'format.issue.medium')->find($id);
         $client = $inserat->client;
         $formatList = $this->listFormats($inserat->issue_id);
+
+        if (\Session::has('backUrl')) {
+    \Session::keep('backUrl');
+}
         return view('inserate.edit', compact('inserat', 'client', 'formatList'));
     }
 
@@ -132,7 +141,8 @@ class InserateController extends Controller
         }
         
         \Session::flash('flash_message', trans('messages.create_success'));
-        return redirect()->back();
+        return ($url = \Session::get('backUrl')) ? redirect($url) : redirect()->back();
+        //return redirect()->back();
     }
 
     /**
@@ -146,7 +156,8 @@ class InserateController extends Controller
         $inserat = Inserat::findOrFail($id);
         $inserat->delete();
         \Session::flash('flash_message', trans('messages.destroy_success'));
-        return redirect()->route('inserate.index');
+        //return redirect()->route('inserate.index');
+        return redirect()->back();
     }
 
     public function calculateTotals(Request $request, $format_id)

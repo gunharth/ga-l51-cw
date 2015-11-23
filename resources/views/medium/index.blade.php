@@ -12,7 +12,7 @@
     <hr  />
     <div class="row">
       @foreach($mediums as $medium)
-        <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="col-xs-6 col-sm-6 col-md-2">
           <a href="{{ route('medium.show', $medium->slug) }}" class="thumbnail">
             <img src="{{ !empty($medium->cover) && file_exists(public_path('uploads/'.$medium->cover) ) ? asset('uploads/'.$medium->cover) : asset('img/placeholder.jpg')  }}">
             <div class="caption">

@@ -123248,6 +123248,26 @@ DataTable.ext.buttons.print = {
 
 })(jQuery, jQuery.fn.dataTable);
 
+(function(g){"function"===typeof define&&define.amd?define(["jquery","datatables.net","datatables.net-buttons"],function(d){return g(d,window,document)}):"object"===typeof exports?module.exports=function(d,e){d||(d=window);if(!e||!e.fn.dataTable)e=require("datatables.net")(d,e).$;e.fn.dataTable.Buttons||require("datatables.net-buttons")(d,e);return g(e,d,d.document)}:g(jQuery,window,document)})(function(g,d,e,h){d=g.fn.dataTable;g.extend(d.ext.buttons,{colvis:function(a,b){return{extend:"collection",
+text:function(c){return c.i18n("buttons.colvis","Column visibility")},className:"buttons-colvis",buttons:[{extend:"columnsToggle",columns:b.columns}]}},columnsToggle:function(a,b){return a.columns(b.columns).indexes().map(function(c){return{extend:"columnToggle",columns:c}}).toArray()},columnToggle:function(a,b){return{extend:"columnVisibility",columns:b.columns}},columnsVisibility:function(a,b){return a.columns(b.columns).indexes().map(function(c){return{extend:"columnVisibility",columns:c,visibility:b.visibility}}).toArray()},
+columnVisibility:{columns:h,text:function(a,b,c){return c._columnText(a,c.columns)},className:"buttons-columnVisibility",action:function(a,b,c,f){a=b.columns(f.columns);b=a.visible();a.visible(f.visibility!==h?f.visibility:!(b.length&&b[0]))},init:function(a,b,c){var f=this,b=a.column(c.columns);a.on("column-visibility.dt"+c.namespace,function(a,b,d,e){d===c.columns&&f.active(e)}).on("column-reorder.dt"+c.namespace,function(b,d,e){1===a.columns(c.columns).count()&&("number"===typeof c.columns&&(c.columns=
+e.mapping[c.columns]),b=a.column(c.columns),f.text(c._columnText(a,c.columns)),f.active(b.visible()))});this.active(b.visible())},destroy:function(a,b,c){a.off("column-visibility.dt"+c.namespace).off("column-reorder.dt"+c.namespace)},_columnText:function(a,b){var c=a.column(b).index();return a.settings()[0].aoColumns[c].sTitle.replace(/\n/g," ").replace(/<.*?>/g,"").replace(/^\s+|\s+$/g,"")}},colvisRestore:{className:"buttons-colvisRestore",text:function(a){return a.i18n("buttons.colvisRestore","Restore visibility")},
+init:function(a,b,c){c._visOriginal=a.columns().indexes().map(function(b){return a.column(b).visible()}).toArray()},action:function(a,b,c,d){b.columns().every(function(a){a=b.colReorder&&b.colReorder.transpose?b.colReorder.transpose(a,"toOriginal"):a;this.visible(d._visOriginal[a])})}},colvisGroup:{className:"buttons-colvisGroup",action:function(a,b,c,d){b.columns(d.show).visible(!0);b.columns(d.hide).visible(!1)},show:[],hide:[]}});return d.Buttons});
+
+// Peity jQuery plugin version 3.2.0
+// (c) 2015 Ben Pickles
+//
+// http://benpickles.github.io/peity
+//
+// Released under MIT license.
+(function(k,w,h,v){var d=k.fn.peity=function(a,b){y&&this.each(function(){var e=k(this),c=e.data("_peity");c?(a&&(c.type=a),k.extend(c.opts,b)):(c=new x(e,a,k.extend({},d.defaults[a],e.data("peity"),b)),e.change(function(){c.draw()}).data("_peity",c));c.draw()});return this},x=function(a,b,e){this.$el=a;this.type=b;this.opts=e},o=x.prototype,q=o.svgElement=function(a,b){return k(w.createElementNS("http://www.w3.org/2000/svg",a)).attr(b)},y="createElementNS"in w&&q("svg",{})[0].createSVGRect;o.draw=
+function(){var a=this.opts;d.graphers[this.type].call(this,a);a.after&&a.after.call(this,a)};o.fill=function(){var a=this.opts.fill;return k.isFunction(a)?a:function(b,e){return a[e%a.length]}};o.prepare=function(a,b){this.$svg||this.$el.hide().after(this.$svg=q("svg",{"class":"peity"}));return this.$svg.empty().data("peity",this).attr({height:b,width:a})};o.values=function(){return k.map(this.$el.text().split(this.opts.delimiter),function(a){return parseFloat(a)})};d.defaults={};d.graphers={};d.register=
+function(a,b,e){this.defaults[a]=b;this.graphers[a]=e};d.register("pie",{fill:["#ff9900","#fff4dd","#ffc66e"],radius:8},function(a){if(!a.delimiter){var b=this.$el.text().match(/[^0-9\.]/);a.delimiter=b?b[0]:","}b=k.map(this.values(),function(a){return 0<a?a:0});if("/"==a.delimiter)var e=b[0],b=[e,h.max(0,b[1]-e)];for(var c=0,e=b.length,t=0;c<e;c++)t+=b[c];t||(e=2,t=1,b=[0,1]);var l=2*a.radius,l=this.prepare(a.width||l,a.height||l),c=l.width(),f=l.height(),j=c/2,d=f/2,f=h.min(j,d),a=a.innerRadius;
+"donut"==this.type&&!a&&(a=0.5*f);for(var r=h.PI,s=this.fill(),g=this.scale=function(a,b){var c=a/t*r*2-r/2;return[b*h.cos(c)+j,b*h.sin(c)+d]},m=0,c=0;c<e;c++){var u=b[c],i=u/t;if(0!=i){if(1==i)if(a)var i=j-0.01,p=d-f,n=d-a,i=q("path",{d:["M",j,p,"A",f,f,0,1,1,i,p,"L",i,n,"A",a,a,0,1,0,j,n].join(" ")});else i=q("circle",{cx:j,cy:d,r:f});else p=m+u,n=["M"].concat(g(m,f),"A",f,f,0,0.5<i?1:0,1,g(p,f),"L"),a?n=n.concat(g(p,a),"A",a,a,0,0.5<i?1:0,0,g(m,a)):n.push(j,d),m+=u,i=q("path",{d:n.join(" ")});
+i.attr("fill",s.call(this,u,c,b));l.append(i)}}});d.register("donut",k.extend(!0,{},d.defaults.pie),function(a){d.graphers.pie.call(this,a)});d.register("line",{delimiter:",",fill:"#c6d9fd",height:16,min:0,stroke:"#4d89f9",strokeWidth:1,width:32},function(a){var b=this.values();1==b.length&&b.push(b[0]);for(var e=h.max.apply(h,a.max==v?b:b.concat(a.max)),c=h.min.apply(h,a.min==v?b:b.concat(a.min)),d=this.prepare(a.width,a.height),l=a.strokeWidth,f=d.width(),j=d.height()-l,k=e-c,e=this.x=function(a){return a*
+(f/(b.length-1))},r=this.y=function(a){var b=j;k&&(b-=(a-c)/k*j);return b+l/2},s=r(h.max(c,0)),g=[0,s],m=0;m<b.length;m++)g.push(e(m),r(b[m]));g.push(f,s);a.fill&&d.append(q("polygon",{fill:a.fill,points:g.join(" ")}));l&&d.append(q("polyline",{fill:"none",points:g.slice(2,g.length-2).join(" "),stroke:a.stroke,"stroke-width":l,"stroke-linecap":"square"}))});d.register("bar",{delimiter:",",fill:["#4D89F9"],height:16,min:0,padding:0.1,width:32},function(a){for(var b=this.values(),e=h.max.apply(h,a.max==
+v?b:b.concat(a.max)),c=h.min.apply(h,a.min==v?b:b.concat(a.min)),d=this.prepare(a.width,a.height),l=d.width(),f=d.height(),j=e-c,a=a.padding,k=this.fill(),r=this.x=function(a){return a*l/b.length},s=this.y=function(a){return f-(j?(a-c)/j*f:1)},g=0;g<b.length;g++){var m=r(g+a),u=r(g+1-a)-m,i=b[g],p=s(i),n=p,o;j?0>i?n=s(h.min(e,0)):p=s(h.max(c,0)):o=1;o=p-n;0==o&&(o=1,0<e&&j&&n--);d.append(q("rect",{fill:k.call(this,i,g,b),x:m,y:n,width:u,height:o}))}})})(jQuery,document,Math);
+
 /*$.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -123501,32 +123521,19 @@ $(function() {
         $('#inserat').submit();
     })
 
-    /*$(window).keydown(function(event){
-       if(event.keyCode == 13) {
-         event.preventDefault();
-         return false;
-       }
-     });*/
+
+    /** 
+     * Peity chart init
+     */
+    $(".data-attributes span").peity("donut");
 
     /**
-     * datatables
+     * datatables Inserate index
      * @type {
      * }
      */
-    var table = $('.dataTables-example').dataTable({
-        responsive: true,
-        "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
-        dom: "<'row'<'col-sm-3'l><'col-sm-6'f><'col-sm-3 text-right'B>>" +
-            "<'row'<'col-sm-12'tr>>" +
-            "<'row'<'col-sm-5'i><'col-sm-7'p>>",
-        buttons: [
-            'copyHtml5',
-            'excelHtml5',
-            'csvHtml5',
-            'pdfHtml5',
-            'print'
-        ],
-        language: {
+    
+    var dataTablesLanguage = {
             "sEmptyTable": "Keine Daten in der Tabelle vorhanden",
             "sInfo": "_START_ bis _END_ von _TOTAL_ Einträgen",
             "sInfoEmpty": "0 bis 0 von 0 Einträgen",
@@ -123547,8 +123554,106 @@ $(function() {
             "oAria": {
                 "sSortAscending": ": aktivieren, um Spalte aufsteigend zu sortieren",
                 "sSortDescending": ": aktivieren, um Spalte absteigend zu sortieren"
+            },
+            buttons: {
+                print: 'Druck',
+                colvis: 'Spalten'
             }
         }
+
+
+    var tableInserateIndex = $('.dataTables-inserateIndex').dataTable({
+        responsive: true,
+        "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "Alle"]],
+        dom: "<'row'<'col-sm-3'l><'col-sm-3'f><'col-sm-6 text-right'B>>" +
+            "<'row'<'col-sm-12'tr>>" +
+            "<'row'<'col-sm-5'i><'col-sm-7'p>>",
+        buttons: [
+            //'copyHtml5',
+            //'excelHtml5',
+            //'csvHtml5',
+            //'pdfHtml5',
+            {
+                extend: 'excelHtml5',
+                orientation: 'landscape',
+                exportOptions: {
+                    columns: ':visible'
+                }
+            },
+            {
+                extend: 'pdfHtml5',
+                orientation: 'landscape',
+                exportOptions: {
+                    columns: ':visible'
+                }
+            },
+            /*{
+                extend: 'pdfHtml5',
+                text: 'PP',
+                orientation: 'landscape',
+                exportOptions: {
+                    //columns: ':visible'
+                    //columns: ':visible'
+                    columns: [ 0, 1, 2, 6, 12 ]
+                }
+            },*/
+            //'print',
+            {
+                extend: 'print',
+                //orientation: 'landscape',
+                exportOptions: {
+                    columns: ':visible'
+                }
+            },
+            'colvis'
+        ],
+        language: dataTablesLanguage
+    });
+
+    /**
+     * datatables Inserate index
+     * @type {
+     * }
+     */
+    var tableIssueShow = $('.dataTables-issueShow').dataTable({
+        responsive: true,
+        "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "Alle"]],
+        dom: "<'row'<'col-sm-3'l><'col-sm-3'f><'col-sm-6 text-right'B>>" +
+            "<'row'<'col-sm-12'tr>>" +
+            "<'row'<'col-sm-5'i><'col-sm-7'p>>",
+        buttons: [
+            //'copyHtml5',
+            //'excelHtml5',
+            //'csvHtml5',
+            //'pdfHtml5',
+            {
+                extend: 'excelHtml5',
+                orientation: 'landscape',
+                exportOptions: {
+                    columns: ':visible'
+                }
+            },
+            {
+                extend: 'pdfHtml5',
+                orientation: 'landscape',
+                exportOptions: {
+                    columns: ':visible'
+                }
+            },
+            {
+                extend: 'pdfHtml5',
+                text: 'PP',
+                orientation: 'landscape',
+                exportOptions: {
+                    //columns: ':visible'
+                    //columns: ':visible'
+                    columns: [ 0, 1, 2, 6, 12 ]
+                }
+            },
+            'print',
+            'colvis'
+        ],
+        language: dataTablesLanguage
     });
 
 
