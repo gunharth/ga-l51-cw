@@ -14,6 +14,9 @@
         <div class="navbar-collapse collapse" id="navbar-main">
           <ul class="nav navbar-nav">
             <li>
+              <a href="{{ url('/') }}">Start</a>
+            </li>
+            <li>
               <a href="{{ route('inserate.index') }}">Inserate</a>
             </li>
             <li>
