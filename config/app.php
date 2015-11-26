@@ -153,6 +153,7 @@ return [
         Cviebrock\EloquentSluggable\SluggableServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
         Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
 
     ],
@@ -206,7 +207,8 @@ return [
         'Form'      => Collective\Html\FormFacade::class,
         'Html'      => Collective\Html\HtmlFacade::class,
         'Image'     => Intervention\Image\Facades\Image::class,
-        'Debugbar' => Barryvdh\Debugbar\Facade::class,
+        'PDF'       => Barryvdh\DomPDF\Facade::class,
+        'Debugbar'  => Barryvdh\Debugbar\Facade::class,
 
     ],
 

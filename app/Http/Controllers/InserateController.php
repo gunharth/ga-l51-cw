@@ -49,8 +49,6 @@ class InserateController extends Controller
      */
     public function create()
     {
-        
-        
         return view('inserate.create');
     }
 
