@@ -29,7 +29,10 @@ class InserateController extends Controller
         $inserate->totalBrutto = $this->moneyFormat($inserate->sum('brutto'));
         $inserate->totalRabatt = $inserate->sum('preis2');
         // Rabatt in %
-        $inserate->totalRabattProz = round(100-($inserate->totalRabatt/$inserate->sum('preis'))*100, 2);
+        $inserate->totalRabattProz = 0;
+        if($inserate->sum('preis') > 0) {
+            $inserate->totalRabattProz = round(100-($inserate->totalRabatt/$inserate->sum('preis'))*100, 2);
+        }
         $inserate->totalFlaeche = $inserate->sum('strecke');
         foreach ($inserate as $inserat) {
             foreach ($inserat->format as $format) {
