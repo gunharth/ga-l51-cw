@@ -45,6 +45,19 @@ class Inserat extends Model
         'notes'
     ];
 
+    public function getArtAttribute($value) {
+        switch($value) {
+          case 0: 
+            return 'IN';
+          case 1:
+            return 'GG';
+          break;
+          case 2:
+            return 'PK';
+          break;
+        }
+    }
+
     public function getPreisAttribute($value) {
         if($value == '0.00') {
             return '';

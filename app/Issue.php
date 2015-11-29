@@ -45,6 +45,14 @@ class Issue extends Model
         $query->where('erscheinungstermin')
 
     }*/
+    public function getSollumsatzAttribute($value) {
+        if($value == '0.00') {
+            return '';
+        } else {
+            return $value;
+        }
+    }
+
     public function getBasisanbotAttribute($value) {
         if($value == '0.00') {
             return '';
@@ -159,7 +167,7 @@ class Issue extends Model
     }
 
     public function getIssueProductionCosts() {
-        return  '€ ' . number_format($this->basisanbot+
+        return  number_format($this->basisanbot+
                 $this->redaktion+
                 $this->fotokosten+
                 $this->grafik+
@@ -168,6 +176,18 @@ class Issue extends Model
                 $this->druck+
                 $this->vertriebkosten+
                 $this->sonderkosten,2,",",".");
+    }
+
+    public function getIssueProductionCostsRaw() {
+        return  $this->basisanbot+
+                $this->redaktion+
+                $this->fotokosten+
+                $this->grafik+
+                $this->lektorat+
+                $this->mehrseiten+
+                $this->druck+
+                $this->vertriebkosten+
+                $this->sonderkosten;
     }
 
     public function getSelectBoxAttribute()
@@ -181,7 +201,7 @@ class Issue extends Model
     	return $this->hasMany('App\Format')->orderBy('type')->orderBy('art');
     }
     public function formatsIssue() {
-        return $this->hasMany('App\Format')->where('type',0)->where('art',0);
+        return $this->hasMany('App\Format')->whereIn('type', [0, 2])->where('art',0);
     }
 
     /*public function scopeManual($query) {

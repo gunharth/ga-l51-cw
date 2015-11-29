@@ -1,11 +1,11 @@
 @extends('app')
 
-@section('pagetitle','Inserat bearbeiten')
+@section('pagetitle','Auftrag bearbeiten')
 
 @section('content')
 
 <div class="row vertical-align">
-  <div class="col-md-6"><h1>Inserat bearbeiten</h1></div>
+  <div class="col-md-6"><h1>Auftrag bearbeiten</h1></div>
   <div class="col-md-6 text-right">
     <a href="{{ Session::get('backUrl') }}" title="zurück"><i class="fa fa-lg fa-arrow-left" data-toggle="tooltip" data-original-title="zurück"></i></a> 
   </div>
@@ -100,10 +100,13 @@
         <div class="col-md-9">
           <div class="input-group">
             <label class="radio-inline">
-              <input name="art" type="radio" value="0" class="manual-input" @if($inserat->art == 0) checked="checked" @endif> Auftrag &nbsp; &nbsp;
+              <input name="art" type="radio" value="0" class="manual-input" @if($inserat->art == 'IN') checked="checked" @endif> IN &nbsp; &nbsp;
             </label>
             <label class="radio-inline">
-              <input name="art" type="radio" value="1" class="manual-input" @if($inserat->art == 1) checked="checked" @endif> GG &nbsp; &nbsp;
+              <input name="art" type="radio" value="1" class="manual-input" @if($inserat->art == 'GG') checked="checked" @endif> GG &nbsp; &nbsp;
+            </label>
+            <label class="radio-inline">
+              <input name="art" type="radio" value="2" class="manual-input" @if($inserat->art == 'PK') checked="checked" @endif> PK &nbsp; &nbsp;
             </label>
           </div>
         </div>

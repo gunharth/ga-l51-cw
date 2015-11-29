@@ -23,5 +23,11 @@
     </div>
 </div>
 <div class="form-group">
+    {!! Form::label('type','Produktionskosten',['class' => 'col-sm-2']) !!}
+    <div class="col-sm-10">
+          {!! Form::checkbox('type',2) !!}
+        </div>
+</div>
+<div class="form-group">
     {!! Form::submit('Speichern',['class' => 'btn btn-primary']) !!}
 </div>

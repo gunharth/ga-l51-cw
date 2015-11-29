@@ -1,11 +1,11 @@
 @extends('app')
 
-@section('pagetitle','Neues Inserat anlegen')
+@section('pagetitle','Neuen Auftrag anlegen')
 
 @section('content')
 
 <div class="row vertical-align">
-  <div class="col-md-6"><h1>Neues Inserat anlegen</h1></div>
+  <div class="col-md-6"><h1>Neuen Auftrag anlegen</h1></div>
   <div class="col-md-6 text-right">
     <a href="{{ route('inserate.index') }}" title="zurück"><i class="fa fa-lg fa-arrow-left" data-toggle="tooltip" data-original-title="zurück"></i></a> 
   </div>
@@ -94,10 +94,13 @@
         <div class="col-md-9">
           <div class="input-group">
             <label class="radio-inline">
-              <input name="art" type="radio" value="0" checked="checked" disabled="disabled" class="manual-input"> Auftrag &nbsp; &nbsp;
+              <input name="art" type="radio" value="0" checked="checked" disabled="disabled" class="manual-input"> IN &nbsp; &nbsp;
             </label>
             <label class="radio-inline">
               <input name="art" type="radio" value="1" disabled="disabled"class="manual-input"> GG &nbsp; &nbsp;
+            </label>
+            <label class="radio-inline">
+              <input name="art" type="radio" value="2" disabled="disabled"class="manual-input"> PK &nbsp; &nbsp;
             </label>
           </div>
         </div>

@@ -17,7 +17,7 @@
               <a href="{{ url('/') }}">Start</a>
             </li>
             <li>
-              <a href="{{ route('inserate.index') }}">Inserate</a>
+              <a href="{{ route('inserate.index') }}">Aufträge</a>
             </li>
             <li>
               <a href="{{ route('clients.index') }}">Kunden</a>

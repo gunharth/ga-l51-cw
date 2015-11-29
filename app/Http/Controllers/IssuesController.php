@@ -15,19 +15,9 @@ class IssuesController extends Controller
 {
     use Traits;
 
-    // public function __construct() {
-    //     $this->middleware('auth');
-    // }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
     public function index()
     {
-        //
-        return 'y';
+        return 'no page';
     }
 
     /**
@@ -95,7 +85,7 @@ class IssuesController extends Controller
 
         \Session::flash('backUrl', $request->url());
 
-        $issue = Issue::with('formats','inserate.client','inserate.format')->find($id);
+        $issue = Issue::with('inserate.client','inserate.format')->find($id);
         //dd($issue->formats;
         //dd($issue->inserate);
         $medium = $issue->medium;
@@ -118,6 +108,7 @@ class IssuesController extends Controller
                     $inserate->totalFlaeche += $format->flaeche;
                 }
         }
+        $issue->productionCosts = $issue->getIssueProductionCosts();
         //dd($inserate->formats->toArray());
         /*for ($i = 0; $i < count($issue->inserate->format); $i++) {
             $inserate->totalFlaeche += $issue->inserate->format[$i]->flaeche;
@@ -129,6 +120,7 @@ class IssuesController extends Controller
         //$client = $inserat->client;
         //$formatList = $this->listFormats($inserat->issue_id);
         //return view('inserate.edit', compact('inserat', 'client', 'formatList'));
+        $issue->formats = $issue->formatsIssue;
         return view('issues.show', compact('issue', 'medium', 'inserate'));
 
     }

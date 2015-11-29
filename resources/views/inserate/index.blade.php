@@ -1,12 +1,12 @@
 @extends('app')
 
-@section('pagetitle', 'Inserate')
+@section('pagetitle', 'Aufträge')
 
 @section('content')
 
     <div class="row vertical-align">
       <div class="col-md-8">
-        <h1>Inserate</h1>
+        <h1>Aufträge</h1>
       </div>
       <div class="col-md-4 text-right">
           <a href="{{ route('inserate.create') }}" title="Neu"><i class="fa fa-lg fa-edit" data-toggle="tooltip" data-original-title="neu"></i></a>
@@ -36,6 +36,7 @@
           <th>Medium - Ausgabe</th>
           <th>ET</th>
           <th>Format</th>
+          <th>Art</th>
           <th>Preis</th>
           <th>Rab.</th>
           <th>AP/Netto</th>
@@ -62,6 +63,7 @@
             @if ($i < count($inserat->format)-1) + @endif
           @endfor
           </td>
+          <td>{{ $inserat->art }}</td>
           <td>{{ $inserat->preis }}</td>
           <td>{{ $inserat->preis2 }}</td>
           <td>{{ $inserat->netto }}</td>

@@ -11,7 +11,7 @@
     </div>
     <hr  />
         
-    <h2>Inserate</h2>
+    <h2>Aufträge</h2>
 <table class="table small-text table-striped table-bordered table-hover no-wrap dataTables-clientShow">
       <thead>
         <tr>
@@ -22,6 +22,7 @@
           <th>Medium - Ausgabe</th>
           <th>ET</th>
           <th>Format</th>
+          <th>Art</th>
           <th>Preis</th>
           <th>Rab.</th>
           <th>AP/Netto</th>
@@ -47,6 +48,7 @@
             @if ($i < count($inserat->format)-1) + @endif
           @endfor
           </td>
+          <td>{{ $inserat->art }}</td>
           <td>{{ $inserat->preis }}</td>
           <td>{{ $inserat->preis2 }}</td>
           <td>{{ $inserat->netto }}</td>
