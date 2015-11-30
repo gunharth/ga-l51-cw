@@ -46,11 +46,14 @@ class Inserat extends Model
     ];
 
     public function getPreisAttribute($value) {
-        if($value == '0.00') {
+        /*if($value == '0.00') {
             return '';
         } else {
             return $value;
-        }
+        }*/
+
+        return number_format((float)$value, 2, ',', '.');
+
     }
 
     public function getRabattAttribute($value) {

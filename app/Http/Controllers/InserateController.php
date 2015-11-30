@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use PDF;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -90,6 +91,17 @@ class InserateController extends Controller
         //
     }
 
+    public function printInvoice($id)
+    {
+        //$pdf = PDF::loadView('pdf.invoice', $data);
+        $inserat = Inserat::with('client', 'format.issue.medium')->find($id);
+        //$inserat->client = $inserat->client;
+        $pdf = PDF::loadView('pdf.invoice', compact('inserat'));
+        return $pdf->download('invoice.pdf');
+    }
+
+    
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -103,8 +115,8 @@ class InserateController extends Controller
         $formatList = $this->listFormats($inserat->issue_id);
 
         if (\Session::has('backUrl')) {
-    \Session::keep('backUrl');
-}
+            \Session::keep('backUrl');
+        }
         return view('inserate.edit', compact('inserat', 'client', 'formatList'));
     }
 
