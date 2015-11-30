@@ -30,7 +30,7 @@ Route::get('/', 'DashboardController@index');
     Route::resource('medium.issues.formats', 'FormatsController');
     Route::resource('types', 'MediumTypesController');
     Route::resource('inserate', 'InserateController');
-    Route::get('printInvoice', 'InserateController@printInvoice');
+    Route::get('printInvoice/{id}', 'InserateController@printInvoice');
 
     /**
      * Replication Routes
