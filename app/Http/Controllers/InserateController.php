@@ -96,11 +96,10 @@ class InserateController extends Controller
 
     public function printInvoice($id)
     {
-        //$pdf = PDF::loadView('pdf.invoice', $data);
         $inserat = Inserat::with('client', 'format.issue.medium')->find($id);
-        //$inserat->client = $inserat->client;
+        $invoice_file = 'Rechnung_' . $inserat->id . '.pdf';
         $pdf = PDF::loadView('pdf.invoice', compact('inserat'));
-        return $pdf->download('invoice.pdf');
+        return $pdf->download($invoice_file);
     }
 
     

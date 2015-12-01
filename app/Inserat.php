@@ -45,6 +45,18 @@ class Inserat extends Model
         'notes'
     ];
 
+    protected $appends = [  
+        'prettyPreis',
+        'prettyWert_Rabatt',
+        'prettyPreis2',
+        'prettyWert_provision',
+        'prettyNetto',
+        'prettyWert_werbeabgabe',
+        'prettyPreis4',
+        'prettyUst',
+        'prettyBrutto'
+    ];
+
     public function getArtAttribute($value) {
         switch($value) {
           case 0: 
@@ -59,14 +71,11 @@ class Inserat extends Model
     }
 
     public function getPreisAttribute($value) {
-        /*if($value == '0.00') {
+        if($value == '0.00') {
             return '';
         } else {
             return $value;
-        }*/
-
-        return number_format((float)$value, 2, ',', '.');
-
+        }
     }
 
     public function getRabattAttribute($value) {
@@ -77,6 +86,59 @@ class Inserat extends Model
         }
     }
 
+    public function getPrettyPreisAttribute()
+    {
+        $preis = number_format((float)$this->attributes['preis'], 2, ',', '.');
+        return $preis;
+    }
+
+    public function getPrettyWertRabattAttribute()
+    {
+        $value = number_format((float)$this->attributes['wert_rabatt'], 2, ',', '.');
+        return $value;
+    }
+
+    public function getPrettyPreis2Attribute()
+    {
+        $value = number_format((float)$this->attributes['preis2'], 2, ',', '.');
+        return $value;
+    }
+
+    public function getPrettyWertProvisionAttribute()
+    {
+        $value = number_format((float)$this->attributes['wert_provision'], 2, ',', '.');
+        return $value;
+    }
+
+    public function getPrettyNettoAttribute()
+    {
+        $value = number_format((float)$this->attributes['netto'], 2, ',', '.');
+        return $value;
+    }
+
+    public function getPrettyWertWerbeabgabeAttribute()
+    {
+        $value = number_format((float)$this->attributes['wert_werbeabgabe'], 2, ',', '.');
+        return $value;
+    }
+
+    public function getPrettyPreis4Attribute()
+    {
+        $value = number_format((float)$this->attributes['preis4'], 2, ',', '.');
+        return $value;
+    }
+
+    public function getPrettyUstAttribute()
+    {
+        $value = number_format((float)$this->attributes['ust'], 2, ',', '.');
+        return $value;
+    }
+
+    public function getPrettyBruttoAttribute()
+    {
+        $value = number_format((float)$this->attributes['brutto'], 2, ',', '.');
+        return $value;
+    }
 
     public function user()
     {
