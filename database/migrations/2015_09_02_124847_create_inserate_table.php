@@ -42,7 +42,7 @@ class CreateInserateTable extends Migration
             $table->timestamps();
             $table->softDeletes();
             
-            $table->index('type');
+            //$table->index('type');
             $table->index('art');
 
             $table->foreign('user_id')
