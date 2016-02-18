@@ -117,7 +117,7 @@
           <td>Basisanbot für Seiten</td><td>€ {{ $issue->basisanbot }}</td>
         </tr>
         <tr>
-          <td>Redaktionsschluss</td><td>{{ $issue->redaktionsschluss }}</td>
+          <td>Starttermin</td><td>{{ $issue->redaktionsschluss }}</td>
           <td>Redaktion</td><td>€ {{ $issue->redaktion }}</td>
         </tr>
         <tr>
