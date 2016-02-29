@@ -93,7 +93,7 @@ Route::get('/', 'DashboardController@index');
             ->take(10)
             ->get();
         foreach ($data as $v) {
-            $return_array[] = array('id' => $v->id, 'label' => $v->name.$v->last_name);
+            $return_array[] = array('id' => $v->id, 'label' => $v->name.' '.$v->last_name);
         }
         return Response::json($return_array);
     });
