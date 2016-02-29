@@ -113,7 +113,7 @@ class IssuesController extends Controller
 
         $issue->user = '';
         if($user = User::find($issue->user_id)) {
-            $issue->user = $user->name . $user->last_name;
+            $issue->user = $user->name . ' ' . $user->last_name;
         }
         //dd($inserate->formats->toArray());
         /*for ($i = 0; $i < count($issue->inserate->format); $i++) {
@@ -146,7 +146,7 @@ class IssuesController extends Controller
 
         $issue->user = '';
         if($user = User::find($issue->user_id)) {
-            $issue->user = $user->name . $user->last_name;
+            $issue->user = $user->name . ' ' . $user->last_name;
         }
 
         return view('issues.edit', compact('issue', 'medium'));
