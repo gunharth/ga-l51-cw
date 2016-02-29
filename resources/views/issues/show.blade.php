@@ -148,6 +148,10 @@
           <td>Soll/Umsatz</td><td>€ {{ $issue->sollumsatz }}</td>
           <td>Sonderkosten</td><td>€ {{ $issue->sonderkosten }}</td>
         </tr>
+        <tr>
+          <td>Projektverantwortung</td><td>{{ $issue->user }}</td>
+          <td></td>
+        </tr>
       </tbody>
     </table>
 

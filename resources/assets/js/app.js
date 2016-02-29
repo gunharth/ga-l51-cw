@@ -253,6 +253,24 @@ $(function() {
         $('#inserat').submit();
     })
 
+    $("input.userAutoComplete").autocomplete({
+        source: '/userAutoComplete',
+        //appendTo: $('#client').parent(),
+        select: function(e, ui) {
+            var field = $(this).attr('name');
+            $('#' + field + '_id').val(ui.item.id);
+            /*$.ajax({
+                method: 'GET',
+                type: 'json',
+                url: '/user/' + ui.item.id
+            }).done(function(html) {
+                $('#' + field + 'Details').html(html);
+                //$('.ui-autocomplete').hide();
+            })*/
+        }
+
+    });
+
 
     /** 
      * Peity chart init

@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Medium;
 use App\Issue;
 use App\Format;
+use App\User;
 
 //use Carbon\Carbon;
 
@@ -109,6 +110,9 @@ class IssuesController extends Controller
                 }
         }
         $issue->productionCosts = $issue->getIssueProductionCosts();
+
+        $user = User::find($issue->user_id);
+        $issue->user = $user->name . $user->last_name;
         //dd($inserate->formats->toArray());
         /*for ($i = 0; $i < count($issue->inserate->format); $i++) {
             $inserate->totalFlaeche += $issue->inserate->format[$i]->flaeche;
@@ -137,6 +141,10 @@ class IssuesController extends Controller
         //$issue = Issue::find($id)->formats->where('type',0)->where('art',0);
         $medium = $issue->medium;
         $issue->formats = $issue->formatsIssue;
+
+        $user = User::find($issue->user_id);
+        $issue->user = $user->name . $user->last_name;
+
         return view('issues.edit', compact('issue', 'medium'));
     }
 

@@ -29,6 +29,7 @@ class Issue extends Model
         'druckauflage',
         'seiten',
         'sollumsatz',
+        'user_id',
         'basisanbot',
         'redaktion',
         'fotokosten',

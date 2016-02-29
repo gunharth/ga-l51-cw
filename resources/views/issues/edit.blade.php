@@ -91,6 +91,13 @@
             </div>
         </div>
         <div class="form-group">
+          {!! Form::label('user','Projektverantwortung',['class' => 'col-sm-4']) !!}
+          <div class="col-sm-8">
+          {!! Form::text('user',null,['class' => 'form-control ui-autocomplete-input userAutoComplete', 'placeholder' => 'Projektverantwortung']) !!}
+          </div>
+          <input type="hidden" name="user_id" id="user_id">
+      </div>
+        <div class="form-group">
           <div class="col-sm-offset-4 col-sm-8">
             {!! Form::submit('Speichern',['class' => 'btn btn-primary']) !!}
             </div>

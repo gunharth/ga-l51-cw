@@ -80,6 +80,24 @@ Route::get('/', 'DashboardController@index');
         return Response::json($return_array);
     });
 
+    Route::any('userAutoComplete', function () {
+        $term = strtolower(Request::get('term'));
+        $return_array = array();
+        $data = DB::table("users")
+            ->distinct()
+            ->select('id', 'name', 'last_name')
+            ->where('last_name', 'LIKE', '%'.$term.'%')
+            ->orWhere('name', 'LIKE', '%'.$term.'%')
+            ->whereNull('deleted_at')
+            ->groupBy('last_name')
+            ->take(10)
+            ->get();
+        foreach ($data as $v) {
+            $return_array[] = array('id' => $v->id, 'label' => $v->name.$v->last_name);
+        }
+        return Response::json($return_array);
+    });
+
  	/**
  	 * Logs Route
  	 */
