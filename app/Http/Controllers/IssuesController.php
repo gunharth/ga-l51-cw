@@ -111,8 +111,10 @@ class IssuesController extends Controller
         }
         $issue->productionCosts = $issue->getIssueProductionCosts();
 
-        $user = User::find($issue->user_id);
-        $issue->user = $user->name . $user->last_name;
+        $issue->user = '';
+        if($user = User::find($issue->user_id)) {
+            $issue->user = $user->name . $user->last_name;
+        }
         //dd($inserate->formats->toArray());
         /*for ($i = 0; $i < count($issue->inserate->format); $i++) {
             $inserate->totalFlaeche += $issue->inserate->format[$i]->flaeche;
@@ -142,8 +144,10 @@ class IssuesController extends Controller
         $medium = $issue->medium;
         $issue->formats = $issue->formatsIssue;
 
-        $user = User::find($issue->user_id);
-        $issue->user = $user->name . $user->last_name;
+        $issue->user = '';
+        if($user = User::find($issue->user_id)) {
+            $issue->user = $user->name . $user->last_name;
+        }
 
         return view('issues.edit', compact('issue', 'medium'));
     }
