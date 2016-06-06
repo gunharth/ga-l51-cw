@@ -448,3 +448,35 @@ $(function() {
 
 
 });
+
+$(document).ready(function() {
+    $("#calendar").fullCalendar({
+        defaultView: 'timelineMonth',
+        header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'timelineMonth,month,agendaWeek,agendaDay'
+            },
+        editable: false,
+        resourceAreaWidth: 230,
+        eventSources: [
+
+        // your event source
+        {
+            url: '/schedule/events', // use the `url` property
+            allDayDefault: true
+        },
+        
+
+        // any other sources...
+
+    ],
+    resourceLabelText: 'Medium',
+    resources: {
+            url: '/schedule/medium', // use the `url` property
+        },
+        resourceRender: function(resourceObj, labelTds, bodyTds) {
+    labelTds.css('background', resourceObj.eventColor);
+}
+    });
+});

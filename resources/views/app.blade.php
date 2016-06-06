@@ -30,7 +30,7 @@
     <!--footer-->
       
         <p>&nbsp;</p>
-        <p><small><em>Goldader v 0.2 - © <?php echo date('Y');?> - Gunharth Randolf / communautic Group</em></small></p>
+        <p><small><em>Goldader v 0.2 - © <?php echo date('Y');?> - Gunharth Randolf</em></small></p>
       </div>
     
     @include('partials/modal')

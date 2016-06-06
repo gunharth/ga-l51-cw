@@ -49,6 +49,12 @@
                 </div>
             </div>
         </div>  
+        <div class="form-group">
+            {!! Form::label('eventColor','Farbe (red oder "#f00" oder "rgb(255,0,0)")',['class' => 'col-sm-2']) !!}
+            <div class="col-sm-10">
+            {!! Form::text('eventColor',null,['class' => 'form-control', 'placeholder' => '#000000']) !!}
+            </div>
+        </div>
          <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
               {!! Form::submit('Speichern',['class' => 'btn btn-primary']) !!}

@@ -16,7 +16,10 @@
     "font-awesome": "fontawesome#~4.4.0",
     "jquery-ui": "~1.11.4",
     "jqueryuibootstrap": "jquery-ui-bootstrap/jquery-ui-bootstrap#masterbs3",
-    "morris.js": "morrisjs#~0.5.1"
+    "morris.js": "morrisjs#~0.5.1",
+    "fullcalendar": "^2.7.3",
+    "fullcalendar-scheduler": "^1.3.2",
+    "moment": "^2.13.0"
   },
   "resolutions": {
     "bootstrap-sass-official": "~3.3.5"

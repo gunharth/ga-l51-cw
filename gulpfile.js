@@ -12,12 +12,14 @@ var elixir = require('laravel-elixir');
  */
 
 // create variables for paths for bootstrap and bootswatch
- var bowerDirBootstrap = "vendor/bower_components/bootstrap-sass-official/assets/";
- var bowerDirBootswatch = "vendor/bower_components/bootswatch-sass";
- var bowerDirFontawesome = "vendor/bower_components/fontawesome/";
- // javascript paths
- var bowerDirJquery = "vendor/bower_components/jquery/dist/";
- var bowerDirJqueryUI = "vendor/bower_components/jquery-ui/";
+var bowerDir = "vendor/bower_components/";
+var bowerDirBootstrap = "vendor/bower_components/bootstrap-sass-official/assets/";
+var bowerDirBootswatch = "vendor/bower_components/bootswatch-sass";
+var bowerDirFontawesome = "vendor/bower_components/fontawesome/";
+// javascript paths
+var bowerDirJquery = "vendor/bower_components/jquery/dist/";
+var bowerDirJqueryUI = "vendor/bower_components/jquery-ui/";
+
 
 
 elixir(function(mix) {
@@ -34,15 +36,23 @@ elixir(function(mix) {
          .copy(bowerDirBootswatch, 'resources/assets/sass/bootswatch')
          .copy(bowerDirFontawesome + 'scss', 'resources/assets/sass/fontawesome')
          .copy(bowerDirFontawesome + 'fonts', 'public/fonts')
+         .copy(bowerDir + 'fullcalendar/dist/fullcalendar.css', 'resources/assets/css/fullcalendar.css')
+         .copy(bowerDir + 'fullcalendar-scheduler/dist/scheduler.css', 'resources/assets/css/fullcalendar-scheduler.css')
          // this is the javascript
          .copy(bowerDirJquery + 'jquery.js', 'resources/assets/js/jquery.js')
          .copy(bowerDirJqueryUI + 'jquery-ui.js', 'resources/assets/js/jquery-ui.js')
          .copy(bowerDirBootstrap + 'javascripts/bootstrap.js', 'resources/assets/js/bootstrap.js')
+         .copy(bowerDir + 'moment/moment.js', 'resources/assets/js/moment.js')
+         .copy(bowerDir + 'fullcalendar/dist/fullcalendar.js', 'resources/assets/js/fullcalendar.js')
+         .copy(bowerDir + 'fullcalendar/dist/lang/de-at.js', 'resources/assets/js/fullcalendar-de.js')
+         .copy(bowerDir + 'fullcalendar-scheduler/dist/scheduler.js', 'resources/assets/js/fullcalendar-scheduler.js')
 
     mix.styles([
          'resources/assets/css/bootstrap-datepicker.css',
          'resources/assets/css/dataTables.bootstrap.css',
          'resources/assets/css/buttons.bootstrap.css',
+         'resources/assets/css/fullcalendar.css',
+         'resources/assets/css/fullcalendar-scheduler.css',
          'public/css/app.css'
       ],
          'public/css/app.css',
@@ -55,6 +65,10 @@ elixir(function(mix) {
      mix.scripts([
              'js/jquery.js',
              'js/jquery-ui.js',
+             'js/moment.js',
+             'js/fullcalendar.js',
+             'js/fullcalendar-de.js',
+             'js/fullcalendar-scheduler.js',
              'js/bootstrap.js',
              'js/bootstrap-datepicker.js',
              'js/bootstrap-datepicker.de.js',

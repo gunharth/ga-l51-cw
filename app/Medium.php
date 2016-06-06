@@ -24,7 +24,8 @@ class Medium extends Model implements SluggableInterface
     protected $fillable = [
         'title',
         'cover',
-        'type_id'
+        'type_id',
+        'eventColor'
     ];
 
     /*public function formats() {
