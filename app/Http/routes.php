@@ -21,9 +21,9 @@ Route::group(['middleware' => 'auth'], function () {
         return view('dashboard');
     });*/
     Route::get('/', 'DashboardController@index');
-    Route::get('/schedule/medium', 'DashboardController@getMediumJson');
-    Route::get('/schedule/events', 'DashboardController@getEventsJson');
-    Route::get('/schedule', 'DashboardController@schedule');
+    Route::get('schedule/medium', 'DashboardController@getMediumJson');
+    Route::get('schedule/events', 'DashboardController@getEventsJson');
+    Route::get('schedule', 'DashboardController@schedule');
 
     Route::resource('medium', 'MediumController');
     Route::resource('clients', 'ClientsController');

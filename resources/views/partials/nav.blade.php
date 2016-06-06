@@ -17,6 +17,9 @@
               <a href="{{ url('/') }}">Start</a>
             </li>
             <li>
+              <a href="{{ url('/schedule') }}">Produktionsplan</a>
+            </li>
+            <li>
               <a href="{{ route('inserate.index') }}">Aufträge</a>
             </li>
             <li>

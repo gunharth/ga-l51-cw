@@ -7,6 +7,8 @@
       <div class="col-sm-12">
       <h2>Produktionsplan</h2>
       </div>
-      <div id="calendar"></div>
+      <div class="col-sm-12">
+        <div id="calendar"></div>
+      </div>
     </div>
   @stop
