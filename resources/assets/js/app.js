@@ -493,7 +493,7 @@ $(document).ready(function() {
             url: '/schedule/medium', // use the `url` property
         },
         resourceRender: function(resourceObj, labelTds, bodyTds) {
-    labelTds.css('background', resourceObj.eventColor);
-}
+            labelTds.css('background', (resourceObj.eventColor!='' ? resourceObj.eventColor : "#3a87ad"));
+        }
     });
 });
