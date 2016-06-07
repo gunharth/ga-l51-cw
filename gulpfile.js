@@ -38,6 +38,7 @@ elixir(function(mix) {
          .copy(bowerDirFontawesome + 'fonts', 'public/fonts')
          .copy(bowerDir + 'fullcalendar/dist/fullcalendar.css', 'resources/assets/css/fullcalendar.css')
          .copy(bowerDir + 'fullcalendar-scheduler/dist/scheduler.css', 'resources/assets/css/fullcalendar-scheduler.css')
+         .copy(bowerDir + 'qtip2/jquery.qtip.css', 'resources/assets/css/jquery.qtip.css')
          // this is the javascript
          .copy(bowerDirJquery + 'jquery.js', 'resources/assets/js/jquery.js')
          .copy(bowerDirJqueryUI + 'jquery-ui.js', 'resources/assets/js/jquery-ui.js')
@@ -46,6 +47,7 @@ elixir(function(mix) {
          .copy(bowerDir + 'fullcalendar/dist/fullcalendar.js', 'resources/assets/js/fullcalendar.js')
          .copy(bowerDir + 'fullcalendar/dist/lang/de-at.js', 'resources/assets/js/fullcalendar-de.js')
          .copy(bowerDir + 'fullcalendar-scheduler/dist/scheduler.js', 'resources/assets/js/fullcalendar-scheduler.js')
+         .copy(bowerDir + 'qtip2/jquery.qtip.js', 'resources/assets/js/jquery.qtip.js')
 
     mix.styles([
          'resources/assets/css/bootstrap-datepicker.css',
@@ -53,6 +55,7 @@ elixir(function(mix) {
          'resources/assets/css/buttons.bootstrap.css',
          'resources/assets/css/fullcalendar.css',
          'resources/assets/css/fullcalendar-scheduler.css',
+         'resources/assets/css/jquery.qtip.css',
          'public/css/app.css'
       ],
          'public/css/app.css',
@@ -69,6 +72,7 @@ elixir(function(mix) {
              'js/fullcalendar.js',
              'js/fullcalendar-de.js',
              'js/fullcalendar-scheduler.js',
+             'js/jquery.qtip.js',
              'js/bootstrap.js',
              'js/bootstrap-datepicker.js',
              'js/bootstrap-datepicker.de.js',

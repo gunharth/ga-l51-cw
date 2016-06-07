@@ -471,6 +471,23 @@ $(document).ready(function() {
         // any other sources...
 
     ],
+    eventRender: function(event, element) {
+        element.qtip({
+            position: {
+            my: 'bottom center',
+            at: 'top center',
+            target: 'mouse',
+            viewport: $('#calendar'),
+            adjust: {
+                mouse: false,
+                scroll: false
+            }
+        },
+            content: {
+                 text: event.title
+             }
+        });
+    },
     resourceLabelText: 'Medium',
     resources: {
             url: '/schedule/medium', // use the `url` property
