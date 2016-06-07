@@ -256,7 +256,8 @@ html,body {
 }
 
 /* fullcalendar */
-.fc-timeline { color: #fff }
+.fc-resource-area .fc-cell-content{ color: #fff }
 .fc-timeline-event {
     padding: 9px 0;
+    text-decoration: none !important;
 }

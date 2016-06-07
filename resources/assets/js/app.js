@@ -484,7 +484,7 @@ $(document).ready(function() {
             }
         },
             content: {
-                 text: event.title
+                 text: event.title + ' + more details and dates'
              }
         });
     },

@@ -15089,10 +15089,11 @@ body {
 
 /* fullcalendar */
 
-.fc-timeline {
+.fc-resource-area .fc-cell-content {
   color: #fff;
 }
 
 .fc-timeline-event {
   padding: 9px 0;
+  text-decoration: none !important;
 }
