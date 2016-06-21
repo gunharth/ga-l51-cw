@@ -7,6 +7,8 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>@yield('pagetitle')</title>
     <link href="{{ elixir('css/app.css') }}" rel="stylesheet" type="text/css">
+    <!-- <link rel="stylesheet" href="http://epsy.ldtp.net/fullcalendar/dist/fullcalendar.css"> -->
+     @yield('styles')
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -35,5 +37,7 @@
     
     @include('partials/modal')
     <script src="{{ elixir('js/app.js') }}"></script>
+    @yield('scripts')
+    <!-- <script src="http://epsy.ldtp.net/fullcalendar/dist/fullcalendar.js"></script> -->
   </body>
 </html>
