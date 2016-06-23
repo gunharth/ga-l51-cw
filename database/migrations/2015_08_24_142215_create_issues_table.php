@@ -34,6 +34,7 @@ class CreateIssuesTable extends Migration
             $table->decimal('druck', 7, 2);
             $table->decimal('vertriebkosten', 7, 2);
             $table->decimal('sonderkosten', 7, 2);
+            $table->boolean('faktura');
             $table->boolean('archive');
             $table->index('archive');
             $table->timestamps();

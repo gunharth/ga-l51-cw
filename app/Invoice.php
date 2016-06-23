@@ -8,6 +8,6 @@ class Invoice extends Model
 {
     public function inserat()
     {
-        return $this->belongsTo('App\Inserat');
+        return $this->belongsTo('App\Inserat', 'inserat_id');
     }
 }

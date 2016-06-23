@@ -40,8 +40,28 @@
         </div>
       </div>
 <hr>
+<div class="row vertical-align">
+        <div class="col-sm-6">
 <h2>Aufträge</h2>
-<button class="btn btn-primary">Faktura</button>
+</div>
+@if($issue->faktura == 0)
+<div class="col-sm-6 text-right">
+  {!! Form::open([
+                'method' => 'POST',
+                'route' => ['createInvoices'],
+                'style' => 'display: inline;'
+            ]) !!}
+                <input type="hidden" name="id" value="{{ $issue->id }}">
+                 <a href="#" data-toggle="modal" data-target="#confirmFaktura" data-title="Faktura" data-message="Wollen Sie {{ $medium->title }} - Ausgabe {{ $issue->name }} fakturieren? ACHTUNG: Diese Funktion ist nicht umkehrbar" data-action="Fakturieren"><button class="btn btn-primary">Faktura</button></a>
+            {!! Form::close() !!}
+</div>
+@else
+<div class="col-sm-6 text-right">
+  <a href="/printInvoices/{{ $issue->id }}" title=""><button class="btn btn-primary">Rechnungen</button></a>
+  </div>
+@endif
+</div>
+<br>
 <table class="table small-text table-striped table-bordered table-hover no-wrap dataTables-issueShow">
       <thead>
         <tr>
@@ -89,7 +109,12 @@
           <td>{{ nl2br($inserat->notes) }}</td>
           <td class="text-nowrap">
             <!-- <a href="{{ url('printInvoice', $inserat->id) }}" title="rechnung"><i class="fa fa-envelope-o fa-lg" data-toggle="tooltip" data-original-title="rechnung"></i></a>  -->
+            @if($issue->faktura == 0)
             <a href="{{ url('setFaktura', $inserat->id) }}" class="setFaktura" data-status="{{ $inserat->faktura }}" title="faktura"><i class="fa {{ $inserat->faktura ? 'fa-check-square' : 'fa-check-square-o' }}  fa-lg" data-toggle="tooltip" data-original-title="faktura"></i></a> 
+            @else
+            <i class="fa {{ $inserat->faktura ? 'fa-check-square' : 'fa-check-square-o' }}  fa-lg"></i>
+            @endif
+            @if($issue->faktura == 0)
             <a href="{{ route('inserate.edit', $inserat->id) }}" title="bearbeiten"><i class="fa fa-edit fa-lg" data-toggle="tooltip" data-original-title="bearbeiten"></i></a>
               {!! Form::open([
                 'method' => 'DELETE',
@@ -98,6 +123,7 @@
             ]) !!}
                  <a href="#" data-toggle="modal" data-target="#confirmDelete" data-title="Inserat löschen" data-message="Wollen Sie dieses Inserat wirklich löschen?" data-action="Löschen"><i class="fa fa-trash-o fa-lg" data-toggle="tooltip" data-original-title="löschen"></i></a>
             {!! Form::close() !!}
+            @endif
           </td>
           </tr>
         @endforeach

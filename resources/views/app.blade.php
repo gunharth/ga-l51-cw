@@ -36,6 +36,7 @@
       </div>
     
     @include('partials/modal')
+    @include('partials/faktura')
     <script src="{{ elixir('js/app.js') }}"></script>
     @yield('scripts')
     <!-- <script src="http://epsy.ldtp.net/fullcalendar/dist/fullcalendar.js"></script> -->

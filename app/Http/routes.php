@@ -35,6 +35,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('medium.issues.formats', 'FormatsController');
     Route::resource('types', 'MediumTypesController');
     Route::resource('inserate', 'InserateController');
+    Route::post('createInvoices', ['as' => 'createInvoices', 'uses' => 'InvoicesController@createInvoices']);
+    Route::get('printInvoices/{id}', 'InvoicesController@printInvoices');
+    Route::resource('invoices', 'InvoicesController');
+
     Route::get('printInvoice/{id}', 'InserateController@printInvoice');
     Route::get('setFaktura/{id}/{status}', 'InserateController@setFaktura');
 

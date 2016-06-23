@@ -22,6 +22,10 @@
             <li>
               <a href="{{ url('/calendar') }}">Kalender</a>
             </li>
+
+            <li>
+              <a href="{{ route('invoices.index') }}">Rechnungen</a>
+            </li>
             <li>
               <a href="{{ route('inserate.index') }}">Aufträge</a>
             </li>
