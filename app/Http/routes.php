@@ -36,6 +36,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('types', 'MediumTypesController');
     Route::resource('inserate', 'InserateController');
     Route::get('printInvoice/{id}', 'InserateController@printInvoice');
+    Route::get('setFaktura/{id}/{status}', 'InserateController@setFaktura');
 
     /**
      * Replication Routes

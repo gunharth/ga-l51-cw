@@ -51,12 +51,12 @@ class InvoicesController extends Controller
         //
     }
 
-    public function printInvoice() {
+    // public function printInvoice() {
         
-        //$pdf = PDF::loadView('pdf.invoice', $data);
-        $pdf = PDF::loadView('pdf.invoice');
-        return $pdf->download('invoice.pdf');
-    }
+    //     //$pdf = PDF::loadView('pdf.invoice', $data);
+    //     $pdf = PDF::loadView('pdf.invoice');
+    //     return $pdf->download('invoice.pdf');
+    // }
 
     /**
      * Show the form for editing the specified resource.

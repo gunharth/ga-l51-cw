@@ -39,6 +39,7 @@ class CreateInserateTable extends Migration
             $table->decimal('ust', 7, 2);
             $table->decimal('brutto', 7, 2);
             $table->text('notes');
+            $table->boolean('faktura');
             $table->timestamps();
             $table->softDeletes();
             

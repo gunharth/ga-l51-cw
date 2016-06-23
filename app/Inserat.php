@@ -150,6 +150,11 @@ class Inserat extends Model
         return $this->belongsTo('App\Client', 'client_id');
     }
 
+    public function invoice()
+    {
+        return $this->hasOne('App\Invoice');
+    }
+
     public function format()
     {
         return $this->belongsToMany('App\Format', 'format_inserat')->withTimestamps()->withPivot('pr');

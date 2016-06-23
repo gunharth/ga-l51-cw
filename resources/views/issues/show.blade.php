@@ -41,6 +41,7 @@
       </div>
 <hr>
 <h2>Aufträge</h2>
+<button class="btn btn-primary">Faktura</button>
 <table class="table small-text table-striped table-bordered table-hover no-wrap dataTables-issueShow">
       <thead>
         <tr>
@@ -87,7 +88,8 @@
           <td>{{ $inserat->user->last_name }}</td>
           <td>{{ nl2br($inserat->notes) }}</td>
           <td class="text-nowrap">
-            <a href="{{ url('printInvoice', $inserat->id) }}" title="rechnung"><i class="fa fa-envelope-o fa-lg" data-toggle="tooltip" data-original-title="rechnung"></i></a> 
+            <!-- <a href="{{ url('printInvoice', $inserat->id) }}" title="rechnung"><i class="fa fa-envelope-o fa-lg" data-toggle="tooltip" data-original-title="rechnung"></i></a>  -->
+            <a href="{{ url('setFaktura', $inserat->id) }}" class="setFaktura" data-status="{{ $inserat->faktura }}" title="faktura"><i class="fa {{ $inserat->faktura ? 'fa-check-square' : 'fa-check-square-o' }}  fa-lg" data-toggle="tooltip" data-original-title="faktura"></i></a> 
             <a href="{{ route('inserate.edit', $inserat->id) }}" title="bearbeiten"><i class="fa fa-edit fa-lg" data-toggle="tooltip" data-original-title="bearbeiten"></i></a>
               {!! Form::open([
                 'method' => 'DELETE',

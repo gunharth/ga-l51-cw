@@ -271,6 +271,20 @@ $(function() {
 
     });
 
+    $('a.setFaktura').on('click', function(e) {
+        e.preventDefault();
+        var ele = $(this);
+        var url = $(this).attr('href');
+        var status = $(this).attr('data-status');
+        $.ajax({
+                method: 'GET',
+                type: 'json',
+                url: url + '/' + status
+            }).done(function(data) {
+                ele.find('i').toggleClass('fa-check-square-o').toggleClass('fa-check-square');
+            })
+        });
+
 
     /** 
      * Peity chart init

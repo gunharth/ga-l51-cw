@@ -102,6 +102,22 @@ class InserateController extends Controller
         return $pdf->download($invoice_file);
     }
 
+    public function setFaktura($id, $status)
+    {
+        $inserat = Inserat::findOrFail($id);
+        
+        if($status == 0) {
+            $status = 1;
+        } else {
+            $status = 0;
+        }
+
+        $inserat->faktura = $status;
+
+        $inserat->save();
+        return $status;
+    }
+
     
 
     /**
