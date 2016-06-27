@@ -64,11 +64,11 @@
           @endfor
           </td>
           <td>{{ $inserat->art }}</td>
-          <td>{{ $inserat->preis }}</td>
-          <td>{{ $inserat->preis2 }}</td>
-          <td>{{ $inserat->netto }}</td>
-          <td>{{ $inserat->preis4 }}</td>
-          <td>{{ $inserat->brutto }}</td>
+          <td>{{ $inserat->prettyPreis }}</td>
+          <td>{{ $inserat->prettyPreis2 }}</td>
+          <td>{{ $inserat->prettyNetto }}</td>
+          <td>{{ $inserat->prettyPreis4 }}</td>
+          <td>{{ $inserat->prettyBrutto }}</td>
           <td>{{ $inserat->user->last_name }}</td>
           <td>{{ nl2br($inserat->notes) }}</td>
           <td class="text-nowrap">

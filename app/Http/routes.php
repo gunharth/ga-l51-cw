@@ -37,6 +37,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('inserate', 'InserateController');
     Route::post('createInvoices', ['as' => 'createInvoices', 'uses' => 'InvoicesController@createInvoices']);
     Route::get('printInvoices/{id}', 'InvoicesController@printInvoices');
+    Route::get('generateGutschrift/{id}', 'InvoicesController@generateGutschrift');
     Route::resource('invoices', 'InvoicesController');
 
     Route::get('printInvoice/{id}', 'InserateController@printInvoice');

@@ -295,13 +295,27 @@ $(function() {
         var url = $(this).attr('href');
         var status = $(this).attr('data-status');
         $.ajax({
-                method: 'GET',
-                type: 'json',
-                url: url + '/' + status
-            }).done(function(data) {
-                ele.find('i').toggleClass('fa-check-square-o').toggleClass('fa-check-square');
-            })
-        });
+            method: 'GET',
+            type: 'json',
+            url: url + '/' + status
+        }).done(function(data) {
+            ele.find('i').toggleClass('fa-check-square-o').toggleClass('fa-check-square');
+        })
+    });
+
+    // $('a.generateGutschrift').on('click', function(e) {
+    //     e.preventDefault();
+    //     var ele = $(this);
+    //     var url = $(this).attr('href');
+    //     var status = $(this).attr('data-status');
+    //     $.ajax({
+    //         method: 'GET',
+    //         type: 'json',
+    //         url: url + '/' + status
+    //     }).done(function(data) {
+    //         ele.find('i').toggleClass('fa-check-square-o').toggleClass('fa-check-square');
+    //     })
+    // });
 
 
     /** 
@@ -338,7 +352,9 @@ $(function() {
             buttons: {
                 print: 'Druck',
                 colvis: 'Spalten'
-            }
+            },
+            "decimal": ",",
+            "thousands": "."
         }
 
     var tableInserateIndex = $('.dataTables-inserateIndex').dataTable({

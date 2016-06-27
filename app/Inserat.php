@@ -67,6 +67,9 @@ class Inserat extends Model
           case 2:
             return 'PK';
           break;
+          case 3:
+            return 'GS';
+          break;
         }
     }
 

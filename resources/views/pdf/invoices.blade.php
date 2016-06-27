@@ -145,7 +145,12 @@ hr {
 	<tr>
 		<td class="short">Betrifft:</td>
 		<td>
-			Insertion <br />
+			@if($inserat->art == 'GS')
+			Gutschrift
+			@else
+			Insertion
+			@endif
+			<br />
 			{!! !empty($inserat->sujet) ? $inserat->sujet . '<br>'  : '' !!}
 			{!! !empty($inserat->auftragsnummer) ? $inserat->auftragsnummer . '<br>'  : '' !!}
 		</td>

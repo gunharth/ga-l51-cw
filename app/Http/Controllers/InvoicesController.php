@@ -49,6 +49,27 @@ class InvoicesController extends Controller
         return redirect()->back();
     }
 
+    public function generateGutschrift($id)
+    {
+        $orig = Inserat::findOrFail($id);
+        //dd($inserate);
+        $inserat = $orig->replicate();
+        $inserat->art = 3;
+         $inserat->push();
+
+        foreach($orig->format as $format)
+{
+    $inserat->format()->attach($format);
+    // you may set the timestamps to the second argument of attach()
+}
+   
+        $invoice = new Invoice();
+        $invoice->inserat_id = $inserat->id;
+        $invoice->save();
+        
+        return redirect()->back();
+    }
+
     /**
      * Show the form for creating a new resource.
      *

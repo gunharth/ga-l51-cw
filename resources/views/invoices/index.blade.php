@@ -32,6 +32,7 @@
           <th>Brutto</th>
           <th>Berater</th>
           <th>Anmerkung</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -51,13 +52,14 @@
           @endfor
           </td>
           <td>{{ $invoice->inserat->art }}</td>
-          <td>{{ $invoice->inserat->preis }}</td>
-          <td>{{ $invoice->inserat->preis2 }}</td>
-          <td>{{ $invoice->inserat->netto }}</td>
-          <td>{{ $invoice->inserat->preis4 }}</td>
-          <td>{{ $invoice->inserat->brutto }}</td>
+          <td>{{ $invoice->inserat->prettyPreis }}</td>
+          <td>{{ $invoice->inserat->prettyPreis2 }}</td>
+          <td>{{ $invoice->inserat->prettyNetto }}</td>
+          <td>{{ $invoice->inserat->prettyPreis4 }}</td>
+          <td>{{ $invoice->inserat->prettyBrutto }}</td>
           <td>{{ $invoice->inserat->user->last_name }}</td>
           <td>{{ nl2br($invoice->inserat->notes) }}</td>
+          <td><a href="/generateGutschrift/{{ $invoice->inserat->id }}" title="gutschrift" class="generateGutschrift"><i class="fa fa-edit fa-lg" data-toggle="tooltip" data-original-title="gutschrift"></i></a></td>
           </tr>
         @endforeach
       </tbody>
