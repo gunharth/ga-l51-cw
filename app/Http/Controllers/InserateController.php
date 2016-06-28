@@ -41,7 +41,7 @@ class InserateController extends Controller
             }
         }
 
-        \Session::flash('backUrl', $request->url());
+        \Session::put('backReferrer', $request->url());
 
         return view('inserate.index', compact('inserate'));
     }
@@ -94,14 +94,6 @@ class InserateController extends Controller
         //
     }
 
-    public function printInvoice($id)
-    {
-        $inserat = Inserat::with('client', 'format.issue.medium')->find($id);
-        $invoice_file = 'Rechnung_' . $inserat->id . '.pdf';
-        $pdf = PDF::loadView('pdf.invoice', compact('inserat'));
-        return $pdf->download($invoice_file);
-    }
-
     public function setFaktura($id, $status)
     {
         $inserat = Inserat::findOrFail($id);
@@ -132,9 +124,9 @@ class InserateController extends Controller
         $client = $inserat->client;
         $formatList = $this->listFormats($inserat->issue_id);
 
-        if (\Session::has('backUrl')) {
-            \Session::keep('backUrl');
-        }
+        //if (\Session::has('backReferrer')) {
+            //\Session::keep('backReferrer');
+        //}
         return view('inserate.edit', compact('inserat', 'client', 'formatList'));
     }
 
@@ -169,7 +161,7 @@ class InserateController extends Controller
         }
         
         \Session::flash('flash_message', trans('messages.create_success'));
-        return ($url = \Session::get('backUrl')) ? redirect($url) : redirect()->back();
+        return ($url = \Session::get('backReferrer')) ? redirect($url) : redirect()->back();
         //return redirect()->back();
     }
 

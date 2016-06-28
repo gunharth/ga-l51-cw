@@ -33,7 +33,6 @@ $(document).ready(function() {
         editable: false,
         yearColumns: 2,
         eventSources: [
-
         // your event source
         {
             url: '/calendar/events', // use the `url` property
@@ -52,12 +51,12 @@ $(document).ready(function() {
             target: 'mouse',
             viewport: $('#calendar'),
             adjust: {
-                mouse: false,
+                mouse: true,
                 scroll: false
             }
         },
             content: {
-                 text: event.title + ' + more details and dates'
+                 text: event.description
              }
         });
     }

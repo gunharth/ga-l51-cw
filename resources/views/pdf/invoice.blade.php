@@ -126,7 +126,12 @@ hr {
 <table>
 	<tr>
 		<td class="large">
-			Rechnung Nr.: {{ $inserat->id }}
+			@if($inserat->art == 'GS')
+			Gutschrift
+			@else
+			Rechnung
+			@endif
+			 Nr.: {{ $inserat->invoice->id }}
 		</td>
 		<td class="left">
 			Datum: <?php echo date('d.m.y');?><br />

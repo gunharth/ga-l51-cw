@@ -62,4 +62,23 @@
           </div>
     {!! Form::close() !!}
    </div>
+   <div>
+       Farben: <br>
+       Drehmoment: #0087b0 <br>
+       Fashion 22: #853478 <br>
+       Fussball in Wien: #a7c454 <br>
+       Future Guide: #f7d94f <br>
+       Geld & Leben: #8a754a <br>
+       Impuls: #e09e48 <br>
+       Prostillon: #4b7080 <br>
+       Kurier Fashion: #d986a7 <br>
+       Meinl am Graben: #c73836 <br>
+       Ostliga: #4da352 <br>
+       Ringturm: #d9826a <br>
+       Running: #a1c9a7 <br>
+       Fashion Night: #42a89c <br>
+       Wien Mobil: #244685 <br>
+       Zuhause: #6dbede
+
+   </div>
   @stop

@@ -359,16 +359,19 @@ tr.fc-collapsed > td > div {
 .fc-time-area .fc-helper-container { /* also an fc-event-container */
 	position: absolute;
 	z-index: 3;
-	top: 0;
+	/*top: 0;*/
+	top: 5px;
 }
 
 .fc-time-area .fc-event-container {
 	padding-bottom: 8px;
-	top: -1px;
+	/*top: -1px;*/
+	top: 4px;
 }
 
 .fc-time-area tr:first-child .fc-event-container {
-	top: 0;
+	/*top: 0;*/
+	top: 5px;
 }
 
 .fc-no-overlap .fc-time-area .fc-event-container {

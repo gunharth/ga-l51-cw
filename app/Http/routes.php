@@ -36,11 +36,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('types', 'MediumTypesController');
     Route::resource('inserate', 'InserateController');
     Route::post('createInvoices', ['as' => 'createInvoices', 'uses' => 'InvoicesController@createInvoices']);
+    Route::get('printInvoice/{id}', 'InvoicesController@printInvoice');
     Route::get('printInvoices/{id}', 'InvoicesController@printInvoices');
     Route::get('generateGutschrift/{id}', 'InvoicesController@generateGutschrift');
+    Route::get('duplicateInvoice/{id}', 'InvoicesController@duplicateInvoice');
     Route::resource('invoices', 'InvoicesController');
 
-    Route::get('printInvoice/{id}', 'InserateController@printInvoice');
+    //Route::get('printInvoice/{id}', 'InserateController@printInvoice');
     Route::get('setFaktura/{id}/{status}', 'InserateController@setFaktura');
 
     /**

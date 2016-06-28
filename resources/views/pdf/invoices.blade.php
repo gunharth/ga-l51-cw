@@ -131,7 +131,12 @@ hr {
 <table>
 	<tr>
 		<td class="large">
-			Rechnung Nr.: {{ $inserat->id }}
+			@if($inserat->art == 'GS')
+			Gutschrift
+			@else
+			Rechnung
+			@endif
+			 Nr.: {{ $inserat->invoice->id }}
 		</td>
 		<td class="left">
 			Datum: <?php echo date('d.m.y');?><br />
@@ -145,11 +150,7 @@ hr {
 	<tr>
 		<td class="short">Betrifft:</td>
 		<td>
-			@if($inserat->art == 'GS')
-			Gutschrift
-			@else
 			Insertion
-			@endif
 			<br />
 			{!! !empty($inserat->sujet) ? $inserat->sujet . '<br>'  : '' !!}
 			{!! !empty($inserat->auftragsnummer) ? $inserat->auftragsnummer . '<br>'  : '' !!}

@@ -84,7 +84,7 @@ class IssuesController extends Controller
         $formatList = $this->listFormats($inserat->issue_id);
         return view('inserate.edit', compact('inserat', 'client', 'formatList'));*/
 
-        \Session::flash('backUrl', $request->url());
+        \Session::put('backReferrer', $request->url());
 
         $issue = Issue::with('inserate.client','inserate.format')->find($id);
         //dd($issue->formats;

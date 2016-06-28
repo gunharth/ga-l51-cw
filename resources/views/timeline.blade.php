@@ -53,12 +53,13 @@ $(document).ready(function() {
             target: 'mouse',
             viewport: $('#calendar'),
             adjust: {
-                mouse: false,
+                mouse: true,
                 scroll: false
-            }
+            },
+            
         },
             content: {
-                 text: event.title + ' + more details and dates'
+                 text: event.description
              }
         });
     },

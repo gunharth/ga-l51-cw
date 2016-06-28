@@ -90,9 +90,14 @@ class DashboardController extends Controller
         //dd($events);
         $eventsJson = array();
         foreach ($events as $event) {
+            $eventDescription = $event->medium->title . ' ' . $event->name . '<br>' .
+            'RS: ' . Carbon::parse($event->getAttributes()['redaktionsschluss'])->format('d.m') . '<br>' .
+            'DT: ' . Carbon::parse($event->getAttributes()['drucktermin'])->format('d.m') . '<br>' .
+            'ET: ' . Carbon::parse($event->getAttributes()['erscheinungstermin'])->format('d.m');
             $eventsJson[] = array(
                 //'id' => $event->id,
-                'title' => 'RS ' . $event->name,
+                'title' => $event->name,
+                'description' => $eventDescription,
                 'resourceId' => $event->medium_id,
                 //'url' => URL::to('events/event/' . date("Y/m/d/", strtotime($event->start_date)) . $event->slug),
                 'start' => Carbon::parse($event->getAttributes()['redaktionsschluss'])->toAtomString(),
@@ -115,28 +120,42 @@ class DashboardController extends Controller
         //dd($events);
         $eventsJson = array();
         foreach ($events as $event) {
-           $eventsJson[] = array(
+           // $eventsJson[] = array(
+           //      //'id' => $event->id,
+           //      'title' => 'RS ' . $event->name,
+           //      'color' => $event->medium->eventColor,
+           //      //'url' => URL::to('events/event/' . date("Y/m/d/", strtotime($event->start_date)) . $event->slug),
+           //      'start' => Carbon::parse($event->getAttributes()['redaktionsschluss'])->toAtomString(),
+           //      'end' => Carbon::parse($event->getAttributes()['erscheinungstermin'])->addDay()->toAtomString(),
+           //  );
+            $eventDescription = $event->medium->title . ' ' . $event->name . '<br>' .
+            'RS: ' . Carbon::parse($event->getAttributes()['redaktionsschluss'])->format('d.m') . '<br>' .
+            'DT: ' . Carbon::parse($event->getAttributes()['drucktermin'])->format('d.m') . '<br>' .
+            'ET: ' . Carbon::parse($event->getAttributes()['erscheinungstermin'])->format('d.m');
+            $eventsJson[] = array(
                 //'id' => $event->id,
-                'title' => 'RS ' . $event->name,
-                'color' => $event->medium->eventColor,
-                //'url' => URL::to('events/event/' . date("Y/m/d/", strtotime($event->start_date)) . $event->slug),
-                'start' => Carbon::parse($event->getAttributes()['redaktionsschluss'])->toAtomString(),
-                'end' => Carbon::parse($event->getAttributes()['erscheinungstermin'])->addDay()->toAtomString(),
-            );
-            /*$eventsJson[] = array(
-                //'id' => $event->id,
-                'title' => 'RS ' . $event->name,
+                'title' => 'RS' . ' ' . $event->medium->title . ' ' . $event->name,
+                'description' => $eventDescription,
                 'color' => $event->medium->eventColor,
                 //'url' => URL::to('events/event/' . date("Y/m/d/", strtotime($event->start_date)) . $event->slug),
                 'start' => Carbon::parse($event->getAttributes()['redaktionsschluss'])->toAtomString(),
             );
             $eventsJson[] = array(
                 //'id' => $event->id,
-                'title' => 'ET ' . $event->name,
+                'title' => 'DT' . ' ' . $event->medium->title . ' ' . $event->name,
+                'description' => $eventDescription,
+                'color' => $event->medium->eventColor,
+                //'url' => URL::to('events/event/' . date("Y/m/d/", strtotime($event->start_date)) . $event->slug),
+                'start' => Carbon::parse($event->getAttributes()['drucktermin'])->toAtomString(),
+            );
+            $eventsJson[] = array(
+                //'id' => $event->id,
+                'title' => 'ET' . ' ' . $event->medium->title . ' ' . $event->name,
+                'description' => $eventDescription,
                 'color' => $event->medium->eventColor,
                 //'url' => URL::to('events/event/' . date("Y/m/d/", strtotime($event->start_date)) . $event->slug),
                 'start' => Carbon::parse($event->getAttributes()['erscheinungstermin'])->toAtomString(),
-            );*/
+            );
         }
         return json_encode($eventsJson);
     }

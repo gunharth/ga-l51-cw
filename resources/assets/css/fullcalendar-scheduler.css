@@ -406,7 +406,7 @@ tr.fc-collapsed > td > div {
 .fc-timeline-event {
 	position: absolute;
 	border-radius: 0;
-	padding: 2px 0;
+	padding: 9px 0 8px 0;
 	margin-bottom: 1px;
 }
 

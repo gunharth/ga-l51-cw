@@ -37,7 +37,7 @@ elixir(function(mix) {
          .copy(bowerDirFontawesome + 'scss', 'resources/assets/sass/fontawesome')
          .copy(bowerDirFontawesome + 'fonts', 'public/fonts')
          .copy(bowerDir + 'fullcalendar/dist/fullcalendar.css', 'public/css/fullcalendar.css')
-         .copy(bowerDir + 'fullcalendar-scheduler/dist/scheduler.css', 'public/css/fullcalendar-scheduler.css')
+         //.copy(bowerDir + 'fullcalendar-scheduler/dist/scheduler.css', 'public/css/fullcalendar-scheduler.css')
          .copy(bowerDir + 'qtip2/jquery.qtip.css', 'resources/assets/css/jquery.qtip.css')
          // this is the javascript
          .copy(bowerDirJquery + 'jquery.js', 'resources/assets/js/jquery.js')
@@ -46,7 +46,7 @@ elixir(function(mix) {
          .copy(bowerDir + 'moment/moment.js', 'resources/assets/js/moment.js')
          .copy(bowerDir + 'fullcalendar/dist/fullcalendar.js', 'public/js/fullcalendar.js')
          //.copy(bowerDir + 'fullcalendar-yearview/dist/fullcalendar.js', 'resources/assets/js/fullcalendar.js')
-         .copy(bowerDir + 'fullcalendar/dist/lang/de-at.js', 'public/js/fullcalendar-de.js')
+         //.copy(bowerDir + 'fullcalendar/dist/lang/de-at.js', 'public/js/fullcalendar-de.js')
          //.copy(bowerDir + 'fullcalendar-yearview/dist/lang/de-at.js', 'resources/assets/js/fullcalendar-de.js')
          .copy(bowerDir + 'fullcalendar-scheduler/dist/scheduler.js', 'public/js/fullcalendar-scheduler.js')
          .copy(bowerDir + 'qtip2/jquery.qtip.js', 'resources/assets/js/jquery.qtip.js')

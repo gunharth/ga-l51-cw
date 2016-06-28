@@ -59,7 +59,13 @@
           <td>{{ $invoice->inserat->prettyBrutto }}</td>
           <td>{{ $invoice->inserat->user->last_name }}</td>
           <td>{{ nl2br($invoice->inserat->notes) }}</td>
-          <td><a href="/generateGutschrift/{{ $invoice->inserat->id }}" title="gutschrift" class="generateGutschrift"><i class="fa fa-edit fa-lg" data-toggle="tooltip" data-original-title="gutschrift"></i></a></td>
+          <td>
+            <a href="{{ route('inserate.edit', $invoice->inserat->id) }}" title="bearbeiten"><i class="fa fa-edit fa-lg" data-toggle="tooltip" data-original-title="bearbeiten"></i></a>
+            <a href="{{ url('printInvoice', $invoice->inserat->id) }}" title="drucken"><i class="fa fa-print fa-lg" data-toggle="tooltip" data-original-title="drucken"></i></a>
+            <a href="/generateGutschrift/{{ $invoice->inserat->id }}" title="gutschrift" class="generateGutschrift"><i class="fa fa-google fa-lg" data-toggle="tooltip" data-original-title="gutschrift"></i></a>
+            <a href="/duplicateInvoice/{{ $invoice->inserat->id }}" title="duplizieren" class="duplicateInvoice"><i class="fa fa-files-o fa-lg" data-toggle="tooltip" data-original-title="duplizieren"></i></a>
+          
+          </td>
           </tr>
         @endforeach
       </tbody>

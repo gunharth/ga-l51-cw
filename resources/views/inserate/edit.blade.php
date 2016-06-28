@@ -17,7 +17,6 @@
   'route' => ['inserate.update', $inserat->id],
   'class' => 'form-horizontal'
 ]) !!}
-
 <!-- clients -->
 <div class="row row-flex row-flex-wrap">
   <div class="col-md-6">
